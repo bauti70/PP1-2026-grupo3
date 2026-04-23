@@ -11,7 +11,7 @@
 | Actor | Rol / Función en el sistema | Tipo (usuario final, sistema externo, etc.) |
 |-------|-----------------------------|---------------------------------------------|
 |Anfitrion       | Publica propiedades, gestiona disponibilidad, acepta o rechaza reservas, obtiene ingresos | Usuario final|
-|Viajero         | Busca alojamientos, filtra por criterios y realiza reservas | Usuario final |  
+|Huesped         | Busca alojamientos, filtra por criterios y realiza reservas | Usuario final |  
 |Administrador del sistema | Gestiona los usuarios y configura servicios del sistema  | Usuario interno |
     
 ## 2. Requisitos Funcionales
@@ -34,8 +34,9 @@
 
 | ID    | Como...       | Quiero...                  | Para...                            |
 |-------|---------------|----------------------------|------------------------------------|
-| HU-01 | [rol/actor]   | [acción o funcionalidad]   | [beneficio o resultado esperado]   |
-| HU-02 |               |                            |                                    |
+| HU-01 | Anfitrion   | Publicar propiedades que tengan disponibilidad.    | Obtener ingresos. economicos   |
+| HU-02 | Huesped              | Buscar alojamiento.                           | Realizar la reserva. |
+| HU-03 | Administrador del sistema | Gestionar y configurar el sistema de reservas. | Mantener estable el sistema sin errores. 
 
 ## 5. Diagrama de Casos de Uso
 
