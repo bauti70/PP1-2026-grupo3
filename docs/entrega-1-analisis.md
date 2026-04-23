@@ -27,14 +27,17 @@
 
 | ID     | Categoría (rendimiento, seguridad, usabilidad, etc.) | Descripción |
 |--------|------------------------------------------------------|-------------|
-| RNF-01 |                                                      |             |
-| RNF-02 |                                                      |             |
+| RNF-01 | Usabilidad  | El sistema debe ser claro, intuitivo y seguro para el usuario |
+| RNF-02 | Rendimiento | El sistema debe mostrar la disponibilidad y y confirmacion de alojamientos en pocos segundos |
+| RNF-03 | Seguridad | El sistema debe contar con un metodo de autenticacion para proteger la informacion de los usuarios |
+| RNF-04 | Usabilidad | El sistema debe ser accesible desde navegadores web | 
+| RNF-05 | Seguridad | El sistema debe garantizar una consistencia inmediata de los datos | 
 
 ## 4. Historias de Usuario
 
 | ID    | Como...       | Quiero...                  | Para...                            |
 |-------|---------------|----------------------------|------------------------------------|
-| HU-01 | Anfitrion   | Publicar propiedades que tengan disponibilidad.    | Obtener ingresos. economicos   |
+| HU-01 | Anfitrion   | Publicar propiedades que tengan disponibilidad.    | Obtener ingresos economicos.   |
 | HU-02 | Huesped              | Buscar alojamiento.                           | Realizar la reserva. |
 | HU-03 | Administrador del sistema | Gestionar y configurar el sistema de reservas. | Mantener estable el sistema sin errores. 
 
