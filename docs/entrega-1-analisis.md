@@ -1,7 +1,7 @@
 # Entrega 1 — Análisis del Sistema
 
-**Grupo**: [Nombre del grupo]  
-**Proyecto**: [Nombre del proyecto elegido]  
+**Grupo**: [Grupo 3]  
+**Proyecto**: [Sistema de reserva de alojamiento]  
 **Fecha de entrega**: 30/04/2026
 
 ---
@@ -10,8 +10,10 @@
 
 | Actor | Rol / Función en el sistema | Tipo (usuario final, sistema externo, etc.) |
 |-------|-----------------------------|---------------------------------------------|
-|       |                             |                                             |
-
+|Anfitrion       | Publica propiedades, gestiona disponibilidad, acepta o rechaza reservas, obtiene ingresos | Usuario final|
+|Viajero         | Busca alojamientos, filtra por criterios y realiza reservas | Usuario final |  
+|Administrador del sistema | Gestiona los usuarios y configura servicios del sistema  | Usuario interno |
+    
 ## 2. Requisitos Funcionales
 
 | ID    | Descripción | Actor | HU relacionada |
