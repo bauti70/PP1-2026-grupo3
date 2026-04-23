@@ -3,10 +3,11 @@
 **Grupo**: [Grupo 3]  
 **Proyecto**: [Sistema de reservas de alojamiento]  
 **Integrantes**:
-- [Nombre y Apellido 1]
-- [Nombre y Apellido 2]
-- [Nombre y Apellido 3]
-- [Nombre y Apellido 4]
+- [Bautista Gigli]
+- [Bautista Palacios]
+- [Lautaro Bouillon]
+- [Laureano Pagge]
+- [Lautaro Ledezma]
 
 ---
 
