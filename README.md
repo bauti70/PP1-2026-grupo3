@@ -1,7 +1,7 @@
 # PP1 2026 — Proyecto Integrador
 
-**Grupo**: [Nombre del grupo]  
-**Proyecto**: [Nombre del proyecto elegido]  
+**Grupo**: [Grupo 3]  
+**Proyecto**: [Sistema de reservas de alojamiento]  
 **Integrantes**:
 - [Nombre y Apellido 1]
 - [Nombre y Apellido 2]
