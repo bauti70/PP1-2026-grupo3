@@ -18,8 +18,9 @@
 
 | ID    | Descripción | Actor | HU relacionada |
 |-------|-------------|-------|----------------|
-| RF-01 |             |       |                |
-| RF-02 |             |       |                |
+| RF-01 |    Debe poder publicar su propiedad y horarios        | Anfitrion     | HU-01               |
+| RF-02 |   Debe poder filtrar y hacer reservas de las propiedades publicadas        |  Huesped     |  HU-02              |
+| RF-03 |    cargar cada dato y reserva tanto de Huesped como de Anfitrion         | Administrador de sistema      |         HU-03       |
 
 > Cada requisito debe describir una acción concreta: "El sistema debe permitir que [actor] [acción]..."
 
