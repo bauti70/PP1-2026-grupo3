@@ -28,15 +28,15 @@
 
 | ID     | Categoría (rendimiento, seguridad, usabilidad, etc.) | Descripción |
 |--------|------------------------------------------------------|-------------|
-| RNF-01 | Usabilidad  | El sistema debe ser claro, intuitivo y seguro para el usuario |
-| RNF-02 | Usabilidad | El sistema debe ser accesible desde navegadores web | 
-| RNF-03 | Usabilidad | El sistema debe facilitar a los huespedes la reserva y modificacion de estadias segun su disponibilidad | 
-| RNF-04 | Rendimiento | El sistema debe mostrar la disponibilidad y y confirmacion de alojamientos en pocos segundos |
-| RNF-05 | Rendimiento | El sistema debe evitar la sobreventa de alojamientos |
-| RNF-06 | Rendimiento  | El sistema debe procesar las reservas sin errores ni inconsistencias | 
-| RNF-07 | Seguridad | El sistema debe contar con un metodo de autenticacion para proteger la informacion de los usuarios |
-| RNF-08 | Seguridad | El sistema debe garantizar una consistencia inmediata de los datos | 
-| RNF-09 | Seguridad | El sistema debe permitir que cada usuario acceda solo a la funcionalidad que le corresponde | 
+| RNF-01 | Usabilidad  | El sistema debe ser claro e intuitivo, permitiendo que un usuario nuevo pueda completar una reserva en un maximo de 3 pasos|
+| RNF-02 | Usabilidad | El sistema debe ser accesible desde los principales navegadores web en el 100% de los casos | 
+| RNF-03 | Usabilidad | El sistema debe permitir a los huespedes realizar o modificar una reserva en un tiempo maximo de 2 minutos | 
+| RNF-04 | Rendimiento | El sistema debe mostrar la disponibilidad y  confirmacion de alojamientos en un maximo de 2 segundos|
+| RNF-05 | Rendimiento | El sistema debe evitar la sobreventa de alojamientos, garantizando un 0% de reservas duplicadas para una misma propiedad en el mismo periodo |
+| RNF-06 | Rendimiento  | El sistema debe procesar las reservas en una tasa menor al 1% de errores o inconsistencias | 
+| RNF-07 | Seguridad | El sistema debe requerir un metodo de autenticacion en el 100% de los accesos a funcionalidades privadas |
+| RNF-08 | Seguridad | El sistema debe garantizar una consistencia de los datos en el 100% de las operaciones de reserva | 
+| RNF-09 | Seguridad | El sistema debe restringir el acceso a funcionalidades segun el rol del usuario en el 100% de los casos | 
 
 ## 4. Historias de Usuario
 
