@@ -188,20 +188,20 @@
 ### CU-08: Monitorea errores
 | Campo | Descripción |
 | :--- | :--- |
-| *ID + Nombre* | *CU-08: Monitorea errores* |
-| *Actor principal* | Administrador de sistemas |
-| *Descripción* | Revisión de logs y alertas técnicas para asegurar que el sistema de alojamiento funcione sin caídas. |
-| *Precondiciones* | El sistema debe estar registrando eventos (logs) en el servidor. |
-| *Postcondiciones* | Se identifican posibles bugs o caídas de servidor para su pronta reparación. |
+| *ID + Nombre* | *CU-08: validar disponibilidad de fechas* |
+| *Actor principal* | usuario/sistema |
+| *Descripción* | el sistema verifica que el alojamiento este libre en el rango de fechas seleccionado, asegurado que no exiten reservas previas ni bloqueos manuales |
+| *Precondiciones* | El usuario ha seleccionado un alojamiento y un rango de fechas (entrada y salida) |
+| *Postcondiciones* | Se confirma la disponibilidad para proceder con el reserva o se informa al usuario que las fechas no estan disponibles |
 
 *Flujo de Eventos:*
 | Secuencia Normal (Camino feliz) | Excepciones / Alternativas |
-| :--- | :--- |
-| 1. El Administrador abre el panel de monitoreo técnico. | |
-| 2. El Sistema muestra el estado de los servicios (Base de datos, Servidor web, etc.). | |
-| 3. El Administrador revisa la lista de errores recientes registrados. | *3.1* Si el log está vacío, el sistema indica "Sin errores detectados en las últimas 24hs". |
-| 4. El Administrador selecciona un error para ver el detalle técnico (Stacktrace). | |
-| 5. El Administrador marca el error como "En proceso de solución" o "Resuelto". | | 
+| --- | --- |
+| 1. El sistema recibe la solicitud de reserva con fechas seleccionadas | |
+| 2. las fechas coinciden con una reserva ya confirmada: el sistema muestra "no disponible" |2.1 el sistema consulta el calendario del alojamiento |2.2 las fechas coinciden con un bloqueo del anfrition: el sistema muestra "fechas restringidas" |
+| 3. El sistema verifica que no existan solapmientos con otros reservas obloqueos |  |
+| 4. El sistema habilita el boton de "continuar con el pago/reserva| |
+
 
 
 
