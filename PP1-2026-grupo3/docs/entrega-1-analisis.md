@@ -15,19 +15,12 @@
 |Administrador del sistema | Gestiona los usuarios y configura servicios del sistema  | Usuario interno |
     
 ## 2. Requisitos Funcionales
+
 | ID    | Descripción | Actor | HU relacionada |
 |-------|-------------|-------|----------------|
-| RF-01 |   El sistema debe permitir que el anfitrión registre y publique una propiedad      | Anfitrion | HU-01               |
-| RF-02 |    El sisema debe permitir que el anfitrión edite los datos de una propiedad ya publicada      | Anfitrion | HU-01               |
-| RF-03 |  El sisema debe permitir que el anfitrión configure los horarios de disponibilidad de una propiedad al momento de publicarla | Anfitrion | HU-01               |
-| RF-04 |  El sistema debe permitir que el anfitrión modifique los horarios de disponibilidad de una propiedad ya publicada | Anfitrion | HU-01               |
-| RF-05 |   El sistema debe permitir que el huésped visualice el listado de propiedades publicadas       |  Huésped |  HU-02              |
-| RF-06 |  El sistma debe permitir que el huésped filtre las publicaciones de propiedades segun criterios de busqueda |  Huésped |  HU-02              |
-| RF-07 |   El sistema debe permitir que el huésped realice una reserva sobre una propiedad publicada |  Huésped |  HU-02              |
-| RF-08 |    El sistema debe permitir que el huésped cancele una reserva realizada previamente |  Huésped |  HU-02              |
-| RF-09 |    El sistema debe permitir que el administrador cargue y gestione los datos de los anfitriones registrados | Administrador de sistema |         HU-03       |
-| RF-10 |   El sistema debe permitir que el administrador cargue y gestione los datos de los huespedes registrados | Administrador de sistema |         HU-03       |
-| RF-11 |   El sistema debe permitir que el administrador visualice  y gestione todas las reservas registradas | Administrador de sistema |         HU-03       |
+| RF-01 |    Debe poder publicar su propiedad y horarios        | Anfitrion     | HU-01               |
+| RF-02 |   Debe poder filtrar y hacer reservas de las propiedades publicadas        |  Huesped     |  HU-02              |
+| RF-03 |    cargar cada dato y reserva tanto de Huesped como de Anfitrion         | Administrador de sistema      |         HU-03       |
 
 > Cada requisito debe describir una acción concreta: "El sistema debe permitir que [actor] [acción]..."
 
@@ -35,15 +28,15 @@
 
 | ID     | Categoría (rendimiento, seguridad, usabilidad, etc.) | Descripción |
 |--------|------------------------------------------------------|-------------|
-| RNF-01 | Usabilidad  | El sistema debe ser claro e intuitivo, permitiendo que un usuario nuevo pueda completar una reserva en un maximo de 3 pasos|
-| RNF-02 | Usabilidad | El sistema debe ser accesible desde los principales navegadores web en el 100% de los casos | 
-| RNF-03 | Usabilidad | El sistema debe permitir a los huespedes realizar o modificar una reserva en un tiempo maximo de 2 minutos | 
-| RNF-04 | Rendimiento | El sistema debe mostrar la disponibilidad y  confirmacion de alojamientos en un maximo de 2 segundos|
-| RNF-05 | Rendimiento | El sistema debe evitar la sobreventa de alojamientos, garantizando un 0% de reservas duplicadas para una misma propiedad en el mismo periodo |
-| RNF-06 | Rendimiento  | El sistema debe procesar las reservas en una tasa menor al 1% de errores o inconsistencias | 
-| RNF-07 | Seguridad | El sistema debe requerir un metodo de autenticacion en el 100% de los accesos a funcionalidades privadas |
-| RNF-08 | Seguridad | El sistema debe garantizar una consistencia de los datos en el 100% de las operaciones de reserva | 
-| RNF-09 | Seguridad | El sistema debe restringir el acceso a funcionalidades segun el rol del usuario en el 100% de los casos | 
+| RNF-01 | Usabilidad  | El sistema debe ser claro, intuitivo y seguro para el usuario |
+| RNF-02 | Usabilidad | El sistema debe ser accesible desde navegadores web | 
+| RNF-03 | Usabilidad | El sistema debe facilitar a los huespedes la reserva y modificacion de estadias segun su disponibilidad | 
+| RNF-04 | Rendimiento | El sistema debe mostrar la disponibilidad y y confirmacion de alojamientos en pocos segundos |
+| RNF-05 | Rendimiento | El sistema debe evitar la sobreventa de alojamientos |
+| RNF-06 | Rendimiento  | El sistema debe procesar las reservas sin errores ni inconsistencias | 
+| RNF-07 | Seguridad | El sistema debe contar con un metodo de autenticacion para proteger la informacion de los usuarios |
+| RNF-08 | Seguridad | El sistema debe garantizar una consistencia inmediata de los datos | 
+| RNF-09 | Seguridad | El sistema debe permitir que cada usuario acceda solo a la funcionalidad que le corresponde | 
 
 ## 4. Historias de Usuario
 
@@ -58,7 +51,9 @@
 > Insertar imagen del diagrama exportado desde Draw.io, Lucidchart, StarUML o similar.  
 > Guardar la imagen en esta misma carpeta (`docs/`) y referenciarla abajo.
 
-![Diagrama de Casos de Uso](Diagrama-caso-de-uso.png)
+![Diagrama de Casos de Uso] ![alt text](Diagrama-caso-de-uso.png)
+
+
 ## 6. Especificación de Casos de Uso
 
 ### CU-01 — [publicar propoiedad disponible]
@@ -193,20 +188,20 @@
 ### CU-08: Monitorea errores
 | Campo | Descripción |
 | :--- | :--- |
-| *ID + Nombre* | *CU-08: validar disponibilidad de fechas* |
-| *Actor principal* | usuario/sistema |
-| *Descripción* | el sistema verifica que el alojamiento este libre en el rango de fechas seleccionado, asegurado que no exiten reservas previas ni bloqueos manuales |
-| *Precondiciones* | El usuario ha seleccionado un alojamiento y un rango de fechas (entrada y salida) |
-| *Postcondiciones* | Se confirma la disponibilidad para proceder con el reserva o se informa al usuario que las fechas no estan disponibles |
+| *ID + Nombre* | *CU-08: Monitorea errores* |
+| *Actor principal* | Administrador de sistemas |
+| *Descripción* | Revisión de logs y alertas técnicas para asegurar que el sistema de alojamiento funcione sin caídas. |
+| *Precondiciones* | El sistema debe estar registrando eventos (logs) en el servidor. |
+| *Postcondiciones* | Se identifican posibles bugs o caídas de servidor para su pronta reparación. |
 
 *Flujo de Eventos:*
 | Secuencia Normal (Camino feliz) | Excepciones / Alternativas |
-| --- | --- |
-| 1. El sistema recibe la solicitud de reserva con fechas seleccionadas | |
-| 2. las fechas coinciden con una reserva ya confirmada: el sistema muestra "no disponible" |2.1 el sistema consulta el calendario del alojamiento |2.2 las fechas coinciden con un bloqueo del anfrition: el sistema muestra "fechas restringidas" |
-| 3. El sistema verifica que no existan solapmientos con otros reservas obloqueos |  |
-| 4. El sistema habilita el boton de "continuar con el pago/reserva| |
-
+| :--- | :--- |
+| 1. El Administrador abre el panel de monitoreo técnico. | |
+| 2. El Sistema muestra el estado de los servicios (Base de datos, Servidor web, etc.). | |
+| 3. El Administrador revisa la lista de errores recientes registrados. | *3.1* Si el log está vacío, el sistema indica "Sin errores detectados en las últimas 24hs". |
+| 4. El Administrador selecciona un error para ver el detalle técnico (Stacktrace). | |
+| 5. El Administrador marca el error como "En proceso de solución" o "Resuelto". | | 
 
 
 
