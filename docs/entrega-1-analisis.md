@@ -15,12 +15,19 @@
 |Administrador del sistema | Gestiona los usuarios y configura servicios del sistema  | Usuario interno |
     
 ## 2. Requisitos Funcionales
-
 | ID    | Descripción | Actor | HU relacionada |
 |-------|-------------|-------|----------------|
-| RF-01 |    Debe poder publicar su propiedad y horarios        | Anfitrion     | HU-01               |
-| RF-02 |   Debe poder filtrar y hacer reservas de las propiedades publicadas        |  Huesped     |  HU-02              |
-| RF-03 |    cargar cada dato y reserva tanto de Huesped como de Anfitrion         | Administrador de sistema      |         HU-03       |
+| RF-01 |   El sistema debe permitir que el anfitrión registre y publique una propiedad      | Anfitrion | HU-01               |
+| RF-02 |    El sisema debe permitir que el anfitrión edite los datos de una propiedad ya publicada      | Anfitrion | HU-01               |
+| RF-03 |  El sisema debe permitir que el anfitrión configure los horarios de disponibilidad de una propiedad al momento de publicarla | Anfitrion | HU-01               |
+| RF-04 |  El sistema debe permitir que el anfitrión modifique los horarios de disponibilidad de una propiedad ya publicada | Anfitrion | HU-01               |
+| RF-05 |   El sistema debe permitir que el huésped visualice el listado de propiedades publicadas       |  Huésped |  HU-02              |
+| RF-06 |  El sistma debe permitir que el huésped filtre las publicaciones de propiedades segun criterios de busqueda |  Huésped |  HU-02              |
+| RF-07 |   El sistema debe permitir que el huésped realice una reserva sobre una propiedad publicada |  Huésped |  HU-02              |
+| RF-08 |    El sistema debe permitir que el huésped cancele una reserva realizada previamente |  Huésped |  HU-02              |
+| RF-09 |    El sistema debe permitir que el administrador cargue y gestione los datos de los anfitriones registrados | Administrador de sistema |         HU-03       |
+| RF-10 |   El sistema debe permitir que el administrador cargue y gestione los datos de los huespedes registrados | Administrador de sistema |         HU-03       |
+| RF-11 |   El sistema debe permitir que el administrador visualice  y gestione todas las reservas registradas | Administrador de sistema |         HU-03       |
 
 > Cada requisito debe describir una acción concreta: "El sistema debe permitir que [actor] [acción]..."
 
