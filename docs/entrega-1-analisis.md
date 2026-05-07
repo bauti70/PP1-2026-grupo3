@@ -13,7 +13,9 @@
 |Anfitrion       | Publica propiedades, gestiona disponibilidad, acepta o rechaza reservas, obtiene ingresos | Usuario final|
 |Huesped         | Busca alojamientos, filtra por criterios y realiza reservas | Usuario final |  
 |Administrador del sistema | Gestiona los usuarios y configura servicios del sistema  | Usuario interno |
-    
+|Sistema de notificaciones | Sistema externo encargado de enviar notificaciones por correo electrónico a huéspedes y anfitriones ante cambios de estado en reservas y recordatorios de check-in | Sistema externo|
+|Sistema de pagos | Procesa los pagos y confirma transacciones de reservas | Sistema externo|
+
 ## 2. Requisitos Funcionales
 | ID    | Descripción | Actor | HU relacionada |
 |-------|-------------|-------|----------------|
