@@ -51,9 +51,25 @@
 
 | ID    | Como...       | Quiero...                  | Para...                            |
 |-------|---------------|----------------------------|------------------------------------|
-| HU-01 | Anfitrion   | Publicar propiedades que tengan disponibilidad.    | Obtener ingresos economicos.   |
-| HU-02 | Huesped              | Buscar alojamiento.                           | Realizar la reserva. |
-| HU-03 | Administrador del sistema | Gestionar y configurar el sistema de reservas. | Mantener estable el sistema sin errores. 
+| HU-01 | Huesped | Gestionar mi perfil personal   | Mantener mis datos actualizados dentro de la plataforma   |
+| HU-02 | Huesped | Explorar propiedades disponibles                        | Encontrar alojamientos que se ajusten a mis necesidades |
+| HU-03 | Huesped | Filtrar propiedades por ubicacion, fechas y precio | Acotar los resultados y tomar una decision mas rapida |
+| HU-04 | Huesped | Realizar una reserva | Asegurar mi estadia en las fechas que necesito|
+| HU-05 | Huesped | Modificar una reserva | Adaptar mi estadia si mis planes cambian |
+| HU-06 | Huesped | Cancelar una reserva | Liberarme del compromiso si ya no puedo viajar |
+| HU-07 | Huesped | Ver el historial de mis reservas | Consultar mis estadias anteriores y actuales |
+| HU-08 | Huesped | Recibir notificaciones sobre cambios en mis reservas | Mantenerme informado sin revisar constantemente el sistema |
+| HU-09 | Anfitrion | Gestionar mi perfil personal | Mantener mis datos actualizados dentro de la plataforma |
+| HU-10 | Anfitrion | Publicar una nueva propiedad | Ofrecer alojamiento a potenciales huespedes |
+| HU-11 | Anfitrion | Editar la informacion de mis propiedades | Mantener los datos actualizados y correctos |
+| HU-12 | Anfitrion | Eliminar una propiedad | retirarla del sistema cuando ya no este disponible | 
+| HU-13 | Anfitrion | Gestionar la disponibilidad de mis propiedades | Controlar las fechas disponibles y evitar conflictos de reserva
+| HU-14 | Anfitrion | Aprobar o rechazar solicitudes de reserva | Decidir quien puede hospedarse en mi propiedad |
+| HU-15 | Anfitrion | Recibir notificaciones de nuevas reservas o cambios de estado | Responder rapidamente |
+| HU-16 | Administrador | Gestionar usuarios y roles | Mantener el orden y la seguridad del sistema |
+| HU-17 | Administrador | Gestionar el catalogo de servicios disponibles | Definir las comodidades que pueden ofrecer los anfitriones |
+| HU-18 | Administrador | Monitorear errores del sistema | Detectar fallas y mantener la plataforma funcionando correctamente |
+| HU-19 | Administrador | Configurar parametros globales del sistema | Adaptar reglas y restricciones de la plataforma |
 
 ## 5. Diagrama de Casos de Uso
 
