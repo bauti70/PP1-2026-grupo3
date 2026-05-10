@@ -67,11 +67,11 @@
 
 | Secuencia Normal (Camino feliz) | Excepciones / Alternativas |
 |---|---|
-| 1.  |el anfitrion selecciona "publicar propiedad"   |
-| 2.  |el sistema muestra un formulario de carga  |
-| 3.  |el anfitrion ingresa fotos, descripcion y precio  |3.1 si faltan datos obligatorios el sistema marca los campos en rojo y no permite avanzar| 
-| 4. |el anfitrion confirma la publicacion | 
-| 5. |el sistema valida los datos y guarda la propiedad |5.1 si las imagenes exceden el tamaño permitido, el sitema solicita comprimirlas 
+| 1. el anfitrion selecciona "publicar propiedad"   |
+| 2. el sistema muestra un formulario de carga  |
+| 3. el anfitrion ingresa fotos, descripcion y precio|  |3.1 si faltan datos obligatorios el sistema marca los campos en rojo y no permite avanzar| 
+| 4. el anfitrion confirma la publicacion | 
+| 5. el sistema valida los datos y guarda la propiedad | |5.1 si las imagenes exceden el tamaño permitido, el sitema solicita comprimirlas 
 
 ### CU-02 — [gestionar disponibilidad]
 
@@ -84,13 +84,13 @@
 
 | Secuencia Normal (Camino feliz) | Excepciones / Alternativas |
 |---|---|
-| 1.  |el anfitrion selecciona la propiedad que desea gestionar  |
-| 2.  |el sistema muestra el calendario de disponibilidad de dicha propiedad  | 
-| 3.  |el anfitrion selecciona un rango de fechas o dias| 
-| 4. |el anfitrion elige la accion (marcar como no disponible o liberar fechas) | 
-| 5. |el anfitrion presiona guardar cambios | 
-| 6. |el sistema valida que no existan reservas confirmadas de esas fechas | 6.1 |si hay una reserva confirmada en las fechas seleccionadas, el sistema impide el bloqueo y informa al anfitrion  | 
-| 7. |el sistema actualiza la base de datos y confirma el exito de la operacion | 7.1 |si ocurre un error de red, el sistema muestra un mensaje de error| 
+| 1. el anfitrion selecciona la propiedad que desea gestionar|  |
+| 2. el sistema muestra el calendario de disponibilidad de dicha propiedad|  | 
+| 3. el anfitrion selecciona un rango de fechas o dias| 
+| 4. el anfitrion elige la accion (marcar como no disponible o liberar fechas) | 
+| 5. el anfitrion presiona guardar cambios | 
+| 6. el sistema valida que no existan reservas confirmadas de esas fechas | 6.1 si hay una reserva confirmada en las fechas seleccionadas, el sistema impide el bloqueo y informa al anfitrion  | 
+| 7.el sistema actualiza la base de datos y confirma el exito de la operacion | 7.1 si ocurre un error de red, el sistema muestra un mensaje de error| 
 
 ## CU-03: Buscar alojamiento
 
@@ -105,8 +105,8 @@
 
 | Secuencia Normal (Camino feliz) | Excepciones / Alternativas |
 | --- | --- |
-| 1. | El Huésped ingresa el destino y las fechas. | 
-| 2. | El Sistema filtra las propiedades disponibles. | 2.1 | Si no hay resultados, el sistema sugiere ciudades cercanas o cambiar fechas. |
+| 1. El Huésped ingresa el destino y las fechas. | 
+| 2.  El Sistema filtra las propiedades disponibles. | 2.1  Si no hay resultados, el sistema sugiere ciudades cercanas o cambiar fechas. |
 | 3. | El Sistema muestra el listado de opciones. 
 
 ### CU-04: Filtra por criterios (Extend de CU-03)
@@ -117,7 +117,7 @@
 | *Actor principal* | Huéspedes |
 | *Descripción* | Permite al usuario refinar los resultados de búsqueda aplicando filtros específicos (precio, servicios, tipo de alojamiento). |
 | *Precondiciones* | El usuario debe haber realizado una búsqueda previa (CU-03) y estar en la pantalla de resultados. |
-| *Postcondiciones* | La lista de alojamientos se actualiza mostrando solo aquellos que cumplen con los criterios seleccionados. |
+| *Postcondiciones* | La lista de alojamientos se actualiza mostrando solo aquellos que cumplen con los criterios seleccionados. |  
 
 *Flujo de Eventos:*
 
@@ -142,7 +142,7 @@
 
 | Secuencia Normal (Camino feliz) | Excepciones / Alternativas |
 | :--- | :--- |
-| 1. El Huésped presiona el botón "Reservar" en la página del alojamiento. | |
+| 1. El Huésped presiona el botón "Reservar" en la página del alojamiento. | 
 | 2. El Sistema muestra el resumen de la reserva, incluyendo fechas y desglose de precio total. | |
 | 3. El Huésped confirma los datos y presiona "Confirmar Reserva". | |
 | 4. El Sistema verifica la disponibilidad por última vez para evitar sobreventas. | *4.1* Si el alojamiento ya no está disponible, el sistema informa del error y cancela la operación. |
@@ -184,15 +184,17 @@
 | 3. El Administrador presiona "Guardar y Aplicar". | |
 | 4. El Sistema valida que los valores sean lógicos. | *4.1* Si se ingresa un valor fuera de rango (ej: comisión negativa), el sistema rechaza el cambio. |
 | 5. El Sistema reinicia los parámetros y aplica los cambios en tiempo real. | |
+| 6. El sistema ofrece al anfitrión asociar servicios disponibles al alojamiento (include: Asociar servicios de alojamiento).  |6.1 Si el anfitrión omite este paso, la propiedad se publica sin servicios asociados. |
 
 ### CU-08: Monitorea errores
-| Campo | Descripción |
+ Campo | Descripción |
 | :--- | :--- |
-| *ID + Nombre* | *CU-08: validar disponibilidad de fechas* |
-| *Actor principal* | usuario/sistema |
-| *Descripción* | el sistema verifica que el alojamiento este libre en el rango de fechas seleccionado, asegurado que no exiten reservas previas ni bloqueos manuales |
+| *ID + Nombre* | CU-08: Validar disponibilidad de fechas |
+| *Actor principal* | Sistema|
+| *Descripción* | el sistema verifica que el alojamiento este libre en el rango de fechas seleccionadas, asegurado que no salen reservas previas ni bloqueos manuales |
 | *Precondiciones* | El usuario ha seleccionado un alojamiento y un rango de fechas (entrada y salida) |
-| *Postcondiciones* | Se confirma la disponibilidad para proceder con el reserva o se informa al usuario que las fechas no estan disponibles |
+| *Postcondiciones* | Se confirma la disponibilidad para proceder con la reserva o se informa al usuario que las fechas no están disponibles |
+
 
 *Flujo de Eventos:*
 | Secuencia Normal (Camino feliz) | Excepciones / Alternativas |
@@ -202,8 +204,42 @@
 | 3. El sistema verifica que no existan solapmientos con otros reservas obloqueos |  |
 | 4. El sistema habilita el boton de "continuar con el pago/reserva| |
 
+### CU-09: Aprobar o rechazar reserva
+ Campo | Descripción |
+| :--- | :--- |
+| *ID + Nombre* |cu-09: aprobar o rechazar reserva  |
+| *Actor principal* |Anfitrión |
+| *Descripción* |Permite al anfitrión revisar una solicitud de reserva pendiente y decidir si la aprueba o rechaza.  |
+| *Precondiciones* |El anfitrión debe estar autenticado y debe existir al menos una reserva en estado "Pendiente" sobre alguna de sus propiedades.  |
+| *Postcondiciones* |La reserva cambia de estado a "Confirmada" o "Rechazada", y se dispara la notificación al huésped (CU-10).  |
 
+*Flujo de Eventos:*
 
+| Secuencia Normal (Camino feliz) | Excepciones / Alternativas |
+| :--- | :--- |
+| 1. El anfitrión accede a su panel de reservas pendientes. | |
+| 2. El sistema muestra el listado de solicitudes con fechas, datos del huésped y precio. | |
+| 3. El anfitrión selecciona una solicitud y elige "Aprobar" o "Rechazar". | |
+| 4. El sistema solicita confirmación de la acción.  | 
+| 5. El anfitrión confirma. | 
+|6. El sistema actualiza el estado de la reserva e incluye CU-10. | 6.1 Si el anfitrión no responde en 48 horas, el sistema cancela automáticamente la solicitud y notifica al huésped.  |
+
+### CU-10: Notificar huesped de desicion
+ Campo | Descripción |
+| :--- | :--- |
+| *ID + Nombre* |cu-10: Notificar huesped de desicion   |
+| *Actor principal* |Sistema de Notificaciones |
+| *Descripción* |El sistema envía una notificación automática al huésped informando si su reserva fue aprobada o rechazada. Es un <<include>> de CU-09.  |
+| *Precondiciones* |La reserva debe haber cambiado de estado como resultado de CU-09.  |
+| *Postcondiciones* |El huésped recibe una notificación por correo con el resultado y, en caso de aprobación, los detalles de su estadía. |
+
+*Flujo de Eventos:*
+
+| Secuencia Normal (Camino feliz) | Excepciones / Alternativas |
+| :--- | :--- |
+| 1. El sistema detecta el cambio de estado de la reserva. | |
+| 2. El sistema genera el mensaje correspondiente (aprobación o rechazo). | |
+| 3. El sistema envía la notificación al correo del huésped vía Servicio de Notificaciones.  |3.1 Si el servidor de correos falla, el sistema reintenta el envío hasta 3 veces y registra el error en el log. |
 
 
 ---
