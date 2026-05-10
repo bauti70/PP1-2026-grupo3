@@ -13,14 +13,23 @@
 |Anfitrion       | Publica propiedades, gestiona disponibilidad, acepta o rechaza reservas, obtiene ingresos | Usuario final|
 |Huesped         | Busca alojamientos, filtra por criterios y realiza reservas | Usuario final |  
 |Administrador del sistema | Gestiona los usuarios y configura servicios del sistema  | Usuario interno |
-    
-## 2. Requisitos Funcionales
+|Sistema de notificaciones | Sistema externo encargado de enviar notificaciones por correo electrónico a huéspedes y anfitriones ante cambios de estado en reservas y recordatorios de check-in | Sistema externo|
+|Sistema de pagos | Procesa los pagos y confirma transacciones de reservas | Sistema externo|
 
+## 2. Requisitos Funcionales
 | ID    | Descripción | Actor | HU relacionada |
 |-------|-------------|-------|----------------|
-| RF-01 |    Debe poder publicar su propiedad y horarios        | Anfitrion     | HU-01               |
-| RF-02 |   Debe poder filtrar y hacer reservas de las propiedades publicadas        |  Huesped     |  HU-02              |
-| RF-03 |    cargar cada dato y reserva tanto de Huesped como de Anfitrion         | Administrador de sistema      |         HU-03       |
+| RF-01 |   El sistema debe permitir que el anfitrión registre y publique una propiedad      | Anfitrion | HU-01               |
+| RF-02 |    El sisema debe permitir que el anfitrión edite los datos de una propiedad ya publicada      | Anfitrion | HU-01               |
+| RF-03 |  El sisema debe permitir que el anfitrión configure los horarios de disponibilidad de una propiedad al momento de publicarla | Anfitrion | HU-01               |
+| RF-04 |  El sistema debe permitir que el anfitrión modifique los horarios de disponibilidad de una propiedad ya publicada | Anfitrion | HU-01               |
+| RF-05 |   El sistema debe permitir que el huésped visualice el listado de propiedades publicadas       |  Huésped |  HU-02              |
+| RF-06 |  El sistma debe permitir que el huésped filtre las publicaciones de propiedades segun criterios de busqueda |  Huésped |  HU-02              |
+| RF-07 |   El sistema debe permitir que el huésped realice una reserva sobre una propiedad publicada |  Huésped |  HU-02              |
+| RF-08 |    El sistema debe permitir que el huésped cancele una reserva realizada previamente |  Huésped |  HU-02              |
+| RF-09 |    El sistema debe permitir que el administrador cargue y gestione los datos de los anfitriones registrados | Administrador de sistema |         HU-03       |
+| RF-10 |   El sistema debe permitir que el administrador cargue y gestione los datos de los huespedes registrados | Administrador de sistema |         HU-03       |
+| RF-11 |   El sistema debe permitir que el administrador visualice  y gestione todas las reservas registradas | Administrador de sistema |         HU-03       |
 
 > Cada requisito debe describir una acción concreta: "El sistema debe permitir que [actor] [acción]..."
 
@@ -42,18 +51,32 @@
 
 | ID    | Como...       | Quiero...                  | Para...                            |
 |-------|---------------|----------------------------|------------------------------------|
-| HU-01 | Anfitrion   | Publicar propiedades que tengan disponibilidad.    | Obtener ingresos economicos.   |
-| HU-02 | Huesped              | Buscar alojamiento.                           | Realizar la reserva. |
-| HU-03 | Administrador del sistema | Gestionar y configurar el sistema de reservas. | Mantener estable el sistema sin errores. 
+| HU-01 | Huesped | Gestionar mi perfil personal   | Mantener mis datos actualizados dentro de la plataforma   |
+| HU-02 | Huesped | Explorar propiedades disponibles                        | Encontrar alojamientos que se ajusten a mis necesidades |
+| HU-03 | Huesped | Filtrar propiedades por ubicacion, fechas y precio | Acotar los resultados y tomar una decision mas rapida |
+| HU-04 | Huesped | Realizar una reserva | Asegurar mi estadia en las fechas que necesito|
+| HU-05 | Huesped | Modificar una reserva | Adaptar mi estadia si mis planes cambian |
+| HU-06 | Huesped | Cancelar una reserva | Liberarme del compromiso si ya no puedo viajar |
+| HU-07 | Huesped | Ver el historial de mis reservas | Consultar mis estadias anteriores y actuales |
+| HU-08 | Huesped | Recibir notificaciones sobre cambios en mis reservas | Mantenerme informado sin revisar constantemente el sistema |
+| HU-09 | Anfitrion | Gestionar mi perfil personal | Mantener mis datos actualizados dentro de la plataforma |
+| HU-10 | Anfitrion | Publicar una nueva propiedad | Ofrecer alojamiento a potenciales huespedes |
+| HU-11 | Anfitrion | Editar la informacion de mis propiedades | Mantener los datos actualizados y correctos |
+| HU-12 | Anfitrion | Eliminar una propiedad | retirarla del sistema cuando ya no este disponible | 
+| HU-13 | Anfitrion | Gestionar la disponibilidad de mis propiedades | Controlar las fechas disponibles y evitar conflictos de reserva
+| HU-14 | Anfitrion | Aprobar o rechazar solicitudes de reserva | Decidir quien puede hospedarse en mi propiedad |
+| HU-15 | Anfitrion | Recibir notificaciones de nuevas reservas o cambios de estado | Responder rapidamente |
+| HU-16 | Administrador | Gestionar usuarios y roles | Mantener el orden y la seguridad del sistema |
+| HU-17 | Administrador | Gestionar el catalogo de servicios disponibles | Definir las comodidades que pueden ofrecer los anfitriones |
+| HU-18 | Administrador | Monitorear errores del sistema | Detectar fallas y mantener la plataforma funcionando correctamente |
+| HU-19 | Administrador | Configurar parametros globales del sistema | Adaptar reglas y restricciones de la plataforma |
 
 ## 5. Diagrama de Casos de Uso
 
 > Insertar imagen del diagrama exportado desde Draw.io, Lucidchart, StarUML o similar.  
 > Guardar la imagen en esta misma carpeta (`docs/`) y referenciarla abajo.
 
-![Diagrama de Casos de Uso] ![alt text](Diagrama-caso-de-uso.png)
-
-
+![Diagrama de Casos de Uso](Diagrama-caso-de-uso.png)
 ## 6. Especificación de Casos de Uso
 
 ### CU-01 — [publicar propoiedad disponible]
