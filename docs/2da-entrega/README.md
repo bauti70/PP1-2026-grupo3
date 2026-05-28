@@ -31,7 +31,8 @@ Se utilizo HTML para crear la estructura basica de las paginas y representar las
 Se separaron los archivos dentro de la carpeta frontend para mantener una estructura ordenada y facilitar el mantenimiento del sistema.
 >   Prototipado temprano
 Se realizaron mockups y pantallas iniciales para visualizar la experiencia del usuario antes de avanzar al desarrollo completo.
-
+> Diseño del login CSS
+Se opto por tomar referencias de la pagina Booking para el diseño de nuestro login, un estilo simple para que el usuario a la hora de ingresar sus datos solo ponga lo mas importante.
 
 > Esta sección es clave para la defensa oral del 25/06. 
 ### Pantalla 01 — Login- (Pendiente — completar cuando se trabaje el wireframe) 
