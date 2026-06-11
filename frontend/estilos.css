@@ -62,3 +62,117 @@ input{
     cursor: pointer;    
     margin-top: 12px;
 }
+
+/* Catalogo filtro */
+.page-catalogo {
+   background-color: #5D5FEF;
+   padding: 15px 40px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.page-catalogo header nav{
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-catalogo header nav a{
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.page-catalogo main{
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+    padding: 30px;
+    max-width: 1400pc;
+    margin: 0 auto;
+}
+
+.page-catalogo aside{
+    border: 1px solid #000000;
+    border-radius: 12px;
+    padding: 20px;
+    height: fit-content;
+    background-color: #fdfdfd;
+}
+
+.page-catalogo aside form label{
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.page-catalogo aside form input[type="text"],
+.page-catalogo aside form input[type="date"]{
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #a0a0a0;
+    border-radius: 6px;
+}
+
+.page-catalogo aside form input[type="submit"]{
+    width: 100%;
+    background-color: #5D5FEF;
+    color: white;
+    border: none;
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.page-catalogo section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.page-catalogo section article{
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 15px;
+    border: 1px solid #000000;
+    border-radius: 12px;
+    padding: 20px;
+    background-color: #ffffff;
+    align-items: center;
+}
+
+.page-catalogo section article img{
+    width: 120px;
+    border-radius: 8px;
+    grid-column: 1;
+    height: 100px;
+    border: 1px solid #000000;
+    object-fit: cover;
+}
+
+.page-catalogo section article strong,
+page-catalogo section article p,
+page-catalogo section article a{
+    grid-column: 2;
+}
+
+.page-catalogo section article a{
+    justify-self: start;
+    background-color: #5D5FEF;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.page-catalogo section article:nth-of-type(3){
+    grid-column: 1 / -1;
+}
