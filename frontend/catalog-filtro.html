@@ -6,17 +6,23 @@
     <title>Document</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
-<body class="page-catalogo">
+
+<body>
     
-    <header>
-        <p>barra de navegacion</p>
+    <header class="page-catalogo">
+        <p>BARRA DE NAVEGACION</p>
         <nav>
-            <a href="index.html">inicio</a>
+            <a href="index.html">Inicio</a>
+            
+            <div class="buscador-header">
+                <input type="text" placeholder="¿A dónde vamos?">
+            </div>
+
             <a href="login.html">Login</a>
         </nav>
     </header>
 
-    <main>
+    <main class="contenedor-catalogo">
         <aside>
 
             <form>
@@ -30,18 +36,26 @@
 
                 <label for="sali">Salida:</label>
                 <input type="date" id="sali"><br>
+                
+                <div class="grupo-checkbox">
+                    <input type="checkbox" id="wifi">
+                    <label for="wifi">Wi-fi</label>
+                </div>
 
-                <input type="checkbox" id="wifi">
-                <label for="wifi">Wi-fi</label>
+                <div class="grupo-checkbox">
+                    <input type="checkbox" id="des">
+                    <label for="des">Desayuno</label>
+                </div>
 
-                <input type="checkbox" id="des">
-                <label for="des">Desayuno</label>
+                <div class="grupo-checkbox">
+                    <input type="checkbox" id="pile">
+                    <label for="pile">Pileta</label>
+                </div>
 
-                <input type="checkbox" id="pile">
-                <label for="pile">pileta</label>
-
-                <input type="checkbox" id="miento">
-                <label for="miento">Estacionamiento</label><br>
+                <div class="grupo-checkbox">
+                    <input type="checkbox" id="miento">
+                    <label for="miento">Estacionamiento</label>
+                </div><br>
 
                 <p>Precio:</p>
                 <label for="min">Minimo:</label>
@@ -53,34 +67,55 @@
             </form>
         </aside>
 
-        <section>
-            <article>
-                <h3>Propiedad 1</h3>
-                <strong>Casa en la montaña</strong><br>
-                <img src="" alt="">
-                <p>Ubicacion: Bariloche, Rio negro</p>
-                <p>Precio: $15.000 / noche</p>
-                <a href="#">Ver detalles</a>
-            </article>
+<section>
+    <article class="tarjeta">
+        <h3 class="tarjeta-titulo">Casa en la montaña</h3>
+        <div class="tarjeta-contenido">
+            <div class="tarjeta-imagen">
+                <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=400" alt="Casa en la montaña">
+            </div>
+            <div class="tarjeta-info">
+                <div class="tarjeta-texto">
+                    <p class="tarjeta-ubicacion">📍 Bariloche, Rio Negro</p>
+                    <p class="tarjeta-precio"><strong>$15.000</strong> / noche</p>
+                </div>
+                <a href="#" class="btn-detalles">Ver detalles</a>
+            </div>
+        </div>
+    </article>
 
-            <article>
-                <h3>Propiedad 2</h3>
-                <strong>Cabaña en el lago</strong><br>
-                <img src="" alt="">
-                <p>Ubicacion: Cordoba, el durazno</p>
-                <p>Precio: $12.500 / noche</p>
-                <a href="#">Ver detalles</a>
-            </article>
-            
-            <article>
-                <h3>Propiedad 3</h3>
-                <strong>Departamento céntrico</strong><br>
-                <img src="" alt="">
-                <p>Ubicacion: Mendoza, Mendoza</p>
-                <p>Precio: $8.000 / noche</p>
-                <a href="#">Ver detalles</a>
-            </article>
-        </section>
+    <article class="tarjeta">
+        <h3 class="tarjeta-titulo">Cabaña en el lago</h3>
+        <div class="tarjeta-contenido">
+            <div class="tarjeta-imagen">
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400" alt="Cabaña en el lago">
+            </div>
+            <div class="tarjeta-info">
+                <div class="tarjeta-texto">
+                    <p class="tarjeta-ubicacion">📍 Cordoba, El Durazno</p>
+                    <p class="tarjeta-precio"><strong>$12.500</strong> / noche</p>
+                </div>
+                <a href="#" class="btn-detalles">Ver detalles</a>
+            </div>
+        </div>
+    </article>
+    
+    <article class="tarjeta tarjeta-horizontal">
+        <h3 class="tarjeta-titulo">Departamento Céntrico</h3>
+        <div class="tarjeta-contenido">
+            <div class="tarjeta-imagen">
+                <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400" alt="Departamento Céntrico">
+            </div>
+            <div class="tarjeta-info">
+                <div class="tarjeta-texto">
+                    <p class="tarjeta-ubicacion">📍 Mendoza, Mendoza</p>
+                    <p class="tarjeta-precio"><strong>$8.000</strong> / noche</p>
+                </div>
+                <a href="#" class="btn-detalles">Ver detalles</a>
+            </div>
+        </div>
+    </article>
+</section>
     </main>
 </body>
 </html>

@@ -63,64 +63,98 @@ input{
     margin-top: 12px;
 }
 
+
+
+
 /* Catalogo filtro */
 .page-catalogo {
    background-color: #5D5FEF;
    padding: 15px 40px;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+   width: 100%;
+   box-sizing: border-box; 
 }
 
-.page-catalogo header nav{
+.page-catalogo nav {
     display: flex;
-    gap: 20px;
     width: 100%;
     justify-content: space-between;
     align-items: center;
 }
 
-.page-catalogo header nav a{
+.page-catalogo nav a {
     color: #ffffff;
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
 }
 
-.page-catalogo main{
+.page-catalogo nav .buscador-header {
+    flex-grow: 1;
+    max-width: 600px;
+    margin: 0 20px;
+}
+
+.page-catalogo nav .buscador-header input {
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    margin-bottom: 0;
+    background-color: #f1effa;
+    box-sizing: border-box;
+}
+
+.page-catalogo p{
+    text-align: center;
+    color: white;
+    margin: 10px 0;
+}
+
+.contenedor-catalogo {
     display: grid;
     grid-template-columns: 280px 1fr;
     gap: 30px;
     padding: 30px;
-    max-width: 1400pc;
+    max-width: 1400px;
+    width: 100%; 
     margin: 0 auto;
+    box-sizing: border-box;
 }
 
-.page-catalogo aside{
+.contenedor-catalogo aside {
     border: 1px solid #000000;
     border-radius: 12px;
     padding: 20px;
     height: fit-content;
     background-color: #fdfdfd;
+    width: 280px;
+    box-sizing: border-box;
 }
 
-.page-catalogo aside form label{
+.contenedor-catalogo aside form label {
     display: block;
     margin-bottom: 12px;
     font-weight: 600;
+    text-align: center;
 }
 
-.page-catalogo aside form input[type="text"],
-.page-catalogo aside form input[type="date"]{
-    width: 100%;
+.contenedor-catalogo aside form p {
+    text-align: center;
+}
+
+.contenedor-catalogo aside form input[type="text"],
+.contenedor-catalogo aside form input[type="date"] {
+    width: 80%;
     padding: 8px;
     margin-top: 5px;
-    border: 1px solid #a0a0a0;
+    border: 1px solid #5D5FEF;
     border-radius: 6px;
+    box-sizing: border-box;
 }
 
-.page-catalogo aside form input[type="submit"]{
-    width: 100%;
+.contenedor-catalogo aside form input[type="submit"] {
+    width: 80%;
     background-color: #5D5FEF;
     color: white;
     border: none;
@@ -129,15 +163,16 @@ input{
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
-.page-catalogo section{
+.contenedor-catalogo section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 25px;
 }
 
-.page-catalogo section article{
+.contenedor-catalogo section article {
     display: grid;
     grid-template-columns: 130px 1fr;
     gap: 15px;
@@ -146,9 +181,10 @@ input{
     padding: 20px;
     background-color: #ffffff;
     align-items: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.page-catalogo section article img{
+.contenedor-catalogo section article img {
     width: 120px;
     border-radius: 8px;
     grid-column: 1;
@@ -157,13 +193,13 @@ input{
     object-fit: cover;
 }
 
-.page-catalogo section article strong,
-page-catalogo section article p,
-page-catalogo section article a{
+.contenedor-catalogo section article strong,
+.contenedor-catalogo section article p,
+.contenedor-catalogo section article a {
     grid-column: 2;
 }
 
-.page-catalogo section article a{
+.contenedor-catalogo section article a {
     justify-self: start;
     background-color: #5D5FEF;
     color: white;
@@ -173,6 +209,53 @@ page-catalogo section article a{
     font-size: 0.9rem;
 }
 
-.page-catalogo section article:nth-of-type(3){
-    grid-column: 1 / -1;
+
+.contenedor-catalogo section article .servicios {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px;
+    margin: 8px 0 15px 0;
 }
+
+.contenedor-catalogo aside form .grupo-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px; 
+}
+
+.contenedor-catalogo aside form .grupo-checkbox input[type="checkbox"] {
+    margin: 0;
+    width: auto;
+}
+
+.contenedor-catalogo aside form .grupo-checkbox label {
+    display: inline;
+    margin: 0;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.contenedor-catalogo aside form input[type="number"] {
+    width: 80%;
+    padding: 4px;
+    border: 1px solid #5D5FEF;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+
+.contenedor-catalogo section .tarjeta .tarjeta-imagen {
+    width: 320px;
+    min-width: 320px;
+    height: 210px; 
+    overflow: hidden;
+}
+
+.contenedor-catalogo section .tarjeta .tarjeta-imagen img {
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+}
+
