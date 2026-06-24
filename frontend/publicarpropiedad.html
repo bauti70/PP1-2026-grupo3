@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicar Propiedad</title>
+</head>
+<body>
+<header>
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#">Login</a>
+    </nav>
+</header>
+<form>
+
+    <label for="nombre">Nombre propiedad</label><br>
+    <input type="text" id="nombre"><br><br>
+
+    <label for="direccion">Dirección</label><br>
+    <input type="text" id="direccion"><br><br>
+
+    <label for="email">Email de contacto</label><br>
+    <input type="email" id="email"><br><br>
+
+    <label for="descripcion">Descripción</label><br>
+    <textarea id="descripcion" ></textarea><br><br>
+
+    <label for="precio">Precio por noche</label><br>
+    <input type="number" id="precio"><br><br>
+
+    <label for="ocupantes">Cantidad de ocupantes máximos</label><br>
+    <select id="ocupantes">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5+</option>
+    </select><br><br>
+
+    <label for="baños">Cantidad de baños</label><br>
+    <select id="baños">
+        <option>1</option>
+        <option>2</option>
+        <option>3+</option>
+    </select><br><br>
+
+    <label for="habitaciones">Cantidad de habitaciones</label><br>
+    <select id="habitaciones">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4+</option>
+    </select><br><br>
+
+    <input type="checkbox" id="wifi">
+    <label for="wifi">WiFi</label><br>
+
+    <input type="checkbox" id="pileta">
+    <label for="pileta">Pileta</label><br>
+
+    <input type="checkbox" id="estacionamiento">
+    <label for="estacionamiento">Estacionamiento</label><br><br>
+
+    <label for="imagenes">Subir imágenes</label><br>
+    <input type="file" id="imagenes"multiple>
+    <br><br>
+    <input type="submit" value="Publicar propiedad">
+</form>
+
+</body>
+</html>
