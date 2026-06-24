@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Propiedad</title>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="#">Inicio</a>
+        <input type="search" placeholder="Buscar alojamiento">
+        <a href="#">Login</a>
+    </nav>
+</header>
+
+<main>
+
+    <section>
+        <img src="principal.jpg" alt="Imagen principal" width="600">
+        <br><br>
+        <img src="foto1.jpg" alt="Foto 1" width="180">
+        <img src="foto2.jpg" alt="Foto 2" width="180">
+        <img src="foto3.jpg" alt="Foto 3" width="180">
+        <hr>
+        <h1>Apartamento vista al río</h1>
+
+        <p>Palermo, Buenos Aires</p>
+
+        <p>4.8 (127 reseñas)</p>
+
+        <button>Hasta 4 personas</button>
+        <button>2 Habitaciones</button>
+        <button>1 Baño</button>
+        <button>WiFi</button>
+        <button>A/C</button>
+        <hr>
+        <p>Amplio apartamento con vista al río, totalmente equipado.
+            A pasos del Parque 3 de Febrero y con fácil acceso al
+            transporte público. Ideal para familias o grupos pequeños.</p>
+    </section>
+
+    <aside>
+        <h2>$45.000 / noche</h2>
+        <h3>Fechas</h3>
+
+        <label for="llegada">Llegada</label><br>
+        <input type="date" id="llegada"><br>
+
+        <label for="salida">Salida</label><br>
+        <input type="date" id="salida"><br>
+
+        <label for="huespedes">Huéspedes</label><br>
+        <select id="huespedes">
+            <option>Cantidad</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>
+        <br>
+        <h3>Total:</h3>
+        <hr>
+        <label for="nota">Observaciones</label><br>
+        <textarea id="nota" rows="4" cols="30"></textarea>
+        <br>
+        <button type="submit">Buscar</button>
+    </aside>
+</main>
+</body>
+</html>
