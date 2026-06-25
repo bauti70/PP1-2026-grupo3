@@ -21,18 +21,21 @@
 
     <section class="info">
         <img src="https://http2.mlstatic.com/D_693176-MLA112406680600_062026-F.webp" alt="Imagen principal" width="600">
+
         <br><br>
-        <div class="contenedor-fotos-pequenas">
+
+        <section class="contenedor-fotos-pequenas">
             <img src="https://http2.mlstatic.com/D_797878-MLA112406680588_062026-F.webp" alt="Cocina" width="180">
             <img src="https://http2.mlstatic.com/D_766917-MLA112406680578_062026-F.webp" alt="Baño" width="180">
             <img src="https://http2.mlstatic.com/D_742672-MLA112406680614_062026-F.webp" alt="Terraza" width="180">
-        </div>
+        </section>
+
         <hr>
 
-        <div class="titulo-alojamiento">
+        <header class="titulo-alojamiento">
             <h1>Apartamento vista al río</h1>
             <button class="btn-favorito">♡</button>
-        </div>
+        </header>
 
         <p>📍 Palermo, Buenos Aires</p>
         <p>⭐ 4.8 (127 reseñas)</p>
@@ -42,45 +45,59 @@
         <button>1 Baño</button>
         <button>WiFi</button>
         <button>A/C</button>
+
         <hr>
-        <p>Amplio apartamento con vista al río, totalmente equipado.
+
+        <p>
+            Amplio apartamento con vista al río, totalmente equipado.
             A pasos del Parque 3 de Febrero y con fácil acceso al
-            transporte público. Ideal para familias o grupos pequeños.</p>
+            transporte público. Ideal para familias o grupos pequeños.
+        </p>
     </section>
 
-  <form class="form-reserva" action="#">
+    <form class="form-reserva" action="#">
         <h2><strong>$45.000</strong> / noche</h2>
+
         <h3>Fechas</h3>
 
-        <div class="fila-fechas">
-            <div class="campo-fecha">
+        <section class="fila-fechas">
+
+            <section class="campo-fecha">
                 <label for="llegada">Llegada</label>
                 <input type="date" id="llegada" required>
-            </div>
-            <div class="campo-fecha">
+            </section>
+
+            <section class="campo-fecha">
                 <label for="salida">Salida</label>
                 <input type="date" id="salida" required>
-            </div>
-        </div>
+            </section>
+
+        </section>
 
         <label for="huespedes">Huéspedes</label>
         <input type="number" id="huespedes" min="1" max="4" value="1" required>
 
-       <div class="resumen-reserva">
+        <aside class="resumen-reserva">
             <h4>Resumen de tu estadía</h4>
             <p><strong>Propiedad:</strong> Apartamento vista al río</p>
-            <p><strong>Fechas:</strong> 10/07/2026 al 15/07/2026 </p>
+            <p><strong>Fechas:</strong> 10/07/2026 al 15/07/2026</p>
             <p><strong>Huéspedes:</strong> 2 personas</p>
-            <h3>Total: <strong>$225.000</strong></h3> 
-        </div>
+            <h3>Total: <strong>$225.000</strong></h3>
+        </aside>
 
         <hr>
+
         <label for="nota">¿Tienes alguna consulta?</label><br>
         <textarea id="nota" rows="4" cols="30"></textarea>
+
         <br><br>
 
-        <button type="submit" class="btn-confirmar">Confirmar reserva</button>
+        <button type="submit" class="btn-confirmar">
+            Confirmar reserva
+        </button>
     </form>
+
 </main>
+
 </body>
 </html>
