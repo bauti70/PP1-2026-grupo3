@@ -575,3 +575,68 @@ main aside button[type="submit"] {
     border-radius: 5px;
     border: 1px solid #ccc;
 }
+.main-mireserva{
+flex-direction: column;
+}
+
+.tarjeta{
+    background-color: white;
+    border: 2px solid #d9d9d9;
+    border-radius: 6px;
+    padding: 20px;
+    box-shadow: 1px  1px 5px;
+    
+}
+
+.propiedad{
+    display: flex;
+    gap: 22px;
+}
+
+.imagen-propiedad{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    background-color: #e7e7e7;
+}
+.propiedad .info h2{
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.propiedad .info p{
+    color: #777;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    max-width: 900px;
+}
+.botones{
+    display: flex;
+    gap: 12px;
+}
+
+.btn-detalles{
+    background: white;
+    border: 1px solid #c8c8c8;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-contacto{
+    background: white;
+    color: #2196f3;
+    border: 1px solid #2196f3;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-cancelar{
+    background: #ff4242;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
