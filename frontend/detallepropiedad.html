@@ -4,31 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle de Propiedad</title>
+
+    <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 <body>
 
 <header>
     <nav>
-        <a href="#">Inicio</a>
+        <a href="index.html">Inicio</a>
         <input type="search" placeholder="Buscar alojamiento">
-        <a href="#">Login</a>
+        <a href="login.html">Login</a>
     </nav>
 </header>
 
-<main>
+<main class="detalle-propiedad">
 
-    <section>
-        <img src="principal.jpg" alt="Imagen principal" width="600">
+    <section class="info">
+        <img src="https://http2.mlstatic.com/D_693176-MLA112406680600_062026-F.webp" alt="Imagen principal" width="600">
         <br><br>
-        <img src="foto1.jpg" alt="Foto 1" width="180">
-        <img src="foto2.jpg" alt="Foto 2" width="180">
-        <img src="foto3.jpg" alt="Foto 3" width="180">
+        <div class="contenedor-fotos-pequenas">
+            <img src="https://http2.mlstatic.com/D_797878-MLA112406680588_062026-F.webp" alt="Cocina" width="180">
+            <img src="https://http2.mlstatic.com/D_766917-MLA112406680578_062026-F.webp" alt="Baño" width="180">
+            <img src="https://http2.mlstatic.com/D_742672-MLA112406680614_062026-F.webp" alt="Terraza" width="180">
+        </div>
         <hr>
-        <h1>Apartamento vista al río</h1>
 
-        <p>Palermo, Buenos Aires</p>
+        <div class="titulo-alojamiento">
+            <h1>Apartamento vista al río</h1>
+            <button class="btn-favorito">♡</button>
+        </div>
 
-        <p>4.8 (127 reseñas)</p>
+        <p>📍 Palermo, Buenos Aires</p>
+        <p>⭐ 4.8 (127 reseñas)</p>
 
         <button>Hasta 4 personas</button>
         <button>2 Habitaciones</button>
@@ -41,32 +48,39 @@
             transporte público. Ideal para familias o grupos pequeños.</p>
     </section>
 
-    <aside>
-        <h2>$45.000 / noche</h2>
+  <form class="form-reserva" action="#">
+        <h2><strong>$45.000</strong> / noche</h2>
         <h3>Fechas</h3>
 
-        <label for="llegada">Llegada</label><br>
-        <input type="date" id="llegada"><br>
+        <div class="fila-fechas">
+            <div class="campo-fecha">
+                <label for="llegada">Llegada</label>
+                <input type="date" id="llegada" required>
+            </div>
+            <div class="campo-fecha">
+                <label for="salida">Salida</label>
+                <input type="date" id="salida" required>
+            </div>
+        </div>
 
-        <label for="salida">Salida</label><br>
-        <input type="date" id="salida"><br>
+        <label for="huespedes">Huéspedes</label>
+        <input type="number" id="huespedes" min="1" max="4" value="1" required>
 
-        <label for="huespedes">Huéspedes</label><br>
-        <select id="huespedes">
-            <option>Cantidad</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-        </select>
-        <br>
-        <h3>Total:</h3>
+       <div class="resumen-reserva">
+            <h4>Resumen de tu estadía</h4>
+            <p><strong>Propiedad:</strong> Apartamento vista al río</p>
+            <p><strong>Fechas:</strong> 10/07/2026 al 15/07/2026 </p>
+            <p><strong>Huéspedes:</strong> 2 personas</p>
+            <h3>Total: <strong>$225.000</strong></h3> 
+        </div>
+
         <hr>
-        <label for="nota">Observaciones</label><br>
+        <label for="nota">¿Tienes alguna consulta?</label><br>
         <textarea id="nota" rows="4" cols="30"></textarea>
-        <br>
-        <button type="submit">Buscar</button>
-    </aside>
+        <br><br>
+
+        <button type="submit" class="btn-confirmar">Confirmar reserva</button>
+    </form>
 </main>
 </body>
 </html>

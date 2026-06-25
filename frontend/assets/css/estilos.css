@@ -1,0 +1,577 @@
+body {
+    font-family: Roboto, sans-serif;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    flex-direction: column;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 280px;
+}
+
+.caja-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+    margin-top: 40px;
+}
+
+h2{
+    margin-top: 40px;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+}
+
+.barra-superior{
+    width: 100%;
+    background-color: #1a73e8;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.barra-superior h2{
+    margin: 0;
+}
+
+input{
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.boton-ingresar {
+    padding: 12px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;    
+    margin-top: 12px;
+}
+
+
+
+
+/* Catalogo filtro */
+.page-catalogo {
+   background-color: #5D5FEF;
+   padding: 15px 40px;
+   width: 100%;
+   box-sizing: border-box; 
+}
+
+.page-catalogo nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-catalogo nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.page-catalogo nav .buscador-header {
+    flex-grow: 1;
+    max-width: 600px;
+    margin: 0 20px;
+}
+
+.page-catalogo nav .buscador-header input {
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    margin-bottom: 0;
+    background-color: #f1effa;
+    box-sizing: border-box;
+}
+
+.page-catalogo p{
+    text-align: center;
+    color: white;
+    margin: 10px 0;
+}
+
+.contenedor-catalogo {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+    padding: 30px;
+    max-width: 1400px;
+    width: 100%; 
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.contenedor-catalogo aside {
+    border: 1px solid #000000;
+    border-radius: 12px;
+    padding: 20px;
+    height: fit-content;
+    background-color: #fdfdfd;
+    width: 280px;
+    box-sizing: border-box;
+}
+
+.contenedor-catalogo aside form label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.contenedor-catalogo aside form p {
+    text-align: center;
+}
+
+.contenedor-catalogo aside form input[type="text"],
+.contenedor-catalogo aside form input[type="date"] {
+    width: 80%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #5D5FEF;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.contenedor-catalogo aside form input[type="submit"] {
+    width: 80%;
+    background-color: #5D5FEF;
+    color: white;
+    border: none;
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.contenedor-catalogo section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.contenedor-catalogo section article {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 15px;
+    border: 1px solid #000000;
+    border-radius: 12px;
+    padding: 20px;
+    background-color: #ffffff;
+    align-items: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.contenedor-catalogo section article img {
+    width: 120px;
+    border-radius: 8px;
+    grid-column: 1;
+    height: 100px;
+    border: 1px solid #000000;
+    object-fit: cover;
+}
+
+.contenedor-catalogo section article strong,
+.contenedor-catalogo section article p,
+.contenedor-catalogo section article a {
+    grid-column: 2;
+}
+
+.contenedor-catalogo section article a {
+    justify-self: start;
+    background-color: #5D5FEF;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+
+.contenedor-catalogo section article .servicios {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px;
+    margin: 8px 0 15px 0;
+}
+
+.contenedor-catalogo aside form .grupo-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px; 
+}
+
+.contenedor-catalogo aside form .grupo-checkbox input[type="checkbox"] {
+    margin: 0;
+    width: auto;
+}
+
+.contenedor-catalogo aside form .grupo-checkbox label {
+    display: inline;
+    margin: 0;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.contenedor-catalogo aside form input[type="number"] {
+    width: 80%;
+    padding: 4px;
+    border: 1px solid #5D5FEF;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+
+.contenedor-catalogo section .tarjeta .tarjeta-imagen {
+    width: 320px;
+    min-width: 320px;
+    height: 210px; 
+    overflow: hidden;
+}
+
+.contenedor-catalogo section .tarjeta .tarjeta-imagen img {
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+
+
+/* PANTALLA DETALLE PROPIEDAD */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+header {
+    background-color: #5D5FEF; 
+    padding: 15px 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+header nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+header nav input[type="search"] {
+    width: 45%;
+    padding: 12px 20px;
+    border-radius: 25px; 
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: #ffffff;
+}
+
+main {
+    display: flex;
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 0 40px;
+    gap: 50px; 
+}
+
+main section {
+    flex: 2; 
+}
+
+main section br {
+    display: none;
+}
+
+
+main section img[alt="Imagen principal"] {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 2px solid #000000;
+    margin-bottom: 15px;
+}
+
+.contenedor-fotos-pequenas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.contenedor-fotos-pequenas img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 2px solid #000000;
+}
+
+main section img:last-of-type {
+    margin-right: 0;
+}
+
+
+main section h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-top: 25px;
+    margin-bottom: 8px;
+}
+
+main section p {
+    font-size: 1.1rem;
+    color: #333333;
+    margin-bottom: 8px;
+}
+
+
+main section button {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 0.95rem;
+    color: #333333;
+    margin-right: 6px;
+    margin-bottom: 10px;
+}
+
+
+main section p:last-of-type {
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #000000;
+    margin-top: 20px;
+}
+
+main section hr {
+    border: none;
+    border-top: 2px solid #f0edf7;
+    margin: 25px 0;
+}
+
+
+main aside {
+    flex: 1;
+    min-width: 380px;
+    border: 2px solid #000000; 
+    border-radius: 20px;
+    padding: 30px;
+    background-color: #ffffff;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+main aside br {
+    display: none;
+}
+
+main aside > * {
+    grid-column: span 2;
+    width: 100%;
+}
+
+main aside h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+main aside h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+main aside label {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+main aside input[type="date"],
+main aside select,
+main aside textarea {
+    border: 1px solid #444444;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    outline: none;
+}
+
+main aside textarea {
+    resize: none; 
+}
+
+main aside hr {
+    border: none;
+    border-top: 2px solid #f0edf7;
+    margin: 10px 0;
+}
+
+main aside button[type="submit"] {
+    background-color: #5e5cee; 
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.titulo-alojamiento {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.btn-favorito {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 48px;
+}
+
+.icono-corazon {
+    width: 100px;
+    height: 35px;
+    fill: none;
+    stroke: #000000;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.btn-confirmar {
+    display: block;
+    width: 100%;
+    background-color: #5e5cee;
+    color: #ffffff;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.detalle-reserva {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.detalle-reserva .info { 
+    flex: 1 1 60%; 
+}
+
+.detalle-reserva .form-reserva { 
+    flex: 1 1 30%; 
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+}
+
+.form-reserva { 
+    flex: 1 1 30%; 
+    min-width: 280px;
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid #dddddd;
+    box-sizing: border-box;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); 
+}
+
+.form-reserva h2 {
+    margin-top: 0;
+    font-size: 22px;
+    color: #222222;
+}
+
+.form-reserva h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+
+.form-reserva hr {
+    border: 0;
+    border-top: 1px solid #ebebeb;
+    margin: 20px 0;
+}
+
+.form-reserva label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-reserva input[type="number"],
+.form-reserva textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
