@@ -4,69 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publicar Propiedad</title>
+    <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 <body>
+
 <header>
-    <nav>
-        <a href="#">Inicio</a>
-        <a href="#">Login</a>
+    <nav class="navbar">
+        <a href="index.html">Inicio</a>
+        <span class="rol-indicador">Panel Anfitrión</span>
+        <a href="login.html">Login</a>
     </nav>
 </header>
-<form>
 
-    <label for="nombre">Nombre propiedad</label><br>
-    <input type="text" id="nombre"><br><br>
+<main class="contenedor-principal">
+    <form class="form-publicar">
 
-    <label for="direccion">Dirección</label><br>
-    <input type="text" id="direccion"><br><br>
+        <section class="datos-principales">
+            <label for="nombre">Nombre propiedad</label>
+            <input type="text" id="nombre" required>
 
-    <label for="email">Email de contacto</label><br>
-    <input type="email" id="email"><br><br>
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" required>
 
-    <label for="descripcion">Descripción</label><br>
-    <textarea id="descripcion" ></textarea><br><br>
+            <label for="email">Email de contacto</label>
+            <input type="email" id="email" required>
 
-    <label for="precio">Precio por noche</label><br>
-    <input type="number" id="precio"><br><br>
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" rows="4" required></textarea>
 
-    <label for="ocupantes">Cantidad de ocupantes máximos</label><br>
-    <select id="ocupantes">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5+</option>
-    </select><br><br>
+            <label for="precio">Precio por noche</label>
+            <input type="number" id="precio" min="0" required>
+        </section>
 
-    <label for="baños">Cantidad de baños</label><br>
-    <select id="baños">
-        <option>1</option>
-        <option>2</option>
-        <option>3+</option>
-    </select><br><br>
+        <section class="columnas-inferiores">
+            
+            <section class="columna-izq">
+                <label for="ocupantes">Cantidad de ocupantes máximos</label>
+                <select id="ocupantes">
+                    <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+                </select>
 
-    <label for="habitaciones">Cantidad de habitaciones</label><br>
-    <select id="habitaciones">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4+</option>
-    </select><br><br>
+                <label for="ocupantes">Cantidad de ocupantes minimos</label>
+                <select id="ocupantes">
+                    <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+                </select>
 
-    <input type="checkbox" id="wifi">
-    <label for="wifi">WiFi</label><br>
+                <label for="baños">Cantidad de baños</label>
+                <select id="baños">
+                    <option>1</option><option>2</option><option>3+</option>
+                </select>
 
-    <input type="checkbox" id="pileta">
-    <label for="pileta">Pileta</label><br>
+                <label for="habitaciones">Cantidad de habitaciones</label>
+                <select id="habitaciones">
+                    <option>1</option><option>2</option><option>3</option><option>4+</option>
+                </select>
 
-    <input type="checkbox" id="estacionamiento">
-    <label for="estacionamiento">Estacionamiento</label><br><br>
+                <fieldset class="grupo-checkboxes">
+                    <legend class="oculto">Servicios incluidos</legend>
+                    
+                    <input type="checkbox" id="wifi">
+                    <label for="wifi" class="label-check">WiFi</label>
+                    
+                    <input type="checkbox" id="pileta">
+                    <label for="pileta" class="label-check">Pileta</label>
+                    
+                    <input type="checkbox" id="estacionamiento">
+                    <label for="estacionamiento" class="label-check">Estacionamiento</label>
+                </fieldset>
+            </section>
 
-    <label for="imagenes">Subir imágenes</label><br>
-    <input type="file" id="imagenes"multiple>
-    <br><br>
-    <input type="submit" value="Publicar propiedad">
-</form>
+            <section class="columna-der">
+                <label for="imagenes" class="caja-imagenes">
+                    <p>subir imagenes para exponer</p>
+                    <input type="file" id="imagenes" multiple required>
+                </label>
+            </section>
+
+        </section>
+
+        <input type="submit" value="Publicar propiedad" class="btn-publicar">
+
+    </form>
+</main>
 
 </body>
 </html>
