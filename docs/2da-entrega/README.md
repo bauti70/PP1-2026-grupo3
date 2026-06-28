@@ -2,8 +2,9 @@
 **Grupo**: [Grupo 3] 
 **Proyecto**: [Sistema de reservas de alojamiento] 
 **Fecha de entrega**: 25/06/2026 --- 
-Claro, acá va corregido:
 
+
+```markdown
 ```markdown
 ## 1. Inventario de pantallas troncales
 | N° | Nombre | Actor principal | CU(s) cubierto(s) | Función (1 frase) |
@@ -11,13 +12,10 @@ Claro, acá va corregido:
 | 01 | Login | Huésped / Anfitrión / Administrador del sistema| - | Permite al usuario autenticarse para acceder al sistema |
 | 02 | Catálogo con filtros | Huésped | CU-03, CU-04 | Permite al huésped explorar y filtrar propiedades disponibles |
 | 03 | Detalle de propiedad | Huésped | CU-05 (+ hallazgo: CU-08 no aplica a este actor) | Permite al huésped consultar el detalle de una propiedad y confirmar una reserva |
-| 04 | Mis reservas | Huésped | - (hallazgo: sin CU de modificar/cancelar en E1) | Permite al huésped ver, modificar y cancelar sus reservas |
+| 04 | Mis reservas | Huésped | - (hallazgo: sin CU de ver/modificar/cancelar reserva en E1) | Permite al huésped ver el listado de sus reservas y contactar al anfitrión |
 | 05 | Publicar propiedad | Anfitrión | CU-01 | Permite al anfitrión cargar una nueva propiedad disponible al sistema |
 ```
 
-Copiá esto y reemplazá lo que tenés en el README. 👍
-pantalla-01.md
-Solo hay que corregir el nombre de la pantalla 02. Acá va:
 
 ```markdown
 ## 2. Trazabilidad pantalla ↔ E1
@@ -31,7 +29,7 @@ Solo hay que corregir el nombre de la pantalla 02. Acá va:
 | 05 — Publicar propiedad | CU-01 | HU-10 | Anfitrión |
 ```
 
-Reemplazá lo que tenés con esto. 👍
+
 ## 3. Decisiones técnicas y observaciones 
 2026-05-14
 > Documentar acá las decisiones de diseño y desarrollo del grupo, organizadas por 
