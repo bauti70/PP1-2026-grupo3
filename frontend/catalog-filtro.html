@@ -3,119 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Catálogo de Propiedades</title>
     <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 
 <body>
     
     <header class="page-catalogo">
-        <p>BARRA DE NAVEGACION</p>
+        <p class="nav-titulo">BARRA DE NAVEGACION</p>
         <nav>
             <a href="index.html">Inicio</a>
             
-            <div class="buscador-header">
-                <input type="text" placeholder="¿A dónde vamos?">
-            </div>
+            <search class="buscador-header">
+                <input type="text" placeholder="¿A dónde vamos?" required>
+            </search>
 
             <a href="login.html">Login</a>
         </nav>
     </header>
 
     <main class="contenedor-catalogo">
-        <aside>
-
+        
+        <aside class="panel-filtros">
             <form>
-                <strong>Filtros</strong><br>
+                <fieldset class="grupo-filtros">
+                    <legend class="titulo-filtro">Filtros</legend>
 
-                <label for="ubi">Ubicacion:</label>
-                <input type="text" id="ubi"><br>
+                    <label for="ubi">Ubicación:</label>
+                    <input type="text" id="ubi">
 
-                <label for="entrada">Entrada:</label>
-                <input type="date" id="entrada"><br>
+                    <label for="entrada">Entrada:</label>
+                    <input type="date" id="entrada">
 
-                <label for="sali">Salida:</label>
-                <input type="date" id="sali"><br>
-                
-                <div class="grupo-checkbox">
-                    <input type="checkbox" id="wifi">
-                    <label for="wifi">Wi-fi</label>
-                </div>
+                    <label for="sali">Salida:</label>
+                    <input type="date" id="sali">
+                    
+                    <p class="subtitulo-filtro">Comodidades</p>
+                    
+                    <label class="opcion-check"><input type="checkbox" id="wifi"> Wi-fi</label>
+                    <label class="opcion-check"><input type="checkbox" id="des"> Desayuno</label>
+                    <label class="opcion-check"><input type="checkbox" id="pile"> Pileta</label>
+                    <label class="opcion-check"><input type="checkbox" id="miento"> Estacionamiento</label>
 
-                <div class="grupo-checkbox">
-                    <input type="checkbox" id="des">
-                    <label for="des">Desayuno</label>
-                </div>
+                    <p class="subtitulo-filtro">Precio:</p>
+                    
+                    <label for="min">Mínimo:</label>
+                    <input type="number" id="min">
+                    
+                    <label for="max">Máximo:</label>
+                    <input type="number" id="max">
 
-                <div class="grupo-checkbox">
-                    <input type="checkbox" id="pile">
-                    <label for="pile">Pileta</label>
-                </div>
-
-                <div class="grupo-checkbox">
-                    <input type="checkbox" id="miento">
-                    <label for="miento">Estacionamiento</label>
-                </div><br>
-
-                <p>Precio:</p>
-                <label for="min">Minimo:</label>
-                <input type="number" id="min"><br>
-                <label for="max">Maximo:</label>
-                <input type="number" id="max"><br>
-
-                <input type="submit" value="Buscar">
+                    <input type="submit" value="Buscar" class="btn-buscar">
+                </fieldset>
             </form>
         </aside>
 
-<section>
-    <article class="tarjeta">
-        <h3 class="tarjeta-titulo">Casa en la montaña</h3>
-        <div class="tarjeta-contenido">
-            <div class="tarjeta-imagen">
-                <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=400" alt="Casa en la montaña">
-            </div>
-            <div class="tarjeta-info">
-                <div class="tarjeta-texto">
+        <section class="lista-tarjetas">
+            
+            <article class="tarjeta">
+                <figure class="tarjeta-imagen">
+                    <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=400" alt="Casa en la montaña">
+                </figure>
+                <section class="tarjeta-info">
+                    <header>
+                        <h3 class="tarjeta-titulo">Casa en la montaña</h3>
+                    </header>
                     <p class="tarjeta-ubicacion">📍 Bariloche, Rio Negro</p>
                     <p class="tarjeta-precio"><strong>$15.000</strong> / noche</p>
-                </div>
-                <a href="#" class="btn-detalles">Ver detalles</a>
-            </div>
-        </div>
-    </article>
+                    <a href="#" class="btn-detalles">Ver detalles</a>
+                </section>
+            </article>
 
-    <article class="tarjeta">
-        <h3 class="tarjeta-titulo">Cabaña en el lago</h3>
-        <div class="tarjeta-contenido">
-            <div class="tarjeta-imagen">
-                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400" alt="Cabaña en el lago">
-            </div>
-            <div class="tarjeta-info">
-                <div class="tarjeta-texto">
+            <article class="tarjeta">
+                <figure class="tarjeta-imagen">
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400" alt="Cabaña en el lago">
+                </figure>
+                <section class="tarjeta-info">
+                    <header>
+                        <h3 class="tarjeta-titulo">Cabaña en el lago</h3>
+                    </header>
                     <p class="tarjeta-ubicacion">📍 Cordoba, El Durazno</p>
                     <p class="tarjeta-precio"><strong>$12.500</strong> / noche</p>
-                </div>
-                <a href="#" class="btn-detalles">Ver detalles</a>
-            </div>
-        </div>
-    </article>
-    
-    <article class="tarjeta tarjeta-horizontal">
-        <h3 class="tarjeta-titulo">Departamento Céntrico</h3>
-        <div class="tarjeta-contenido">
-            <div class="tarjeta-imagen">
-                <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400" alt="Departamento Céntrico">
-            </div>
-            <div class="tarjeta-info">
-                <div class="tarjeta-texto">
+                    <a href="#" class="btn-detalles">Ver detalles</a>
+                </section>
+            </article>
+            
+            <article class="tarjeta">
+                <figure class="tarjeta-imagen">
+                    <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400" alt="Departamento Céntrico">
+                </figure>
+                <section class="tarjeta-info">
+                    <header>
+                        <h3 class="tarjeta-titulo">Departamento Céntrico</h3>
+                    </header>
                     <p class="tarjeta-ubicacion">📍 Mendoza, Mendoza</p>
                     <p class="tarjeta-precio"><strong>$8.000</strong> / noche</p>
-                </div>
-                <a href="#" class="btn-detalles">Ver detalles</a>
-            </div>
-        </div>
-    </article>
-</section>
+                    <a href="#" class="btn-detalles">Ver detalles</a>
+                </section>
+            </article>
+
+        </section>
     </main>
 </body>
 </html>

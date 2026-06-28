@@ -1,21 +1,62 @@
 <!DOCTYPE html>
 <html lang="es">
-<head> 
-    <meta charset="UTF-8"> 
-    <title>Sistema de [Reservas] — Inicio</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reservas — Inicio</title>
+    <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
-<body> 
-    <header> 
-        <h1>Sistema de [Reservas]</h1> 
-    </header> 
-<main> 
-    <h2>Pantallas disponibles</h2> 
-    <ul> 
-        <li><a href="login.html">Login</a></li> 
-    </ul> 
-</main> 
-<footer> 
-    <small>Grupo [N° 3] — PP1 2026</small> 
-</footer>
+<body>
+
+    <header class="page-catalogo">
+        <p class="nav-titulo">BARRA DE NAVEGACION</p>
+        <nav class="nav-inicio">
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <main class="contenedor-inicio-galeria">
+        
+        <section class="bloque-buscador">
+            <h1 class="titulo-gigante">¿A dónde vamos?</h1>
+            
+            <search class="buscador-central">
+                <form action="catalog-filtro.html">
+                    <input type="text" placeholder="Buscá tu próximo destino..." required>
+                    <button type="submit" class="btn-buscar-inicio">Buscar</button>
+                </form>
+            </search>
+        </section>
+
+        <section class="galeria-destinos">
+            
+            <figure class="destino-item">
+                <img src="https://images.unsplash.com/photo-1583422409516-2ec8d07c4ab0?w=400" alt="Montañas">
+                <figcaption>Aventura en la montaña</figcaption>
+            </figure>
+
+            <figure class="destino-item">
+                <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=400" alt="Playa">
+                <figcaption>Descanso en la playa</figcaption>
+            </figure>
+
+            <figure class="destino-item">
+                <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?w=400" alt="Ciudad">
+                <figcaption>Escapada urbana</figcaption>
+            </figure>
+
+            <figure class="destino-item">
+                <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400" alt="Campo">
+                <figcaption>Tranquilidad rural</figcaption>
+            </figure>
+
+        </section>
+        
+    </main>
+
+    <footer class="footer-inicio">
+        <small>Grupo N° 3 — PP1 2026</small>
+    </footer>
+
 </body>
 </html>

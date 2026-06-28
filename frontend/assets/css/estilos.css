@@ -1,3 +1,120 @@
+/* INICIO */
+
+.nav-inicio {
+    display: flex;
+    justify-content: flex-end; 
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.contenedor-inicio-galeria {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 70px; 
+}
+
+.bloque-buscador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.titulo-gigante {
+    font-size: 4rem; 
+    color: #222;
+    margin: 0 0 30px 0;
+    letter-spacing: -1px; 
+}
+
+
+.buscador-central {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.buscador-central form {
+    display: flex;
+    gap: 20px;
+    padding: 0 10px;
+}
+
+.buscador-central input {
+    flex-grow: 1;
+    padding: 15px 25px;
+    border-radius: 50px; /* Forma de pastilla */
+    border: 2px solid #ddd;
+    font-size: 18px;
+    outline: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.buscador-central input:focus {
+    border-color: #5e5cee;
+}
+
+.btn-buscar-inicio {
+    background-color: #5e5cee;
+    color: white;
+    border: none;
+    padding: 0 35px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn-buscar-inicio:hover {
+    background-color: #5e5cee;
+}
+
+.galeria-destinos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 20px;
+}
+
+.destino-item {
+    margin: 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.destino-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.destino-item figcaption {
+    padding: 15px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+.footer-inicio {
+    text-align: center;
+    padding: 40px 20px;
+    color: #777;
+    margin-top: auto;
+}
+
+
+
+
+
+/* 01 LOGIN */
 body {
     font-family: Roboto, sans-serif;
     display: flex;
@@ -34,7 +151,7 @@ html, body {
 
 .barra-superior{
     width: 100%;
-    background-color: #1a73e8;
+    background-color: #5e5cee;
     color: white;
     text-align: center;
     padding: 20px 0;
@@ -53,7 +170,7 @@ input{
 
 .boton-ingresar {
     padding: 12px;
-    background-color: #1a73e8;
+    background-color: #5e5cee;
     color: white;
     border: none;
     border-radius: 4px;
@@ -66,205 +183,223 @@ input{
 
 
 
-/* Catalogo filtro */
+/* 02 Catalogo filtro */
+
+*, *::before, *::after {
+    box-sizing: border-box; 
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #f5f5f5;
+}
+
 .page-catalogo {
-   background-color: #5D5FEF;
-   padding: 15px 40px;
-   width: 100%;
-   box-sizing: border-box; 
+    background-color: #5e5cee;
+    color: white;
+    padding: 20px 40px;
+}
+
+.nav-titulo {
+    margin: 0 0 20px 0;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
 }
 
 .page-catalogo nav {
     display: flex;
-    width: 100%;
     justify-content: space-between;
     align-items: center;
-}
-
-.page-catalogo nav a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.page-catalogo nav .buscador-header {
-    flex-grow: 1;
-    max-width: 600px;
-    margin: 0 20px;
-}
-
-.page-catalogo nav .buscador-header input {
+    max-width: 1100px;
     width: 100%;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    font-size: 1rem;
-    margin-bottom: 0;
-    background-color: #f1effa;
-    box-sizing: border-box;
+    margin: 0 auto;
 }
 
-.page-catalogo p{
-    text-align: center;
+.page-catalogo a {
     color: white;
-    margin: 10px 0;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.buscador-header {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center;
+    margin: 0 40px;
+}
+
+.buscador-header input {
+   width: 100%;
+    max-width: 600px;
+    padding: 14px 25px;
+    border-radius: 50px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .contenedor-catalogo {
     display: grid;
     grid-template-columns: 280px 1fr;
-    gap: 30px;
-    padding: 30px;
-    max-width: 1400px;
-    width: 100%; 
-    margin: 0 auto;
-    box-sizing: border-box;
+    gap: 250px; 
+    max-width: 1300px; 
+    margin: 40px auto;
+    padding: 0 20px;
+    align-items: start;
 }
 
-.contenedor-catalogo aside {
-    border: 1px solid #000000;
-    border-radius: 12px;
-    padding: 20px;
-    height: fit-content;
-    background-color: #fdfdfd;
-    width: 280px;
-    box-sizing: border-box;
-}
-
-.contenedor-catalogo aside form label {
-    display: block;
-    margin-bottom: 12px;
-    font-weight: 600;
-    text-align: center;
-}
-
-.contenedor-catalogo aside form p {
-    text-align: center;
-}
-
-.contenedor-catalogo aside form input[type="text"],
-.contenedor-catalogo aside form input[type="date"] {
-    width: 80%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #5D5FEF;
-    border-radius: 6px;
-    box-sizing: border-box;
-}
-
-.contenedor-catalogo aside form input[type="submit"] {
-    width: 80%;
-    background-color: #5D5FEF;
-    color: white;
-    border: none;
-    padding: 12px;
-    margin-top: 20px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    box-sizing: border-box;
-}
-
-.contenedor-catalogo section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-}
-
-.contenedor-catalogo section article {
-    display: grid;
-    grid-template-columns: 130px 1fr;
-    gap: 15px;
-    border: 1px solid #000000;
-    border-radius: 12px;
-    padding: 20px;
+.panel-filtros {
     background-color: #ffffff;
-    align-items: center;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.contenedor-catalogo section article img {
-    width: 120px;
+    padding: 25px;
     border-radius: 8px;
-    grid-column: 1;
-    height: 100px;
-    border: 1px solid #000000;
-    object-fit: cover;
+    border: 1px solid #ddd;
 }
 
-.contenedor-catalogo section article strong,
-.contenedor-catalogo section article p,
-.contenedor-catalogo section article a {
-    grid-column: 2;
+.grupo-filtros {
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 
-.contenedor-catalogo section article a {
-    justify-self: start;
-    background-color: #5D5FEF;
-    color: white;
-    padding: 8px 16px;
-    text-decoration: none;
+.titulo-filtro {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+.subtitulo-filtro {
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.grupo-filtros label:not(.opcion-check) {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.grupo-filtros input[type="text"],
+.grupo-filtros input[type="date"],
+.grupo-filtros input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 0.9rem;
 }
 
-
-.contenedor-catalogo section article .servicios {
-    grid-column: 2;
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 10px;
-    margin: 8px 0 15px 0;
-}
-
-.contenedor-catalogo aside form .grupo-checkbox {
+.opcion-check {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 8px; 
-}
-
-.contenedor-catalogo aside form .grupo-checkbox input[type="checkbox"] {
-    margin: 0;
-    width: auto;
-}
-
-.contenedor-catalogo aside form .grupo-checkbox label {
-    display: inline;
-    margin: 0;
-    font-weight: 500;
+    margin-bottom: 10px;
+    font-size: 15px;
     cursor: pointer;
 }
 
-.contenedor-catalogo aside form input[type="number"] {
-    width: 80%;
-    padding: 4px;
-    border: 1px solid #5D5FEF;
+.btn-buscar {
+    width: 100%;
+    background-color: #5e5cee;
+    color: white;
+    border: none;
+    padding: 12px;
+    margin-top: 25px;
     border-radius: 6px;
-    box-sizing: border-box;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-buscar:hover {
+    background-color: #5e5cee;
+}
+
+.lista-tarjetas {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.tarjeta {
+   display: grid;
+    grid-template-columns: 300px 1fr; 
+    gap: 40px;
     background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-.contenedor-catalogo section .tarjeta .tarjeta-imagen {
-    width: 320px;
-    min-width: 320px;
-    height: 210px; 
-    overflow: hidden;
+.tarjeta-imagen {
+    margin: 0;
 }
 
-.contenedor-catalogo section .tarjeta .tarjeta-imagen img {
-    width: 100%; 
+.tarjeta-imagen img {
+    width: 100%;
     height: 100%;
+    min-height: 180px;
     object-fit: cover;
+    border-radius: 8px;
+}
+
+.tarjeta-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjeta-titulo {
+    margin: 0 0 10px 0;
+    font-size: 1.4rem;
+    color: #222;
+}
+
+.tarjeta-ubicacion {
+    color: #555;
+    margin: 0 0 10px 0;
+}
+
+.tarjeta-precio {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0 0 15px 0;
+}
+
+.tarjeta-precio strong {
+    color: #5e5cee;
+    font-size: 1.3rem;
+}
+
+.btn-detalles {
+    margin-top: auto;
+    align-self: flex-start;
+    background-color: #5e5cee;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.btn-detalles:hover {
+    background-color: #4b43d3;
 }
 
 
 
-
-
-/* PANTALLA DETALLE PROPIEDAD */
-
+/* 03 PANTALLA DETALLE PROPIEDAD */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -574,4 +709,166 @@ main aside button[type="submit"] {
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #ccc;
+}
+
+
+
+/* PANTALLA 05 PUBLICAR PROPIEDADES - ANFITRION */
+
+.form-publicar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%; 
+    padding: 0 2rem; 
+    box-sizing: border-box; 
+    margin: 2rem auto; 
+}   
+
+.datos-principales, 
+.columna-izq, 
+.columna-der {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="number"], 
+textarea, 
+select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; 
+    font-family: inherit;
+}
+
+.grupo-checkboxes {
+    border: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: 0.5rem;
+    row-gap: 0.8rem;
+}
+
+.grupo-checkboxes .oculto {
+    display: none; 
+}
+
+.caja-imagenes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #999; 
+    border-radius: 8px;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    text-align: center;
+    cursor: pointer;
+    height: 100%; 
+    min-height: 150px;
+}
+
+.caja-imagenes p {
+    margin-bottom: 1rem;
+    color: #666;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.btn-publicar {
+    background-color: #5e5cee; 
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.btn-publicar:hover {
+    background-color: #5e5cee;
+}
+
+@media (min-width: 768px) {
+    .columnas-inferiores {
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        gap: 2rem; 
+        align-items: stretch; 
+    }
+}
+.main-mireserva{
+flex-direction: column;
+}
+
+.tarjeta{
+    background-color: white;
+    border: 2px solid #d9d9d9;
+    border-radius: 6px;
+    padding: 20px;
+    box-shadow: 1px  1px 5px;
+    
+}
+
+.propiedad{
+    display: flex;
+    gap: 22px;
+}
+
+.imagen-propiedad{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    background-color: #e7e7e7;
+}
+.propiedad .info h2{
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.propiedad .info p{
+    color: #777;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    max-width: 900px;
+}
+.botones{
+    display: flex;
+    gap: 12px;
+}
+
+.btn-detalles{
+    background: white;
+    border: 1px solid #c8c8c8;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-contacto{
+    background: white;
+    color: #2196f3;
+    border: 1px solid #2196f3;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-cancelar{
+    background: #ff4242;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
 }
