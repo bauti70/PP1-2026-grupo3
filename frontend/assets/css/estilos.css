@@ -807,8 +807,13 @@ select {
         align-items: stretch; 
     }
 }
-.main-mireserva{
-flex-direction: column;
+.main-mireserva {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
 .tarjeta{
@@ -816,14 +821,15 @@ flex-direction: column;
     border: 2px solid #d9d9d9;
     border-radius: 6px;
     padding: 20px;
-    box-shadow: 1px  1px 5px;
-    
+    box-shadow: 1px 1px 5px;
+    width: 100%;
 }
-
 .propiedad{
     display: flex;
     gap: 22px;
+    width: 100%;
 }
+
 
 .imagen-propiedad{
     width: 150px;
@@ -845,6 +851,7 @@ flex-direction: column;
 .botones{
     display: flex;
     gap: 12px;
+    flex-wrap: wrap;
 }
 
 .btn-detalles{
@@ -871,4 +878,12 @@ flex-direction: column;
     padding: 8px 12px;
     border-radius: 8px;
     cursor: pointer;
+}
+.botones .btn-detalles {
+    background: white;
+    border: 1px solid #c8c8c8;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #333;
 }

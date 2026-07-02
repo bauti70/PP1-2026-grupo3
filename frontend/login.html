@@ -3,28 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar sesion</title>
-  <link rel="stylesheet" href= "assets/css/estilos.css">
+  <title>Iniciar sesión</title>
+  <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 <body>
 
   <header class="barra-superior">
-    <h2>Login-Acceso alojamiento</h2>
+    <h2>Login - Acceso alojamiento</h2>
   </header>
 
-  <main class = "caja-login">
+  <main class="caja-login">
     <form>
-      <label>Ingresar Email</label>
-      <input type="email">
-<br>
-      <label>Ingresar Contraseña</label>
-      <input type="password">
-<br>
-    <button class="boton-ingresar">Ingresar</button>
-<br>
-<a href="#">¿Olvidaste tu contraseña?</a>
-  </form>
+
+      <label for="email">Ingresar Email</label>
+      <input type="email" id="email" name="email">
+
+      <br>
+
+      <label for="password">Ingresar Contraseña</label>
+      <input type="password" id="password" name="password">
+
+      <br>
+
+      <button class="boton-ingresar" type="submit">Ingresar</button>
+
+      <br>
+
+      <a href="#">¿Olvidaste tu contraseña?</a>
+
+    </form>
   </main>
-  
+
 </body>
 </html>
