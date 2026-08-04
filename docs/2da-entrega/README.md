@@ -105,5 +105,10 @@ Se opto por tomar referencias de la pagina Booking para el diseño de nuestro lo
 - Se agregaron botones de acción directa con código de colores claro (**Aprobar reserva** en verde y **Rechazar** en rojo) para facilitar la toma de decisiones rápidas.
 - Cubre el CU-09 "Gestionar reservas recibidas".
 
+### Pantalla Mi Perfil
+- Le permite a cualquier usuario (Huésped o Anfitrión) ver y editar sus propios datos personales, sin afectar reservas ni propiedades.
+- Los datos vienen precargados con los valores actuales del usuario, así ve qué tiene cargado antes de modificar nada.
+- Se dividió en dos columnas: el formulario a la izquierda y la foto de perfil a la derecha, para que no compita visualmente con los campos de datos.
+
 ### Uso de IA
 - Se utilizó IA para consultas puntuales relacionadas con la organización del README y dudas sobre HTML y CSS.
