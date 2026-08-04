@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Crear Cuenta</title>
+        <link rel="stylesheet" href="assets/css/estilos.css">
+    </head>
+    <body class="page-cuenta">
+        <header class="cuenta-header">
+            <h1>CREAR CUENTA</h1>
+        </header>
+
+
+        <main>
+            <form class="cuenta-contenedor-columnas" action="procesar.php" method="post">
+                <div class="cuenta-columna-izquierda">    
+                    <label class="cuenta-label" for="nombre"> INGRESE SU NOMBRE </label>
+                    <br>
+                    <input class="cuenta-input" type="text" id="nombre" name="nombre" required>  
+                    <br><br>
+
+                    <label class="cuenta-label" for="correo"> INGRESE SU CORREO ELECTRONICO</label>
+                    <br>
+                    <input type="email" id="correo" name="correo" required>
+                    <br><br>
+
+                    <label class="cuenta-label" for="clave">INGRESE UNA CONTRASEÑA</label>
+                    <br>
+                    <input class="cuenta-input" type="password" id="clave" name="clave" required>
+                    <br><br>
+                
+                    <label class="cuenta-label" for="clave_rep">INGRESE NUEVAMENTE SU CONTRASEÑA</label>
+                    <br>
+                    <input class="cuenta-input" type="password" id="clave_rep" name="clave_rep" required>
+                    <br><br>
+                         
+                    <p>¿Ya tienes una cuenta? Ingrese al siguiente link <a href="login.html">INICIAR SESION</a></p>
+                </div>
+                
+                <div class="cuenta-columna-derecha">
+                <p class="cuenta-titulo-roles-principal"><strong>SELECCIONE QUE ROL DESEA TOMAR:</strong> </p>
+                
+                <div class="cuenta-caja-gris-roles">
+                    
+                    <div class="cuenta-bloque-rol">
+                        <div class="cuenta-caja-negra">
+                            <label for="rol_anfitrion">ANFITRION</label>
+                            <input class="cuenta-input" type="radio" id="rol_anfitrion" name="rol" value="anfitrion">
+                        </div>
+                        <div class="cuenta-caja-info">
+                            <p><strong> ROL DE ANITRION:</strong></p>
+                            <ul>
+                                <li>Publica, edita y retira propiedades del catálogo.</li>
+                                <li>Controla qué fechas están libres o bloqueadas en tu calendario.</li>
+                                <li>Revisa y organiza las reservas entrantes.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="cuenta-bloque-rol">
+                        <div class="cuenta-caja-negra">
+                            <label for="rol_huesped">HUESPED</label>
+                            <input class="cuenta-input" type="radio" id="rol_huesped" name="rol" value="huesped">
+                        </div>
+                        <div class="cuenta-caja-info">
+                            <p><strong>ROL DE HUESPED:</strong></p>
+                            <ul>
+                                <li>Busca alojamiento para tus próximas fechas.</li>
+                                <li>Realiza nuevas reservas de forma segura.</li>
+                                <li>Accede al panel de "Mis reservas" para ver o cancelar tus estadías.</li>
+                            </ul>
+                        </div> 
+                    </div>
+                    <div>
+                        <button type="submit">Crear Cuenta</button>
+                    </div>
+                </div>    
+            </form>
+
+
+        </main>        
+        
+
+
+
+    </body>

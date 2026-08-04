@@ -88,6 +88,13 @@ Se opto por tomar referencias de la pagina Booking para el diseño de nuestro lo
 - Se decidió no incluir un mapa para seleccionar la ubicación en esta etapa.
 - Se mantiene coherencia con el resto del sistema al publicar una propiedad destinada a aparecer posteriormente en el catálogo de alojamientos.
 - Cubre el CU-01 "Publicar propiedad disponible".
+  
+### Pantalla Registro - Liviana
+-Le permite al usuario como puerta de entrada al sistema de reservas poder insertar sus datos y crearse una cuenta.
+-Se decidio dividir por lados los datos ingresados y del otro seleccionar el rol que el usuario quiera tomar.
+-Al seleccionar el rol se le da una breve informacion de lo que va a poder hacer en la pagina.
+-Tomamos en cuenta que si el usuario ya esta registrado pueda acceder al Inicio de Sesion (login) mediante un link. 
+-Creamos un boton de "Crear Cuenta" que valide los datos y finalizar el flujo.
 
 ### Uso de IA
 - Se utilizó IA para consultas puntuales relacionadas con la organización del README y dudas sobre HTML y CSS.
