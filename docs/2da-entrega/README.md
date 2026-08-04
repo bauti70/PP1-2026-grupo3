@@ -14,6 +14,7 @@
 | 03 | Detalle de propiedad | Huésped | CU-05 (+ hallazgo: CU-08 no aplica a este actor) | Permite al huésped consultar el detalle de una propiedad y confirmar una reserva |
 | 04 | Mis reservas | Huésped | - (hallazgo: sin CU de ver/modificar/cancelar reserva en E1) | Permite al huésped ver el listado de sus reservas y contactar al anfitrión |
 | 05 | Publicar propiedad | Anfitrión | CU-01 | Permite al anfitrión cargar una nueva propiedad disponible al sistema |
+
 ```
 
 
@@ -27,6 +28,7 @@
 | 03 — Detalle de propiedad | CU-05 (hallazgo: sin CU de "consultar disponibilidad" para el Huésped) | HU-04 | Huésped |
 | 04 — Mis reservas | - (hallazgo: modificar/cancelar reservas no posee CU específico en E1) | HU-05 | Huésped |
 | 05 — Publicar propiedad | CU-01 | HU-10 | Anfitrión |
+
 ```
 
 
@@ -95,6 +97,13 @@ Se opto por tomar referencias de la pagina Booking para el diseño de nuestro lo
 -Al seleccionar el rol se le da una breve informacion de lo que va a poder hacer en la pagina.
 -Tomamos en cuenta que si el usuario ya esta registrado pueda acceder al Inicio de Sesion (login) mediante un link. 
 -Creamos un boton de "Crear Cuenta" que valide los datos y finalizar el flujo.
+
+### Pantalla  — Reservas recibidas
+- Diseñada para la vista del Anfitrión, permitiéndole gestionar las solicitudes pendientes de sus alojamientos.
+- Mantiene la estructura alineada con los bocetos iniciales: incluye barra de filtros superior ("Más recientes") y notificación de solicitudes pendientes.
+- Las solicitudes se organizan en tarjetas individuales que destacan la propiedad ("Apartamento vista al río"), datos del huésped, fechas de estadía, noches y monto total.
+- Se agregaron botones de acción directa con código de colores claro (**Aprobar reserva** en verde y **Rechazar** en rojo) para facilitar la toma de decisiones rápidas.
+- Cubre el CU-09 "Gestionar reservas recibidas".
 
 ### Uso de IA
 - Se utilizó IA para consultas puntuales relacionadas con la organización del README y dudas sobre HTML y CSS.

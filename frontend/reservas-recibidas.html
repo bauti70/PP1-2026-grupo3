@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas Recibidas — Panel Anfitrión</title>
+    <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+
+    <!-- Encabezado idéntico al de publicar-propiedad.html -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html">Inicio</a>
+            <span class="rol-indicador">Panel Anfitrión</span>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <main class="contenedor-principal">
+        
+        <!-- Barra de herramientas superior (Filtro y Notificaciones del boceto) -->
+        <section class="barra-herramientas-anfitrion">
+            <div class="grupo-filtro-orden">
+                <label for="ordenar">Mostrar:</label>
+                <select id="ordenar" name="ordenar">
+                    <option value="recientes" selected>Más recientes</option>
+                    <option value="pendientes">Pendientes de aprobación</option>
+                    <option value="confirmadas">Confirmadas</option>
+                    <option value="canceladas">Canceladas</option>
+                </select>
+            </div>
+
+            <div class="caja-notificacion" role="status">
+                <span class="icono-campana">🔔</span>
+                <p class="texto-notificacion">Tenés <strong>1 solicitud pendiente</strong> por responder.</p>
+            </div>
+        </section>
+
+        <h1 class="titulo-seccion">Reservas Recibidas</h1>
+
+        <!-- Lista de Tarjetas de Reserva (Sigue la estructura del boceto) -->
+        <section class="lista-reservas-recibidas">
+
+            <!-- TARJETA 1: Solicitud Pendiente (CU-09: Aprobar / Rechazar) -->
+            <article class="tarjeta-reserva-anfitrion pendiente">
+                <header class="encabezado-tarjeta-reserva">
+                    <h2 class="nombre-propiedad">Apartamento vista al río</h2>
+                    <span class="badge-estado estado-pendiente">Pendiente de aprobación</span>
+                </header>
+
+                <div class="cuerpo-tarjeta-reserva">
+                    <div class="info-huesped">
+                        <p><strong>Huésped:</strong> Carlos Gómez</p>
+                        <p><strong>Cantidad:</strong> 2 huéspedes</p>
+                        <p><strong>Fechas / Rango:</strong> 10/07/2026 al 15/07/2026 (5 noches)</p>
+                        <p><strong>Monto total:</strong> $225.000</p>
+                    </div>
+
+                    <!-- Acciones del Caso de Uso CU-09 -->
+                    <div class="acciones-reserva">
+                        <button type="button" class="btn-aprobar">Aprobar reserva</button>
+                        <button type="button" class="btn-rechazar">Rechazar</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- TARJETA 2: Reserva Activa / Confirmada -->
+            <article class="tarjeta-reserva-anfitrion activa">
+                <header class="encabezado-tarjeta-reserva">
+                    <h2 class="nombre-propiedad">Casa con jardín en Mendoza</h2>
+                    <span class="badge-estado estado-activa">Activa / Confirmada</span>
+                </header>
+
+                <div class="cuerpo-tarjeta-reserva">
+                    <div class="info-huesped">
+                        <p><strong>Huésped:</strong> María Laura Fernández</p>
+                        <p><strong>Cantidad:</strong> 4 huéspedes</p>
+                        <p><strong>Fechas / Rango:</strong> 20/07/2026 al 24/07/2026 (4 noches)</p>
+                        <p><strong>Monto total:</strong> $320.000</p>
+                    </div>
+
+                    <div class="acciones-reserva">
+                        <button type="button" class="btn-contacto">Contactar huésped</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- TARJETA 3: Reserva Cancelada -->
+            <article class="tarjeta-reserva-anfitrion cancelada">
+                <header class="encabezado-tarjeta-reserva">
+                    <h2 class="nombre-propiedad">Cabaña en Bariloche</h2>
+                    <span class="badge-estado estado-cancelada">Cancelada</span>
+                </header>
+
+                <div class="cuerpo-tarjeta-reserva">
+                    <div class="info-huesped">
+                        <p><strong>Huésped:</strong> Juan Pablo Martínez</p>
+                        <p><strong>Cantidad:</strong> 2 huéspedes</p>
+                        <p><strong>Fechas / Rango:</strong> 05/08/2026 al 09/08/2026 (4 noches)</p>
+                        <p><strong>Monto total:</strong> $180.000</p>
+                    </div>
+
+                    <div class="acciones-reserva">
+                        <span class="nota-cancelado">Cancelada por el huésped</span>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

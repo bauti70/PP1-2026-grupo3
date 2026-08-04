@@ -1062,3 +1062,136 @@ label[for="rol_anfitrion"], label[for="rol_huesped"]{
     margin-bottom: 15px;
     text-decoration: underline;
 }
+
+main.contenedor-principal {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+.barra-herramientas-anfitrion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e9ecef;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.caja-notificacion {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #e8f4fd;
+    color: #1d6fce;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.titulo-seccion {
+    margin-bottom: 1.5rem;
+    color: #222;
+}
+
+.lista-reservas-recibidas {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.tarjeta-reserva-anfitrion {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.encabezado-tarjeta-reserva {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.nombre-propiedad {
+    font-size: 1.25rem;
+    margin: 0;
+    color: #ffffff; /* Texto blanco para resaltar sobre la caja violeta de tu sitio */
+}
+
+.badge-estado {
+    padding: 0.35rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.estado-pendiente { background-color: #fff3cd; color: #856404; }
+.estado-activa { background-color: #d4edda; color: #155724; }
+.estado-cancelada { background-color: #f8d7da; color: #721c24; }
+
+.cuerpo-tarjeta-reserva {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.info-huesped p {
+    margin: 0.4rem 0;
+    color: #333;
+}
+
+.acciones-reserva {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn-aprobar {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-rechazar {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-contacto {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.nota-cancelado {
+    font-size: 0.85rem;
+    color: #888;
+    font-style: italic;
+}
