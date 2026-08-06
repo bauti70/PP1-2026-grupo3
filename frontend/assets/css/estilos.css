@@ -1130,7 +1130,7 @@ main.contenedor-principal {
 .nombre-propiedad {
     font-size: 1.25rem;
     margin: 0;
-    color: #ffffff; /* Texto blanco para resaltar sobre la caja violeta de tu sitio */
+    color: #ffffff; 
 }
 
 .badge-estado {
