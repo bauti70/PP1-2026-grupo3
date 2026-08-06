@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi perfil</title>
+
+    <link rel="stylesheet" href="assets/css/estilos.css">
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <input type="search" placeholder="Buscar alojamiento">
+            <a href="editar.html">Perfil</a>
+        </nav>
+    </header>
+    <div class="role-toggle">
+        <button class="active">Huésped</button>
+        <button>Anfitrión</button>
+    </div>
+
+    <form class="form-page">
+        <div class="col_izquierda">
+        <h1 class="titulo-pag">Mi perfil</h1>
+        <p class="info-titulo">ver y editar sus propios datos. No afecta reservas ni propiedades</p>
+
+        <section class="form_com">
+         <div class="nc">
+            <label for="nombre">Nombre completo</label>
+            <input id="nombre" type="text" value="Pepe Argento">
+         </div>
+
+         <div class="contraseña">
+            <label for="contraseña">Contraseña</label>
+            <input id="contraseña" type="password" value="vivaracing">
+         </div> 
+
+         <div class="contacto">
+            <div class="Email">
+                <label class="Email">Email</label>
+                <input id="Email" type="email" value="pepe2@gmail.com">
+            </div>
+
+            <div class="Telefono">
+                <label for="telefono">Telefono</label>
+                <input id="telefono" type="tel" value="+54 9 555-5432">
+            </div>
+
+         </div>
+         <section class="informacion_personal">
+
+            <div class="nacimiento">
+            <label for="nacimiento">Fecha de nacimiento</label>
+            <input id="nacimiento" type="date" value="2006-06-16">
+            </div>
+
+            <div class="ciudad">
+                <label for="ciudad">Ciudad</label>
+                <input id="ciudad" type="text" value="Buenos Aires, Argentina">    
+            </div>
+         </section>
+            
+         <div class="idioma">
+            <label for="idioma">Idioma preferido</label>
+            <select id="idioma">
+                <option>Español</option>
+                <option>Ingles</option>
+                <option>Portugués</option>
+            </select>
+         </div>
+        </section>
+
+        <section class="info_anfitrion">
+            <div class="anfi_info">DATOS DE ANFITRION</div>
+
+            <div class="nom_pub">
+                <label for="nom_pub">Nombre publico / Empresa</label>
+                <input id="nom_pub" type="text" value="Argentum">
+            </div>
+
+            <div class="dni">
+                <label for="dni">Ingrese su DNI / numero de documento</label>
+                <input id="dni" type="number" value="38764981">
+            </div>
+
+
+            <div class="pago">
+                <label for="pago">CBU / Alias para cobro</label>
+                <input id="pago" type="text" value="pepearg.pago.mp">
+            </div>
+
+            <div class="Contactar">
+                <label class="Contactar">Contacto preferido</label>
+                <select id="Contactar">
+                    <option>Whatsapp</option>
+                    <option>Email</option>
+                    <option>llamada telefónica</option>
+                </select>
+            </div>
+            
+        </section>
+    </div>
+
+        <div class="col_derecha">
+            <div class="sub_img">
+                <p>SUBIR FOTO DE PERFIL</p>
+                <button type="button">Cambiar foto</button>
+            </div>
+        </div>
+
+        <button type="submit" class="subir">Guardar cambios</button>
+      
+
+        
+    </form>
+</body>
+
+</html>

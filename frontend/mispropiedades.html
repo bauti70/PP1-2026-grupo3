@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Propiedades</title>
+    <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+
+<header class="page-catalogo">
+        <p class="nav-titulo">BARRA DE NAVEGACION</p>
+        <nav>
+            <a href="index.html">Inicio</a>
+            
+            <search class="buscador-header">
+                <input type="text" placeholder="¿A dónde vamos?" required>
+            </search>
+
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+<main>
+    <section>
+        <h2>Mis propiedades</h2>
+        <article>
+            <img src="https://http2.mlstatic.com/D_693176-MLA112406680600_062026-F.webp" alt="apartamento" width="250">
+            <h3>Apartamento vista al río</h3>
+            <p><strong>Estado:</strong> Publicada</p>
+            <p>Apartamento para 4 personas con excelente vista.</p>
+            <p><strong>Tarifa:</strong> $45.000 por noche</p>
+            <p><strong>Capacidad:</strong> 4 personas</p>
+            <p><strong>Servicios:</strong></p>
+            <ul>
+                <li>Wi-Fi</li>
+                <li>Pileta</li>
+                <li>Estacionamiento</li>
+            </ul>
+            <button>Editar</button>
+            <button>Retirar</button>
+        </article>
+        <hr>
+        <article>
+            <img src="https://xn--cabaasbariloche-1qb.com.ar/images/cabanas/cabanas-villa-labrador/cabanas-villa-labrador-bariloche.jpg" alt="Cabaña en bariloche" width="250">
+            <h3>Departamento céntrico</h3>
+            <p><strong>Estado:</strong> Retirada</p>
+            <p>cabaña para 2 personas en la montaña.</p>
+            <p><strong>Tarifa:</strong> $55.000 por noche</p>
+            <p><strong>Capacidad:</strong> 2 personas</p>
+            <p><strong>Servicios:</strong></p>
+            <ul>
+                <li>Wi-Fi</li>
+                <li>Aire acondicionado</li>
+            </ul>
+            <button>Editar</button>
+            <button>Retirar</button>
+        </article>
+    </section>
+    <hr>
+    <section>
+        <h2>Editar alojamiento</h2>
+        <form>
+            <label for="titulo">Título</label><br>
+            <input type="text" id="titulo" value="Apartamento vista al rio">
+            <br><br>
+            <label for="descripcion">Descripción</label><br>
+            <textarea id="descripcion" rows="5" cols="50">Casa para 4 personas con excelente vista.</textarea>
+            <br><br>
+            <label for="tarifa">Tarifa por noche</label><br>
+            <input type="number" id="tarifa" value="45000">
+            <br><br>
+            <label for="capacidad">Capacidad</label><br>
+            <input type="number" id="capacidad" value="4">
+            <br><br>
+            <h3>Servicios</h3>
+            <input type="checkbox" id="wifi" checked>
+            <label for="wifi">Wi-Fi</label>
+            <input type="checkbox" id="pileta" checked>
+            <label for="pileta">Pileta</label>
+            <input type="checkbox" id="aire">
+            <label for="aire">Aire acondicionado</label><br>
+
+            <input type="checkbox" id="cochera" checked>
+            <label for="cochera">Estacionamiento</label><br>
+
+            <input type="checkbox" id="mascotas">
+            <label for="mascotas">Acepta mascotas</label>
+
+            <br><br>
+
+            <button type="submit">Guardar cambios</button>
+            <button type="reset">Cancelar</button>
+
+        </form>
+
+    </section>
+
+</main>
+
+<footer>
+    
+    <p>© 2026 - Sistema de Reservas</p>
+</footer>
+
+</body>
+</html>
