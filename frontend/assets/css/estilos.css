@@ -845,13 +845,7 @@ select {
 
 /*MIS RESERVAS*/
 
-.reserva-tarjeta{
-    background-color: white;
-    border: 2px solid #d9d9d9;
-    width: 100%;
-}
-
-.main-mireserva {
+.reserva-main {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -860,77 +854,84 @@ select {
     padding: 0 20px;
 }
 
-.tarjeta{
+
+.reserva-tarjeta {
     background-color: white;
-    border: 2px solid #d9d9d9;
+    border: 1px solid #d9d9d9;
     border-radius: 6px;
     padding: 20px;
-    box-shadow: 1px 1px 5px;
     width: 100%;
 }
-.propiedad{
+
+.reserva-propiedad {
     display: flex;
-    gap: 22px;
-    width: 100%;
+    flex-direction: row; 
+    gap: 25px;
+    align-items: flex-start;
 }
 
-
-.imagen-propiedad{
-    width: 150px;
-    height: 150px;
+.reserva-imagen {
+    width: 160px;
+    height: 160px;
     object-fit: cover;
     background-color: #e7e7e7;
-}
-.propiedad .info h2{
-    font-size: 1.1rem;
-    margin-bottom: 10px;
+    border-radius: 4px;
+    flex-shrink: 0; /* ESTO ES CLAVE: Evita que la imagen se aplaste cuando la pantalla es chica */
 }
 
-.propiedad .info p{
+.reserva-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1;
+}
+
+.reserva-info h2 {
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.reserva-info p {
     color: #777;
     line-height: 1.5;
     margin-bottom: 20px;
-    max-width: 900px;
+    max-width: 800px;
 }
-.botones{
+
+/* --- BOTONES --- */
+.reserva-botones {
     display: flex;
-    gap: 12px;
+    gap: 15px;
     flex-wrap: wrap;
 }
 
-.reserva-btn-detalles{
+.reserva-btn-detalles {
     background: white;
     border: 1px solid #c8c8c8;
-    color:#333;
-    padding: 8px 12px;
-    border-radius: 8px;
+    color: #333;
+    padding: 8px 16px;
+    border-radius: 6px;
     cursor: pointer;
 }
 
-.btn-contacto{
+.reserva-btn-contacto {
     background: white;
     color: #2196f3;
     border: 1px solid #2196f3;
-    padding: 8px 12px;
-    border-radius: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
     cursor: pointer;
 }
 
-.btn-cancelar{
+.reserva-btn-cancelar {
     background: #ff4242;
     color: white;
     border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
     cursor: pointer;
-}
-.botones .btn-detalles {
-    background: white;
-    border: 1px solid #c8c8c8;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    color: #333;
 }
 
 
