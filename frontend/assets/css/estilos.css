@@ -1162,24 +1162,7 @@ main.contenedor-principal {
     gap: 0.75rem;
 }
 
-.btn-aprobar {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-}
 
-.btn-rechazar {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 6px;
-    cursor: pointer;
-}
 
 .btn-contacto {
     background-color: #007bff;
