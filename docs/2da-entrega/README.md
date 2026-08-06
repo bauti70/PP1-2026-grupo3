@@ -98,12 +98,12 @@ Se opto por tomar referencias de la pagina Booking para el diseño de nuestro lo
 -Tomamos en cuenta que si el usuario ya esta registrado pueda acceder al Inicio de Sesion (login) mediante un link. 
 -Creamos un boton de "Crear Cuenta" que valide los datos y finalizar el flujo.
 
-### Pantalla  — Reservas recibidas
-- Diseñada para la vista del Anfitrión, permitiéndole gestionar las solicitudes pendientes de sus alojamientos.
+### Pantalla — Reservas recibidas
+- Diseñada para la vista del Anfitrión, permitiéndole consultar las reservas recibidas en sus alojamientos.
 - Mantiene la estructura alineada con los bocetos iniciales: incluye barra de filtros superior ("Más recientes") y notificación de solicitudes pendientes.
-- Las solicitudes se organizan en tarjetas individuales que destacan la propiedad ("Apartamento vista al río"), datos del huésped, fechas de estadía, noches y monto total.
-- Se agregaron botones de acción directa con código de colores claro (**Aprobar reserva** en verde y **Rechazar** en rojo) para facilitar la toma de decisiones rápidas.
-- Cubre el CU-09 "Gestionar reservas recibidas".
+- Las reservas se organizan en tarjetas individuales que muestran la propiedad, datos del huésped, fechas de estadía, noches y monto total.
+- Se agregó un botón de "Contactar huésped" como única acción disponible, ya que la pantalla es de solo lectura — en el modelo la reserva se confirma automáticamente y cancelar es responsabilidad del Huésped.
+- Esta pantalla no tiene un CU directo en la E1 — se documenta como hallazgo de trazabilidad pendiente de iteración.
 
 ### Pantalla Mi Perfil
 - Le permite a cualquier usuario (Huésped o Anfitrión) ver y editar sus propios datos personales, sin afectar reservas ni propiedades.
