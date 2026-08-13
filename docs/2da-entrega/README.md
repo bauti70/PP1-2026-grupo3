@@ -110,5 +110,18 @@ Se opto por tomar referencias de la pagina Booking para el diseño de nuestro lo
 - Los datos vienen precargados con los valores actuales del usuario, así ve qué tiene cargado antes de modificar nada.
 - Se dividió en dos columnas: el formulario a la izquierda y la foto de perfil a la derecha, para que no compita visualmente con los campos de datos.
 
+### Calendario
+- Permite al Anfitrion visualizar y modificar el estado de ocupacion de sus propiedades a lo largo del mes.
+- Se utilizo la tabla tradicional de HTML "table" para armar la grilla del mes, garantizando una buena alineacion y tamaño de celdas amplio para facilitar la lectura.
+- Incorporamos una leyenda visual interactiva y un codigo de colores de fondo (Libre, Ocupada, Bloqueada) para que el estado de cada fecha sea identificable de un solo vistazo.
+- Incluye un sector de propiedades en la parte superior y un formulario en la parte inferior para bloquear o liberar rangos de fechas, especificanco el motivo (uso personal, mantenimiento, etc).
+- Cubre el CU-02 "Gestionar disponibilidad", dandole al anfitrion el control total sobre que fechas se reflejaran en las busquedas de los huespedes.
+
+### Editar alojamiento
+- Diseñada para el Anfitrión, permitiéndole ver, editar, retirar o republicar los alojamientos que ya tiene cargados en el sistema.
+- Cada propiedad se muestra en una fila horizontal utilizando Flexbox, incluyendo imagen, estado actual mediante etiquetas visuales de colores (Publicada, Retirada), detalles principales y botones de acción rápida.
+- Se separó conceptualmente de la pantalla de "Publicar propiedad", enfocándose únicamente en la gestión del ciclo de vida de los alojamientos ya existentes.
+- Sirve como complemento funcional al CU-01 "Publicar propiedad disponible", cubriendo la gestión posterior del catálogo por parte del anfitrión.
+  
 ### Uso de IA
 - Se utilizó IA para consultas puntuales relacionadas con la organización del README y dudas sobre HTML y CSS.
