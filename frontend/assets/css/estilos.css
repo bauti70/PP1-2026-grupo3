@@ -834,16 +834,22 @@ select {
 }
 
 
-@media (min-width: 768px) {
-    .columnas-inferiores {
-        display: grid;
-        grid-template-columns: 1fr 1fr; 
-        gap: 2rem; 
-        align-items: stretch; 
-    }
+.columnas-inferiores{
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: stretch;
 }
 
-/*MIS RESERVAS*/
+.columna-izq, .columna-der{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1 1 300px;
+}
+
+
+/* PANTALLA 04 MIS RESERVAS*/
 
 .reserva-main {
     display: flex;
@@ -876,7 +882,7 @@ select {
     object-fit: cover;
     background-color: #e7e7e7;
     border-radius: 4px;
-    flex-shrink: 0; /* ESTO ES CLAVE: Evita que la imagen se aplaste cuando la pantalla es chica */
+    flex-shrink: 0; 
 }
 
 .reserva-info {
@@ -900,7 +906,6 @@ select {
     max-width: 800px;
 }
 
-/* --- BOTONES --- */
 .reserva-botones {
     display: flex;
     gap: 15px;
@@ -1064,6 +1069,8 @@ label[for="rol_anfitrion"], label[for="rol_huesped"]{
     text-decoration: underline;
 }
 
+
+/* RESERVAS RECIBIDAS */
 main.contenedor-principal {
     display: flex;
     flex-direction: column;
@@ -1388,3 +1395,172 @@ header nav a {
     color: #fff;
 }
 
+/* EDITAR ALOJAMIENTO */
+.page-gestionar-propiedades{
+    background-color: #ffffff;
+}
+
+.misprop-header{
+    background-color: #5B5FEF;
+    padding: 15px 40px;
+}
+
+.misprop-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+misprop-nav a{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+.misprop-boton-menu, .misprop-boton-lupa{
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #333;
+}
+
+.misprop-input-buscador{
+    flex-grow: 1;
+    border: none;
+    background-color: transparent;
+    padding: 8px 10px;
+    outline: none;
+    width: 100%;
+}
+
+.misprop-main{
+    font-family: 'Courier New', Courier, monospace;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.misprop-titulo{
+    font-size: 28px;
+    margin-bottom: 5px;
+    color: #1a1a1a;
+}
+
+.misprop-subtitulo{
+    font-size: 16px;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.misprop-fila{
+    display: flex;
+    background-color: white;
+    border: 2px solid #1a1a1a;
+    padding: 20px;
+    align-items: center;
+    gap: 25px;
+}
+
+.misprop-imagen{
+    width: 140px;
+    min-width: 140px; 
+    height: 100px;
+    border: 2px solid #a3a3a3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #777;
+    font-size: 14px;
+    object-fit: cover;
+}
+
+.misprop-datos{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.misprop-nombre{
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+.misprop-resumen{
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+    display: flex;
+    gap: 15px; 
+}
+
+.misprop-badge{
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-family: sans-serif; 
+}
+
+.misprop-publicada{
+    background-color: #dcf2e3;
+    color: #278c43;
+}
+
+.misprop-retirada{
+    background-color: #fae1df;
+    color: #c94c45;
+}
+
+.misprop-acciones{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 120px; 
+}
+
+.misprop-boton{
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit; 
+    text-align: center;
+}
+
+.misprop-boton-editar{
+    background-color: #1a1a1a;
+    color: white;
+    border: 2px solid #1a1a1a;
+}
+
+.misprop-boton-retirar{
+    background-color: white;
+    color: #a34e4e;
+    border: 2px solid #a34e4e;
+}
+
+.misprop-boton-republicar{
+    background-color: white;
+    color: #1a1a1a;
+    border: 2px solid #1a1a1a;
+}
+
+.misprop-paginacion {
+    text-align: left;
+    margin-top: 10px;
+    color: #777;
+    font-weight: bold;
+}
