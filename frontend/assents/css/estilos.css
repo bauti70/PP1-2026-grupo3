@@ -204,7 +204,10 @@ input{
     margin-top: 12px;
 }
 
-
+#error-login.visible{
+    color: #b00020;
+    font-weight: bold;
+}
 
 
 /* 02 Catalogo filtro */
