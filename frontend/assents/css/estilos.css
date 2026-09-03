@@ -1825,3 +1825,10 @@ misprop-nav a{
     cursor: pointer;
     font-family: 'Courier New', Courier, monospace;
 }
+
+/*BOTON ERROR*/
+#error-reserva.visible {
+    color:#b00020;
+    font-weight: bold;
+    margin-top: 10px;
+}
