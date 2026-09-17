@@ -54,6 +54,15 @@ formReserva.addEventListener('submit', function(evento){
     guardarReserva(reserva);
     renderReservas(reservas);
     formReserva.reset();
+
+    //TOASTR NOTIFICACION
+    toastr.option ={
+        "closeButton": true,
+        "progressBar": true,
+        "positionClass": "toast-bottom-right",
+        "timeOut": "4000"
+    }
+    toastr.success('¡SU RESERVA FUE PROCESADA CON EXITO!','Reserva Confirmada');
 })
 
 async function guardarReserva(reserva){
