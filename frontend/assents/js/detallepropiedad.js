@@ -55,8 +55,9 @@ formReserva.addEventListener('submit', function(evento){
     renderReservas(reservas);
     formReserva.reset();
 
-    //TOASTR NOTIFICACION
-    toastr.option ={
+    
+
+    toastr.options ={
         "closeButton": true,
         "progressBar": true,
         "positionClass": "toast-bottom-right",
