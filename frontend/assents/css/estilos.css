@@ -25,6 +25,24 @@ body{
     margin: 0 auto;
 }
 
+.buscador-inicio {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center;
+    margin: 0 40px;
+}
+
+.buscador-inicio input {
+    border-radius: 25px !important;
+    width: 100%;
+    max-width: 600px;
+    padding: 14px 25px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
 .contenedor-inicio-galeria {
     max-width: 1100px;
     margin: 60px auto;
@@ -189,7 +207,8 @@ input{
     padding: 8px;
     margin-bottom: 12px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 4px
+    
 }
 
 .boton-ingresar {
@@ -268,13 +287,15 @@ body {
     display: flex;
     justify-content: center;
     margin: 0 40px;
+    
 }
 
+
 .buscador-header input {
+    border-radius: 25px !important;
    width: 100%;
     max-width: 600px;
     padding: 14px 25px;
-    border-radius: 50px;
     border: none;
     font-size: 16px;
     outline: none;
@@ -954,6 +975,24 @@ select {
     color: black;
     padding: 24px;
     text-align: center;
+}
+
+.buscador-crear-cuenta{
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center;
+    margin: 0 40px;
+}
+
+.buscador-crear-cuenta input {
+    border-radius: 25px !important;
+    width: 100%;
+    max-width: 600px;
+    padding: 14px 25px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .cuenta-label{

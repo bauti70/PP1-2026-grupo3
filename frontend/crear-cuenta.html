@@ -8,13 +8,26 @@
     </head>
     <body class="page-cuenta">
         <header class="cuenta-header">
-            <h1>CREAR CUENTA</h1>
+            <nav>
+                <a href="index.html">Inicio</a>
+                
+                <search class="buscador-crear-cuenta">
+                    <input type="text" placeholder="¿A dónde vamos?" required>
+                </search>
+                <a href="login.html">Login</a>
+
+            </nav>
         </header>
 
 
         <main>
             <form class="cuenta-contenedor-columnas" action="procesar.php" method="post">
-                <div class="cuenta-columna-izquierda">    
+                <div class="cuenta-columna-izquierda">  
+                    <label class="crear-cuenta." for="text">
+                        <p>
+                            <strong>CREAR CUENTA</strong>
+                        </p>
+                        <label>  
                     <label class="cuenta-label" for="nombre"> INGRESE SU NOMBRE </label>
                     <br>
                     <input class="cuenta-input" type="text" id="nombre" name="nombre" required>  
