@@ -54,7 +54,7 @@ formReserva.addEventListener('submit', function(evento){
     }
 
     if (fechaEntrada !== '' && fechaSalida !== ''){
-        if(fechaEntrada <= fechaSalida !== ''){
+        if(fechaSalida <= fechaEntrada){
             msjsalida.textContent = 'ERROR: La fecha de salida debe ser posterior a la fecha de llegada.';
             formularioValido = false;
         }
@@ -96,6 +96,6 @@ formReserva.addEventListener('submit', function(evento){
 })
 
 async function guardarReserva(reserva){
-    reserva.length = 0;
+    reservas.length = 0;
     reservas.push(reserva);
 }
