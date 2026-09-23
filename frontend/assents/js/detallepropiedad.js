@@ -33,14 +33,43 @@ formReserva.addEventListener('submit', function(evento){
     const fechaSalida = document.querySelector('#salida').value;
     const huespedes = document.querySelector('#huespedes').value;
 
-    if (fechaEntrada === '' || fechaSalida === '' || huespedes === '') {
-        cajaError.textContent = 'Error: Complete todos los campos del formulario.';
-        cajaError.classList.add('visible');
+    const msjllegada = document.querySelector('#error-llegada');
+    const msjsalida = document.querySelector('#error-salida');
+    const msjhuespedes = document.querySelector('#error-huespedes');
+
+    msjllegada.textContent = '';
+    msjsalida.textContent = '';
+    msjhuespedes.textContent = '';
+
+    let formularioValido = true;
+
+    if (fechaEntrada === ''){
+        msjllegada.textContent = 'Por favor, ingrese la fecha de llegada.';
+        formularioValido = false;
+    }
+    
+    if (fechaSalida === ''){
+        msjsalida.textContent = 'Por favor, ingrese la fecha de salida.';
+        formularioValido = false;
+    }
+
+    if (fechaEntrada !== '' && fechaSalida !== ''){
+        if(fechaEntrada <= fechaSalida !== ''){
+            msjsalida.textContent = 'ERROR: La fecha de salida debe ser posterior a la fecha de llegada.';
+            formularioValido = false;
+        }
+    }    
+
+   
+    if (huespedes === '' || huespedes < 1 || huespedes > 4){
+        msjhuespedes.textContent = 'Ingrese la cantidad de huéspedes (max 4).';
+        formularioValido = false;
+    } 
+    
+    if (formularioValido === false){
         return;
     }
 
-    cajaError.textContent = '';
-    cajaError.classList.remove('visible');
 
     const reserva = {
         id: reservas.length + 1,
@@ -67,5 +96,6 @@ formReserva.addEventListener('submit', function(evento){
 })
 
 async function guardarReserva(reserva){
+    reserva.length = 0;
     reservas.push(reserva);
 }
