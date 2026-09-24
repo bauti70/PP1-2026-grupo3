@@ -12,7 +12,7 @@ function crearTarjeta(alojamiento) {
                 <h3 class="tarjeta-titulo">${alojamiento.nombre}</h3>
                 <p class="tarjeta-ubicacion">📍 ${alojamiento.ubicacion}</p>
                 <p class="tarjeta-precio"><strong>$${alojamiento.precioNoche}</strong> / noche</p>
-                <a href="#" class="btn-detalles">Ver detalles</a>
+                <a href="detallepropiedad.html" class="btn-detalles">Ver detalles</a>
             </section>
         </article>
     `;
