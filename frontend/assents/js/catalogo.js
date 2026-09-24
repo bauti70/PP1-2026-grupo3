@@ -40,7 +40,7 @@ async function cargarAlojamientos(){
     mostrarMensaje('Cargando alojamientos...', 'cargando');
 
     try{
-        const respuesta = await fetch('data/alojamiento.json');
+        const respuesta = await fetch('data/alojamientos.json');
         const alojamientosData = await respuesta.json();
 
         if (alojamientosData.length === 0) {
