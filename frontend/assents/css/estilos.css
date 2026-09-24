@@ -384,6 +384,11 @@ body {
     background-color: #5e5cee;
 }
 
+.mensaje.error {
+    color: red;
+    font-weight: bold;
+}
+
 .lista-tarjetas {
     display: flex;
     flex-direction: column;

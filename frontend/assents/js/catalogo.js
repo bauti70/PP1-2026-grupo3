@@ -30,15 +30,33 @@ function renderAlojamientos(lista){
     contenedor.innerHTML = html;
 }
 
-//FUNCION FETCH
+
+function mostrarMensaje(texto, tipo) {
+ const contenedor = document.querySelector('#lista-alojamientos');
+ contenedor.innerHTML = `<p class="mensaje ${tipo}">${texto}</p>`;
+}
+
 async function cargarAlojamientos(){
+    mostrarMensaje('Cargando alojamientos...', 'cargando');
+
     try{
-        const respuesta = await fetch('data/alojamientos.json');
+        const respuesta = await fetch('data/alojamiento.json');
         const alojamientosData = await respuesta.json();
+
+        if (alojamientosData.length === 0) {
+            mostrarMensaje('No hay alojamientos para mostrar.', 'error');
+            return;
+        }
+
+
         renderAlojamientos(alojamientosData);
-    } catch (error) {
+
+                
+     
+
+     } catch (error) {
         console.error('Error al cargar los alojamientos:', error);
-        renderAlojamientos([]);
+        mostrarMensaje('Error al cargar los alojamientos.', 'error');
     }
 }
 cargarAlojamientos();
