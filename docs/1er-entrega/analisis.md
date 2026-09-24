@@ -355,6 +355,25 @@
 | 4.   |Si existen datos válidos, el sistema los muestra.  |4.1 Cuando una acción se completa correctamente, se muestra un mensaje de confirmación.  |
 | 5.   |La interfaz pasa al estado de contenido disponible.  |  |
 
+### CU-15: Crear cuenta de usuario
+| Campo | Descripción |
+| :--- | :--- |
+| *ID + Nombre* | *CU-15: Crear cuenta de usuario* | 
+| *Actor principal* | Visitante (Usuario no registrado) | 
+| *Descripción* | Permitir a un visitante registrarse en el sistema ingresando sus datos personales y seleccionando el rol que desaea cumplir (Huesped o Anfitrion). |
+| *Precondiciones* | El usuario no debe haber iniciado sesion. |
+| *Postcondiciones* | El sistema crea la cuenta, almacena el rol seleccionado y permite el ingreso a la plataforma. |
+
+*Flujo de Eventos*
+| Secuencia Normal (Camino feliz) | Excepciones / Alternativas |
+| :--- | :--- |
+|1.| El usuario accede a la pantalla de "Crear Cuenta".|
+|2.| El sistema muestra un formulario solicitando datos personales y la seleccion de rol. |
+|3.| El usuario completa sus datos y marca si sera "Huesped" o "Anfitrion". | 3.1 Si el usuario deja campos vacios, el sistema le muestra mensajes de error debajo del campo correspondiente. | 
+|4.| El usuario presiona el boton de registro. | 4.1 Si el formato del email es incorrecto, el sistema solicita un correo valido. |  
+|5.| El sistema valida la informacion y verifica que el email no este registrado. | 5.1 Si el email ya existe, el sistema informa que la cuenta ya esta en uso. |  
+|6.| El sistema guarda el nuevo usuario con su rol y lo redirige al Login. | 
+
 
 
 
