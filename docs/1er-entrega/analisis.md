@@ -265,6 +265,98 @@
 | 2. El sistema genera el mensaje correspondiente (aprobación o rechazo). | |
 | 3. El sistema envía la notificación al correo del huésped vía Servicio de Notificaciones.  |3.1 Si el servidor de correos falla, el sistema reintenta el envío hasta 3 veces y registra el error en el log. |
 
+### CU-11 — Login validado
+| Campo | Descripción |
+| :--- | :--- |
+| *ID + Nombre* | *CU-11: Login valido |
+| *Actor principal* | usuario |
+| *Descripción* |El sistema permite al usuario ingresar sus credenciales y valida los datos antes de permitir el acceso. |
+| *Precondiciones* |El usuario se encuentra en la pantalla de login. |
+| *Postcondiciones* |Si los datos son válidos, el usuario puede continuar al sistema. Si son inválidos, se muestra un mensaje de error. |  
+
+*Flujo de Eventos:*
+
+| Secuencia Normal (Camino feliz) | Excepciones / Alternativas |
+| :--- | :--- |
+| 1.  |El usuario ingresa su email/usuario.| |
+| 2. |El usuario ingresa su contraseña. | |
+| 3. |El usuario presiona el botón de ingreso.|Si algún campo está vacío, el sistema muestra un mensaje solicitando completar los datos. |
+|4.  |El sistema valida los datos ingresados. |4.1 Si las credenciales no son válidas, el sistema muestra un mensaje de error. |
+|4.2 | |Si las credenciales no son válidas, el sistema muestra un mensaje de error. |
+|4.3 | |Si ocurre un error durante el proceso, el sistema informa que no pudo realizar el ingreso. |
+|5.  |El sistema determina si las credenciales son válidas. | |
+|6.  |El sistema permite continuar al usuario. | |
+
+### CU-12 — Listado desde datos
+| Campo | Descripción |
+| :--- | :--- |
+| *ID + Nombre* | *CU-02: Listar alojamientos desde datos |
+| *Actor principal* | usuario |
+| *Descripción* |El sistema obtiene los alojamientos almacenados en un archivo JSON y genera dinámicamente el listado de propiedades. |
+| *Precondiciones* |El usuario accede al catálogo. El archivo de datos debe estar disponible. |
+| *Postcondiciones* |El catálogo muestra las propiedades disponibles o informa que no existen alojamientos para mostrar. |  
+
+*Flujo de Eventos:*
+
+| Secuencia Normal (Camino feliz) | Excepciones / Alternativas |
+| :--- | :--- |
+| 1. |El usuario ingresa al catalogo | |
+| 2. |El sistema muestra el estado de carga. | |
+| 3. |catalogo.js realiza una solicitud mediante fetch. |3.1 Si no se puede acceder al archivo JSON, el sistema captura el error. |
+|4.  |El sistema obtiene los datos del archivo JSON. |4.1 Si el archivo no contiene alojamientos, el sistema muestra un mensaje indicando que no hay alojamientos para mostrar. |
+|4.2 ||Si ocurre un error al procesar los datos, el sistema muestra el estado de error.|
+|5.  |El sistema convierte la respuesta a JSON. ||
+|6.  |El sistema verifica que existan alojamientos.||
+|7.  |El sistema genera las tarjetas de las propiedades||
+|8.  |El sistema muestra el listado al usuario.||
+
+### CU-13 — Realizar reserva
+| Campo | Descripción |
+| :--- | :--- |
+| *ID + Nombre* | *CU-13: Realizar reserva |
+| *Actor principal* | huesped |
+| *Descripción* |El huésped completa los datos de una reserva y el sistema valida la información antes de registrarla. |
+| *Precondiciones* |El huésped se encuentra en el detalle de una propiedad. |
+| *Postcondiciones* |La reserva es registrada y se muestra en la lista de reservas con estado confirmado. |  
+
+*Flujo de Eventos:*
+
+| Secuencia Normal (Camino feliz) | Excepciones / Alternativas |
+| :--- | :--- |
+| 1.   |El huésped ingresa a la pantalla de detalle de una propiedad.||
+| 2.   |El huésped selecciona una fecha de entrada.  |  |
+| 3.   |El huésped selecciona una fecha de salida.  |  |
+| 4.   |El huésped indica la cantidad de huéspedes.  |  |
+| 5.   |El huésped envía el formulario.  |5.1 Si faltan fechas, el sistema muestra un mensaje debajo de los campos correspondientes.  |
+| 5.2.   |  |Si faltan datos obligatorios, el sistema muestra un mensaje de error.  |
+| 6.   |El sistema valida que los campos estén completos.  | Si la validación falla, la reserva no se registra. |
+| 7.   |El sistema crea la reserva.  |Si los datos son correctos, se crea la reserva con estado CONFIRMADA.  |
+| 8.   |El sistema agrega la reserva a la lista.  |  |
+| 9.   |El sistema actualiza la interfaz.  |  |
+| 10.  | El sistema informa que la reserva fue procesada correctamente. |  |
+
+### CU-14 — Gestionar estados de interfaz
+| Campo | Descripción |
+| :--- | :--- |
+| *ID + Nombre* | *CU-15: Gestionar estados de interfaz |
+| *Actor principal* | usuario |
+| *Descripción* |El sistema informa visualmente al usuario cuando se encuentra cargando información, cuando existen datos, cuando no existen datos o cuando ocurre un error. |
+| *Precondiciones* |El usuario accede a una pantalla que requiere procesar información. |
+| *Postcondiciones* |La interfaz refleja el estado correspondiente de la operación. |  
+
+*Flujo de Eventos:*
+| Secuencia Normal (Camino feliz) | Excepciones / Alternativas |
+| :--- | :--- |
+| 1.   |El usuario accede a una pantalla que necesita cargar información.  |  |
+| 2.   |El sistema muestra el estado de carga.  |2.1 Mientras se obtienen los datos, se muestra un mensaje de carga.  |
+| 3.   |El sistema obtiene/procesa los datos.  |3.1 Si no existen datos, se muestra un mensaje indicando que no hay información para mostrar  |
+| 3.   |  |3.2 Si ocurre un error, se muestra un mensaje de error.  |
+| 3.   |  |3.3 Si una acción del usuario es inválida, se muestra un mensaje de validación.  |
+| 4.   |Si existen datos válidos, el sistema los muestra.  |4.1 Cuando una acción se completa correctamente, se muestra un mensaje de confirmación.  |
+| 5.   |La interfaz pasa al estado de contenido disponible.  |  |
+
+
+
 
 ---
 
