@@ -43,7 +43,8 @@ Elegimos la pantalla de "Mis Propiedades". Le aplicamos las capacidades de rende
 > [Completar]
 
 **Otras decisiones**: cualquier cosa resuelta distinto de lo pedido, con su justificación.
-Para las validaciones de texto (como buscar el "@" o el "." en el login), decidimos no utilizar expresiones regulares (Regex) complejas ni métodos avanzados como "includes()". Optamos por usar variables booleanas y bucles "for" tradicionales, manteniéndonos estrictamente dentro de los fundamentos teóricos lógicos vistos en la materia. Además, para la Capacidad 3, configuramos el código para que limpie el arreglo en memoria antes de guardar, mostrando solo la última reserva a modo de comprobante para mejorar la experiencia de usuario.
+- Utilizamos fuentes externas para poder crear un sistema de notificacion para cuando el usuario ya confirme su reserva usando toastr
+-Para las validaciones de texto (como buscar el "@" o el "." en el login), decidimos no utilizar expresiones regulares (Regex) complejas ni métodos avanzados como "includes()". Optamos por usar variables booleanas y bucles "for" tradicionales, manteniéndonos estrictamente dentro de los fundamentos teóricos lógicos vistos en la materia. Además, para la Capacidad 3, configuramos el código para que limpie el arreglo en memoria antes de guardar, mostrando solo la última reserva a modo de comprobante para mejorar la experiencia de usuario.
 > [Completar]
 
 ## 4. Uso de IA
@@ -58,6 +59,8 @@ Para las validaciones de texto (como buscar el "@" o el "." en el login), decidi
 | catalogo.js|ayuda a buscar errores|chatgpt |
 | catalogo.js y mispropiedades.js | Comprensión de la estructura de "async / await" para el manejo de los tres estados del "fetch" | Gemini |
 | detallepropiedad.js | Ayuda para estructurar la validación de fechas (salida mayor a entrada) | Gemini |
+| detallepropiedad.js | Se utilizo para ayudar a colocar el sistema de notificacion para el guardado de reservas | Gemini
+| organizacion de errores | Se uso para poder estructurar mejor los mensajes de errores especificos en cada campo | Gemini
 > Recordá que la defensa individual tiene **piso**: si da menos de 4, la nota final no supera 5, por más que el trabajo del grupo esté impecable. Si hay algo de tu repo que no entendés, preguntá **antes** del 03/09.
 
 ## 5. Checklist antes de entregar
