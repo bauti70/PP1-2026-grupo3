@@ -23,33 +23,25 @@
 
     <section class="info">
         <img src="../docs/2da-entrega/imagenes_referencia/Imagen principal.webp" alt="Imagen principal" width="600">
-
         <br><br>
-
         <section class="contenedor-fotos-pequenas">
             <img src="../docs/2da-entrega/imagenes_referencia/cocina.webp" alt="Cocina" width="180">
             <img src="../docs/2da-entrega/imagenes_referencia/baño.webp" alt="Baño" width="180">
             <img src="../docs/2da-entrega/imagenes_referencia/terraza.webp" alt="Terraza" width="180">
         </section>
-
         <hr>
-
         <section class="titulo-alojamiento">
             <h1>Apartamento vista al río</h1>
             <button class="btn-favorito">♡</button>
         </section>
-
         <p>📍 Palermo, Buenos Aires</p>
         <p>⭐ 4.8 (127 reseñas)</p>
-
         <button>Hasta 4 personas</button>
         <button>2 Habitaciones</button>
         <button>1 Baño</button>
         <button>WiFi</button>
         <button>A/C</button>
-
         <hr>
-
         <p>
             Amplio apartamento con vista al río, totalmente equipado.
             A pasos del Parque 3 de Febrero y con fácil acceso al
@@ -57,48 +49,42 @@
         </p>
     </section>
 
-    <form id="form-reserva" class="form-reserva" action="#" novalidate>
+    <div style="flex: 1 1 30%; min-width: 280px; display: flex; flex-direction: column; gap: 20px;">
         
-        <h2><strong>$45.000</strong> / noche</h2>
-
-        <h3>Fechas</h3>
-
-        <section class="fila-fechas">
-
-            <section class="campo-fecha">
-                <label for="llegada">Llegada</label>
-                <input type="date" id="llegada">
-                <p id="error-llegada" style="color:red; font-size:14px; margin-top: 5px;"></p>
+        <form id="form-reserva" class="form-reserva" action="#" novalidate style="margin: 0; width: 100%;">
+            <h2><strong>$45.000</strong> / noche</h2>
+            <h3>Fechas</h3>
+            <section class="fila-fechas">
+                <section class="campo-fecha">
+                    <label for="llegada">Llegada</label>
+                    <input type="date" id="llegada">
+                    <p id="error-llegada" style="color:red; font-size:14px; margin-top: 5px; min-height: 20px;"></p>
+                </section>
+                <section class="campo-fecha">
+                    <label for="salida">Salida</label>
+                    <input type="date" id="salida">
+                    <p id="error-salida" style="color:red; font-size:14px; margin-top: 5px; min-height: 20px;"></p>
+                </section>
             </section>
 
-            <section class="campo-fecha">
-                <label for="salida">Salida</label>
-                <input type="date" id="salida">
-                <p id="error-salida" style="color:red; font-size:14px; margin-top: 5px;"></p>
-            </section>
+            <label for="huespedes">Huéspedes</label>
+            <input type="number" id="huespedes" min="1" max="4" value="1">
+            <p id="error-huespedes" style="color:red; font-size:14px; margin-top: 5px; min-height: 20px;"></p>
+            <hr>
 
-        </section>
+            <label for="nota">¿Tienes alguna consulta?</label><br>
+            <textarea id="nota" rows="4" cols="30"></textarea>
+            <br><br>
 
-        <label for="huespedes">Huéspedes</label>
-        <input type="number" id="huespedes" min="1" max="4" value="1">
-        <p id="error-huespedes" style="color:red; font-size:14px; margin-top: 5px;"></p>
-        <hr>
+            <button type="submit" class="btn-confirmar">
+                Confirmar reserva
+            </button>
+        </form>
 
-        <label for="nota">¿Tienes alguna consulta?</label><br>
-        <textarea id="nota" rows="4" cols="30"></textarea>
-
-        <br><br>
-
-        <button type="submit" class="btn-confirmar">
-            Confirmar reserva
-        </button>
-        <section id="lista-reservas" style="margin-top: 2rem;"></section>
-    </form>
+        <section id="lista-reservas"></section>
+    </div>
 
 </main>
-
-
-
 
 <script src="assents/js/jquery.min.js"></script>
 <script src="assents/js/toastr.min.js"></script>

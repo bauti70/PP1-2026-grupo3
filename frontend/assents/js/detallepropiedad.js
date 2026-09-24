@@ -1,101 +1,101 @@
 //console.log('funciona');
-
 const reservas = [];
 
 function crearItemReserva(reserva){
-    return `
-        <article class="reserva-propiedad" style="margin-top: 15px; border-top: 2px solid #ccc; padding-top: 15px;">
-            <div class="reserva-info">
-                <h2>${reserva.alojamiento}</h2>
-                <p><strong>Fechas:</strong> ${reserva.fechaEntrada} al ${reserva.fechaSalida}</p>
-                <p><strong>Huéspedes:</strong> ${reserva.huespedes} | <strong>Estado:</strong> ${reserva.estado}</p>
-            </div>
-        </article>
-    `;
+    let html = '<article class="reserva-propiedad" style="margin-top: 15px; border-top: 2px solid #ccc; padding-top: 15px; background-color: #f9f9f9; padding: 15px; border-radius: 10px;">';
+    html = html + '<div class="reserva-info">';
+    html = html + '<h2 style="margin-top:0; font-size: 18px;">' + reserva.alojamiento + '</h2>';
+    html = html + '<p><strong>Fechas:</strong> ' + reserva.fechaEntrada + ' - ' + reserva.fechaSalida + '</p>';
+    html = html + '<p><strong>Huéspedes:</strong> ' + reserva.huespedes + ' | <strong>Estado:</strong> ' + reserva.estado + '</p>';
+    html = html + '</div>';
+    html = html + '</article>';
+    return html;
 }
 
 function renderReservas(lista){
     const contenedor = document.querySelector('#lista-reservas');
+    if(!contenedor) return; 
     let html = '';
-    for (const reserva of lista){
-        html = html + crearItemReserva(reserva);
+    for (let i = 0; i < lista.length; i = i + 1){
+        html = html + crearItemReserva(lista[i]);
     }
     contenedor.innerHTML = html;
 }
 
-const formReserva = document.querySelector('.form-reserva');
-const cajaError = document.querySelector('#error-reserva');
+async function guardarReserva(reserva){
+    reservas.length = 0; 
+    reservas.push(reserva);
+}
 
-formReserva.addEventListener('submit', function(evento){
-    evento.preventDefault();
+const formReserva = document.querySelector('#form-reserva');
 
-    const fechaEntrada = document.querySelector('#llegada').value;
-    const fechaSalida = document.querySelector('#salida').value;
-    const huespedes = document.querySelector('#huespedes').value;
+if(formReserva) {
+    formReserva.addEventListener('submit', async function(evento){
+        evento.preventDefault();
 
-    const msjllegada = document.querySelector('#error-llegada');
-    const msjsalida = document.querySelector('#error-salida');
-    const msjhuespedes = document.querySelector('#error-huespedes');
+        const fechaEntrada = document.querySelector('#llegada').value;
+        const fechaSalida = document.querySelector('#salida').value;
+        const huespedes = document.querySelector('#huespedes').value;
 
-    msjllegada.textContent = '';
-    msjsalida.textContent = '';
-    msjhuespedes.textContent = '';
+        const msjllegada = document.querySelector('#error-llegada');
+        const msjsalida = document.querySelector('#error-salida');
+        const msjhuespedes = document.querySelector('#error-huespedes');
 
-    let formularioValido = true;
+        msjllegada.textContent = '';
+        msjsalida.textContent = '';
+        msjhuespedes.textContent = '';
 
-    if (fechaEntrada === ''){
-        msjllegada.textContent = 'Por favor, ingrese la fecha de llegada.';
-        formularioValido = false;
-    }
-    
-    if (fechaSalida === ''){
-        msjsalida.textContent = 'Por favor, ingrese la fecha de salida.';
-        formularioValido = false;
-    }
+        let formularioValido = true;
 
-    if (fechaEntrada !== '' && fechaSalida !== ''){
-        if(fechaSalida <= fechaEntrada){
-            msjsalida.textContent = 'ERROR: La fecha de salida debe ser posterior a la fecha de llegada.';
+        if (fechaEntrada === ''){
+            msjllegada.textContent = 'Por favor, ingrese llegada.';
             formularioValido = false;
         }
-    }    
+        
+        if (fechaSalida === ''){
+            msjsalida.textContent = 'Por favor, ingrese salida.';
+            formularioValido = false;
+        }
 
-   
-    if (huespedes === '' || huespedes < 1 || huespedes > 4){
-        msjhuespedes.textContent = 'Ingrese la cantidad de huéspedes (max 4).';
-        formularioValido = false;
-    } 
-    
-    if (formularioValido === false){
-        return;
-    }
+        if (fechaEntrada !== '' && fechaSalida !== ''){
+            if(fechaSalida <= fechaEntrada){
+                msjsalida.textContent = 'ERROR: La salida debe ser posterior.';
+                formularioValido = false;
+            }
+        }    
 
+        if (huespedes === '' || huespedes < 1 || huespedes > 4){
+            msjhuespedes.textContent = 'Ingrese cantidad válida (max 4).';
+            formularioValido = false;
+        } 
+        
+        if (formularioValido === false){
+            return;
+        }
 
-    const reserva = {
-        id: reservas.length + 1,
-        alojamiento: 'Apartamento vista al rio',
-        fechaEntrada: fechaEntrada,
-        fechaSalida: fechaSalida,
-        huespedes: huespedes,
-        estado: 'CONFIRMADA'
-    };
+        const reserva = {
+            id: reservas.length + 1,
+            alojamiento: 'Apartamento vista al rio',
+            fechaEntrada: fechaEntrada,
+            fechaSalida: fechaSalida,
+            huespedes: huespedes,
+            estado: 'CONFIRMADA'
+        };
 
-    guardarReserva(reserva);
-    renderReservas(reservas);
-    formReserva.reset();
+        await guardarReserva(reserva);
+        renderReservas(reservas);
+        formReserva.reset();
 
-    
-
-    toastr.options ={
-        "closeButton": true,
-        "progressBar": true,
-        "positionClass": "toast-bottom-right",
-        "timeOut": "4000"
-    }
-    toastr.success('¡SU RESERVA FUE PROCESADA CON EXITO!','Reserva Confirmada');
-})
-
-async function guardarReserva(reserva){
-    reservas.length = 0;
-    reservas.push(reserva);
+        if (typeof toastr !== 'undefined') {
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true,
+                "positionClass": "toast-bottom-right",
+                "timeOut": "4000"
+            };
+            toastr.success('¡SU RESERVA FUE PROCESADA CON EXITO!', 'Reserva Confirmada');
+        } else {
+            alert('¡SU RESERVA FUE PROCESADA CON EXITO!');
+        }
+    });
 }
