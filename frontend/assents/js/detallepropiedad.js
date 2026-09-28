@@ -1,11 +1,16 @@
 //console.log('funciona');
 const reservas = [];
 
+function formatearFecha(fecha){
+    let partes = fecha.split('-');
+    return partes[2] + '-' + partes[1] + '-' + partes[0];
+}
+
 function crearItemReserva(reserva){
     let html = '<article class="reserva-propiedad" style="margin-top: 15px; border-top: 2px solid #ccc; padding-top: 15px; background-color: #f9f9f9; padding: 15px; border-radius: 10px;">';
     html = html + '<div class="reserva-info">';
     html = html + '<h2 style="margin-top:0; font-size: 18px;">' + reserva.alojamiento + '</h2>';
-    html = html + '<p><strong>Fechas:</strong> ' + reserva.fechaEntrada + ' - ' + reserva.fechaSalida + '</p>';
+    html = html + '<p> Fecha de llegada: ' + formatearFecha(reserva.fechaEntrada) + ' hasta ' + formatearFecha(reserva.fechaSalida) + '</p>';
     html = html + '<p><strong>Huéspedes:</strong> ' + reserva.huespedes + ' | <strong>Estado:</strong> ' + reserva.estado + '</p>';
     html = html + '</div>';
     html = html + '</article>';
@@ -48,24 +53,24 @@ if(formReserva) {
         let formularioValido = true;
 
         if (fechaEntrada === ''){
-            msjllegada.textContent = 'Por favor, ingrese llegada.';
+            msjllegada.textContent = 'Por favor, ingrese una fecha de llegada.';
             formularioValido = false;
         }
         
         if (fechaSalida === ''){
-            msjsalida.textContent = 'Por favor, ingrese salida.';
+            msjsalida.textContent = 'Por favor, ingrese una fecha de salida.';
             formularioValido = false;
         }
 
         if (fechaEntrada !== '' && fechaSalida !== ''){
             if(fechaSalida <= fechaEntrada){
-                msjsalida.textContent = 'ERROR: La salida debe ser posterior.';
+                msjsalida.textContent = 'Debe colocar correctamente una fecha de llegada y otra de salida.';
                 formularioValido = false;
             }
         }    
 
         if (huespedes === '' || huespedes < 1 || huespedes > 4){
-            msjhuespedes.textContent = 'Ingrese cantidad válida (max 4).';
+            msjhuespedes.textContent = 'Ingrese una cantidad de huespedes valida (maximo 4).';
             formularioValido = false;
         } 
         
