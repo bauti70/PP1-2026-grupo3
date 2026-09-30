@@ -7,84 +7,109 @@
 
     <link rel="stylesheet" href="assents/css/detallepropiedad.css">
     <link rel="stylesheet" href="assents/css/toastr.min.css">
-    <link rel="stylesheet" href="assents/css/global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<header>
-    <p class="nav-titulo">BARRA DE NAVEGACION</p>
-    <nav>
-        <a href="index.html">Inicio</a>
-        <input type="search" placeholder="¿A donde vamos?">
-        <a href="login.html">Login</a>
-    </nav>
+<header class="barra-superior-fondo" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg');">
+    <div class="nav-izquierda">
+        <i class="fa-solid fa-bars icono-blanco"></i>
+        <i class="fa-solid fa-house icono-blanco"></i>
+    </div>
+    <div class="nav-derecha">
+        <div class="icono-usuario">
+            <i class="fa-regular fa-user"></i>
+        </div>
+    </div>
 </header>
 
-<main class="detalle-propiedad">
+<main class="contenedor-detalle">
 
-    <section class="info">
-        <img src="../docs/2da-entrega/imagenes_referencia/Imagen principal.webp" alt="Imagen principal" width="600">
-        <br><br>
-        <section class="contenedor-fotos-pequenas">
-            <img src="../docs/2da-entrega/imagenes_referencia/cocina.webp" alt="Cocina" width="180">
-            <img src="../docs/2da-entrega/imagenes_referencia/baño.webp" alt="Baño" width="180">
-            <img src="../docs/2da-entrega/imagenes_referencia/terraza.webp" alt="Terraza" width="180">
-        </section>
-        <hr>
-        <section class="titulo-alojamiento">
-            <h1>Apartamento vista al río</h1>
-            <button class="btn-favorito">♡</button>
-        </section>
-        <p>📍 Palermo, Buenos Aires</p>
-        <p>⭐ 4.8 (127 reseñas)</p>
-        <button>Hasta 4 personas</button>
-        <button>2 Habitaciones</button>
-        <button>1 Baño</button>
-        <button>WiFi</button>
-        <button>A/C</button>
-        <hr>
-        <p>
-            Amplio apartamento con vista al río, totalmente equipado.
-            A pasos del Parque 3 de Febrero y con fácil acceso al
-            transporte público. Ideal para familias o grupos pequeños.
+    <section class="info-propiedad">
+       <div class="galeria-fotos">
+            <img src="../docs/2da-entrega/imagenes_referencia/Imagen principal.webp" alt="Imagen principal" class="foto-principal">
+            <div class="fotos-secundarias">
+                <img src="../docs/2da-entrega/imagenes_referencia/cocina.webp" alt="Cocina">
+                <img src="../docs/2da-entrega/imagenes_referencia/baño.webp" alt="Baño">
+            </div>
+        </div>
+
+        <div class="encabezado-info">
+            <h1>Apartamento vista rio</h1>
+            <button class="btn-favorito"><i class="fa-regular fa-heart"></i></button>
+        </div>
+
+        <p class="texto-secundario"><i class="fa-solid fa-location-dot"></i> Palermo, Buenos Aires</p>
+        <p class="texto-secundario"><i class="fa-solid fa-star"></i> 4.8 (127 reseñas)</p>
+        <div class="contenedor-etiquetas">
+            <span class="etiqueta"><i class="fa-regular fa-user"></i> Hasta 4 personas</span>
+            <span class="etiqueta"><i class="fa-solid fa-bed"></i> 2 habitaciones</span>
+            <span class="etiqueta"><i class="fa-solid fa-bath"></i> 1 baño</span>
+            <span class="etiqueta"><i class="fa-solid fa-wifi"></i> WiFi</span>
+            <span class="etiqueta"><i class="fa-regular fa-snowflake"></i> A/C</span>
+        </div>
+
+        <p class="descripcion-texto">
+            Amplio apartamento con vista al río, totalmente equipado. A pasos del
+            Parque 3 de Febrero y con fácil acceso al transporte público. Ideal para
+            familias o grupos pequeños.
         </p>
+
     </section>
 
-    <div style="flex: 1 1 30%; min-width: 280px; display: flex; flex-direction: column; gap: 20px;">
-        
-        <form id="form-reserva" class="form-reserva" action="#" novalidate style="margin: 0; width: 100%;">
-            <h2><strong>$45.000</strong> / noche</h2>
-            <h3>Fechas</h3>
-            <section class="fila-fechas">
-                <section class="campo-fecha">
-                    <label for="llegada">Llegada</label>
-                    <input type="date" id="llegada">
-                    <p id="error-llegada" style="color:red; font-size:14px; margin-top: 5px; min-height: 20px;"></p>
-                </section>
-                <section class="campo-fecha">
-                    <label for="salida">Salida</label>
-                    <input type="date" id="salida">
-                    <p id="error-salida" style="color:red; font-size:14px; margin-top: 5px; min-height: 20px;"></p>
-                </section>
-            </section>
+    <aside class="columna-reserva">
+        <form id="form-reserva" class="tarjeta-reserva" novalidate>
+            <div class="precio-encabezado">
+                <h2>$45.000</h2> <span class="noche">/ noche</span>
+            </div>
+            <div class="seccion-form">
+                <h3>Fechas</h3>
+                <div class="contenedor-fechas">
+                    <div class="caja-input">
+                        <label for="llegada">Llegada</label>
+                        <div class="input-con-icono">
+                            <i class="fa-regular fa-calendar"></i>
+                            <input type="date" id="llegada" placeholder="dd/mm/aa">
+                        </div>
+                        <p id="error-llegada" style="color:red; font-size:14px; margin-top: 5px; min-height: 20px;"></p>
+                    </div>
+                    <div class="caja-input">
+                        <label for="salida">Salida</label>
+                        <div class="input-con-icono">
+                            <i class="fa-regular fa-calendar"></i>
+                            <input type="date" id="salida" placeholder="dd/mm/aa">
+                        </div>
+                        <p id="error-salida" style="color:red; font-size:14px; margin-top: 5px; min-height: 20px;"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="seccion-form">
+                <h3>Huéspedes</h3>
+                <div class="caja-input input-huespedes">
+                    <div class="input-con-icono">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="number" id="huespedes" min="1" max="4" placeholder="Cantidad" value="">
+                    </div>
+                </div>
+                <p id="error-huespedes" style="color:red; font-size:14px; margin-top: 5px; min-height: 20px;"></p>
+            </div>
 
-            <label for="huespedes">Huéspedes</label>
-            <input type="number" id="huespedes" min="1" max="4" value="1">
-            <p id="error-huespedes" style="color:red; font-size:14px; margin-top: 5px; min-height: 20px;"></p>
-            <hr>
+            <div class="seccion-total">
+                <h3>Total</h3>
+                <div class="detalle-tarifa">
+                    <p class="tarifa-texto">Detalle de la tarifa</p>
+                    <div class="fila-valor">
+                        <span>Valor</span>
+                        <span>-</span>
+                    </div>
+                </div>
+            </div>
 
-            <label for="nota">¿Tienes alguna consulta?</label><br>
-            <textarea id="nota" rows="4" cols="30"></textarea>
-            <br><br>
-
-            <button type="submit" class="btn-confirmar">
-                Confirmar reserva
-            </button>
+            <button type="submit" class="btn-confirmar">Button</button>
         </form>
 
         <section id="lista-reservas"></section>
-    </div>
-
+    </aside>
 </main>
 
 <script src="assents/js/jquery.min.js"></script>
