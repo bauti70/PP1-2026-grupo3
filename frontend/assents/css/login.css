@@ -1,0 +1,231 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.barra-superior {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 40px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ccc;
+}
+
+.nav-izquierda {
+    display: flex;
+    align-items: center;
+}
+
+.icono-menu {
+    font-size: 24px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.logo {
+    color: #4CAF50; 
+    font-size: 28px;
+    font-weight: normal;
+}
+
+.nav-centro {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-centro a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 14px;
+}
+
+.icono-usuario {
+    width: 40px;
+    height: 40px;
+    background-color: #E8E4F8; 
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.contenedor-principal {
+    display: flex; 
+    flex-grow: 1; 
+}
+
+.seccion-imagen {
+    flex: 1; 
+    display: flex;
+    position: relative;
+    align-items: center;
+    overflow: hidden;
+}
+
+.imagen-fondo {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.capa-oscura {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 2;
+
+}
+
+.contenido-imagen {
+    position: relative;
+    z-index: 3;
+    color: #ffffff;
+    padding: 40px;
+    width: 100%;
+}
+
+.contenido-imagen h2 {
+    font-size: 42px;
+    margin-bottom: 30px;
+}
+
+.lista-beneficios {
+    list-style: none;
+}
+
+.lista-beneficios li {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.lista-beneficios i {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.seccion-login {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.imagen-fondo-derecha {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    filter: blur(4px);
+    transform: scale(1.05);
+    z-index: 1;
+}
+
+.tarjeta-login {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.titulo-login {
+    text-align: center;
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 30px;
+}
+
+.login-formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.grupo-input label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block; 
+}
+
+.grupo-input input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.grupo-input input:focus {
+    outline: 2px solid #0056FF;
+}
+
+.mensaje-error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    height: 16px;
+}
+
+.opciones-extra {
+    margin-bottom: 20px;
+}
+
+.checkbox-recordarme {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.enlace-olvido {
+    color: #0056FF;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.enlace-olvido:hover {
+    text-decoration: underline;
+}
+
+.boton-ingresar {
+    padding: 12px;
+    background-color: #0056FF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.boton-ingresar:hover {
+    background-color: #0045cc;
+}

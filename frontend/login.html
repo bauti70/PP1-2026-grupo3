@@ -4,39 +4,75 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iniciar sesión</title>
-  <link rel="stylesheet" href="assents/css/estilos.css">
+  <link rel="stylesheet" href="assents/css/login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
 
   <header class="barra-superior">
-    <nav>
+    <div class="nav-izquierda">
+      <i class="fa-solid fa-bars icono-menu"></i>
+    </div>
+    <nav class="nav-centro">
         <a href="index.html">Inicio</a>
         <a href="login.html">Login</a>
-        
     </nav>
-
+    <div class="nav-derecha"></div>
+      <div class="icono-usuario">
+        <i class="fa-regular fa-user"></i>
+      </div>
   </header>
 
-  <main class="caja-login">
-    <form id="form-login" class="login-formulario" novalidate>
-      <label for="email">Ingresar Email</label>
-      <input type="email" id="input-email" name="email">
-      <p id="error-email" style="color:red; font-size:14px; margin-top: 5px;"></p>
+  <main class="contenedor-principal">
+    <section class="seccion-imagen">
+      <img src="../docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg" alt="Alojamiento" class="imagen-fondo">
       
-      <br>
+      <div class="capa-oscura"></div>
+      
+      <div class="contenido-imagen">  
+        <h2>Tu proximo <br>alojamiento<br>te esta esperando</h2>
+        <ul class="lista-beneficios">
+          <li><i class="fa-solid fa-magnifying-glass"></i> Explora miles de alojamientos</li>
+          <li><i class="fa-regular fa-calendar"></i> Reserva de forma segura</li>
+          <li><i class="fa-regular fa-star"></i> Vivi experiencias unicas</li>
+        </ul>
+      </div>
+    </section>
 
-      <label for="password">Ingresar Contraseña</label>
-      <input type="password" id="input-password" name="password">
-      <p id="error-password" style="color:red; font-size:14px; margin-top: 5px;"></p>
-      <br>
+    <section class="seccion-login">
+      <img src="../docs/2da-entrega/imagenes_referencia/fondo desenfocado.jpeg" alt="Fondo login" class="imagen-fondo-derecha">
+      
+      <div class="tarjeta-login">
+        <h3 class="titulo-login">Iniciar Sesion</h3>
 
-      <button class="boton-ingresar" type="submit">Ingresar</button>
+        <form id="form-login" class="login-formulario" novalidate>
+          <div class="grupo-input">
+            <label for="email">Ingresar Email</label>
+            <input type="email" id="input-email" name="email">
+             <p id="error-email" style="color:red; font-size:14px; margin-top: 5px;"></p>
+          </div>
+          
+          <div class="grupo-input">
+            <label for="password">Ingresar Contraseña</label>
+            <input type="password" id="input-password" name="password">
+            <p id="error-password" style="color:red; font-size:14px; margin-top: 5px;"></p>
+          </div>
+          
+          <div class="opciones-extra">
+            <label class="checkbox-recordarme">
+              <input type="checkbox" checked> Recordarme
+            </label>
+          </div>
 
-      <br>
+          <a href="#" class="enlace-olvidado">¿Olvidaste la contraseña?</a>
 
-      <a href="#">¿Olvidaste tu contraseña?</a> 
-    </form>
+          <button class="boton-ingresar" type="submit">Ingresar</button>
+        </form>
+      </div>  
+    </section>
   </main>
+
   <script src="assents/js/login.js"></script>
 </body>
 </html>
