@@ -129,6 +129,8 @@ body, html {
     align-items: center;
     position: relative;
     overflow: hidden;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .imagen-fondo-derecha {
@@ -228,4 +230,39 @@ body, html {
 
 .boton-ingresar:hover {
     background-color: #0045cc;
+}
+
+.tarjeta-bienvenida {
+   background-color: #ffffff;
+    padding: 25px 40px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2; 
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tarjeta-bienvenida p {
+    font-size: 15px;
+    color: #444;
+    margin: 0;
+}
+
+.boton-crear-cuenta {
+    display: inline-block;
+    padding: 12px;
+    background-color: transparent;
+    color: #0056FF;
+    border: 2px solid #0056FF; 
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none; 
+    cursor: pointer;
+    transition: all 0.3s;
 }

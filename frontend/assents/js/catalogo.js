@@ -5,15 +5,21 @@
 function crearTarjeta(alojamiento) {
     return `
         <article class="tarjeta">
-            <figure class="tarjeta-imagen">
+            <div class="tarjeta-imagen-wrapper">
                 <img src="${alojamiento.imagen}" alt="${alojamiento.nombre}">
-            </figure>
-            <section class="lista-tarjetas">
-                <h3 class="tarjeta-titulo">${alojamiento.nombre}</h3>
-                <p class="tarjeta-ubicacion">📍 ${alojamiento.ubicacion}</p>
-                <p class="tarjeta-precio"><strong>$${alojamiento.precioNoche}</strong> / noche</p>
-                <a href="detallepropiedad.html" class="btn-detalles">Ver detalles</a>
-            </section>
+                <i class="fa-regular fa-heart icono-favorito"></i>
+                <span class="badge-categoria">${alojamiento.nombre.split(' ')[0]}</span>
+            </div>
+            <div class="tarjeta-cuerpo">
+                <div class="tarjeta-info-izq">
+                    <h3 class="tarjeta-titulo">${alojamiento.nombre}</h3>
+                    <p class="tarjeta-ubicacion"><i class="fa-solid fa-location-dot"></i> ${alojamiento.ubicacion}</p>
+                </div>
+                <div class="tarjeta-info-der">
+                    <p class="tarjeta-precio"><strong>$${alojamiento.precioNoche}</strong> <span class="noche">/ noche</span></p>
+                    <a href="detallepropiedad.html?id=${alojamiento.id}" class="btn-detalles">Ver detalles</a>
+                </div>
+            </div>
         </article>
     `;
 }
