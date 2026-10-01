@@ -64,7 +64,7 @@ if(formReserva) {
 
         if (fechaEntrada !== '' && fechaSalida !== ''){
             if(fechaSalida <= fechaEntrada){
-                msjsalida.textContent = 'Debe colocar correctamente una fecha de llegada y otra de salida.';
+                msjsalida.textContent = 'La fecha de salida es inválida. Debe ser posterior a la llegada.';
                 formularioValido = false;
             }
         }    

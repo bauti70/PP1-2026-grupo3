@@ -46,5 +46,13 @@
         "capacidad": 2,
         "precioNoche": 10000,
         "imagen": "../docs/2da-entrega/imagenes_referencia/selina-salta.webp"
+    },
+    {
+        "id": 7,
+        "nombre": "Salta",
+        "ubicacion": "Salta Capital",
+        "capacidad": 2,
+        "precioNoche": 10000,
+        "imagen": "../docs/2da-entrega/imagenes_referencia/selina-salta.webp"
     }
 ]

@@ -35,7 +35,7 @@ async function cargarMisPropiedades(){
             htmlFila = htmlFila + '<img src="' + aloja.imagen + '" alt="' + aloja.nombre + '" width="250">';
             htmlFila = htmlFila + '<h3>' + aloja.nombre + '</h3>';
             htmlFila = htmlFila + '<p><strong>Estado:</strong> ' + estadoPropiedad + '</p>';
-            htmlFila = htmlFila + '<p>Ubicación: ' + aloja.ubicacion + '.</p>';
+            htmlFila = htmlFila + '<p>Ubicación: ' + aloja.ubicacion + '</p>';
             htmlFila = htmlFila + '<p><strong>Tarifa:</strong> $' + aloja.precioNoche + ' por noche</p>';
             htmlFila = htmlFila + '<p><strong>Capacidad:</strong> ' + aloja.capacidad + ' personas</p>';
             htmlFila = htmlFila + '<p><strong>Servicios básicos:</strong></p>';

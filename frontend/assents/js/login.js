@@ -24,29 +24,32 @@ form.addEventListener('submit', function (evento){
         hayError = true;
     } else {
         
-    let tieneArroba = false;
-    let tienePunto = false;
+        let tieneArroba = false;
+        let tienePunto = false;
 
-    for (let i = 0; i < email.length; i = i + 1){
-        if (email[i] === '@'){
+        for (let i = 0; i < email.length; i = i + 1){
+         if (email[i] === '@'){
             tieneArroba = true;
+            }
+            if (email[i] === '.'){
+             tienePunto = true;
+            }
         }
-        if (email[i] === '.'){
-            tienePunto = true;
+        
+        if(tieneArroba === false || tienePunto === false){
+            msjEmail.textContent = 'Email invalido debe contener un @ y un punto.';
+            hayError = true;
         }
-    }
-
-    if(tieneArroba === false || tienePunto === false){
-        msjEmail.textContent = 'Email invalido debe contener un @ y un punto.';
-        hayError = true;
-    }
 
     }
 
     if (password === ''){
         msjPassword.textContent = 'La contraseña es obligatoria.';
         hayError = true;
-    } 
+    } else if (password.length < 8){
+        msjPassword.textContent = 'La contraseña debe tener como mínimo 8 caracteres.';
+        hayError = true;
+    }
 
     if (hayError === true){
         return;
