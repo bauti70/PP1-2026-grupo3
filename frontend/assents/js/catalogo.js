@@ -2,6 +2,8 @@
 //alojamiento.length
 //alojamiento[0].nombre
 
+let todosLosAlojamientos =[];
+
 function crearTarjeta(alojamiento) {
     return `
         <article class="tarjeta">
@@ -54,11 +56,10 @@ async function cargarAlojamientos(){
             return;
         }
 
+        todosLosAlojamientos = alojamientosData;
 
-        renderAlojamientos(alojamientosData);
+        renderAlojamientos(todosLosAlojamientos);
 
-                
-     
 
      } catch (error) {
         console.error('Error al cargar los alojamientos:', error);
@@ -66,3 +67,53 @@ async function cargarAlojamientos(){
     }
 }
 cargarAlojamientos();
+
+const formFiltros = document.querySelector('#form-filtros');
+formFiltros.addEventListener('submit', function(evento) {
+    evento.preventDefault();
+
+    const ubiBuscada = document.querySelector('#ubi').value.toLowerCase();
+    const precioMin = document.querySelector('#min').value;
+    const precioMax = document.querySelector('#max').value;
+
+    let alojamientosFiltrados = [];
+
+    for (let i = 0; i < todosLosAlojamientos.length; i = i + 1){
+        let aloja = todosLosAlojamientos[i];
+
+        let pasaFiltro = true;
+
+        if (ubiBuscada !== ''){
+            let ubicacionAlojamientos = aloja.ubicacion.toLowerCase();
+            if (ubicacionAlojamientos.includes(ubiBuscada) === false){
+                pasaFiltro = false;
+            }
+        }
+
+        if (precioMin !== ''){
+            if (aloja.precioNoche < Number(precioMin)){
+                pasaFiltro = false;
+            }
+        }
+
+        if (precioMax !== ''){
+            if (aloja.precioNoche > Number(precioMax)){
+                pasaFiltro = false;
+            }
+        }
+
+        if (pasaFiltro === true){
+            alojamientosFiltrados.push(aloja);
+        }
+    }
+    if (alojamientosFiltrados.length === 0){
+        mostrarMensaje('No se encontraron alojamientos que cumplan con tus filtros.', 'error');
+    } else {
+        renderAlojamientos(alojamientosFiltrados);
+    }
+
+});
+
+formFiltros.addEventListener('reset', function(){
+    renderAlojamientos(todosLosAlojamientos);
+})

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Reservas — Inicio</title>
     <link rel="stylesheet" href="assents/css/inicio.css">
-    <link rel="stylesheet" href="assents/css/global.css">
 </head>
 <body>
 
@@ -22,10 +21,11 @@
             <h1 class="titulo-gigante">¿A dónde vamos?</h1>
             
             <search class="buscador-central">
-                <form action="catalog-filtro.html">
-                    <input type="text" placeholder="Buscá tu próximo destino..." required>
+                <form action="catalog-filtro.html" id="form-busqueda-inicio">
+                    <input type="text" id="input-busqueda" placeholder="Buscá tu próximo destino..." required>
                     <button type="submit" class="btn-buscar-inicio">Buscar</button>
                 </form>
+                <p id="mensaje-login" style="color: red; font-weight: bold; margin-top: 10px;"></p>
             </search>
         </section>
         <section class="galeria-destinos">
@@ -58,5 +58,7 @@
         <small>Grupo N° 3 — PP1 2026</small>
     </footer>
 
+
+    <script src="assents/js/index.js"></script>
 </body>
 </html>

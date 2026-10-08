@@ -57,4 +57,14 @@ form.addEventListener('submit', function (evento){
 
     window.open('index.html', '_self');
 
+
+    if (hayError === true){
+        return;
+    }
+
+    localStorage.setItem('sesionIniciada', 'true');
+
+    window.open('index.html', '_self');
+
+
 });
