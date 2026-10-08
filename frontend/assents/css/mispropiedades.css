@@ -16,7 +16,7 @@ header {
     align-items: center;
     height: 100px;
     padding: 0 48px;
-    background: url(http://127.0.0.1:5500/PP1-2026-grupo3/docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg)
+    background: url("../../../docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg");
 }
 
 .nav-titulo {
