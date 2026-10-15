@@ -1,3 +1,69 @@
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.page-reservas {
+    font-family: 'Nunito', sans-serif;
+    color: #1f2a4d;
+    background-color: #f6f6f6;
+}
+
+
+.reserva-header {
+    background: url("../../../docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg") center / cover;
+}
+
+.nav-titulo {
+    display: none;
+}
+
+.reserva-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 40px;
+}
+
+
+.reserva-nav::before {
+    content: "☰";
+    color: white;
+    font-size: 26px;
+}
+
+
+.reserva-nav a {
+    width: 40px;
+    height: 40px;
+    font-size: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 26px;
+}
+
+
+.reserva-nav a:first-of-type {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 11 12 3l9 8M5 10v10h14V10M10 20v-6h4v6'/></svg>");
+}
+
+.reserva-nav input {
+    width: 300px;
+    padding: 9px 16px;
+    border: none;
+    border-radius: 20px;
+}
+
+.reserva-nav a:last-of-type {
+    margin-left: auto;
+    border-radius: 50%;
+    background-color: #E8E4F8;
+    background-size: 22px;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235e5cee' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='8' r='4'/><path d='M4 21c0-4 3.6-7 8-7s8 3 8 7'/></svg>");
+}
+
+
 .reserva-main {
     display: flex;
     flex-direction: column;
@@ -7,35 +73,28 @@
     padding: 0 20px;
 }
 
-
 .reserva-tarjeta {
-    background-color: white;
-    border: 1px solid #d9d9d9;
-    border-radius: 6px;
+    background-color: #ffffff;
+    border-radius: 16px;
     padding: 20px;
-    width: 100%;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
 }
 
 .reserva-propiedad {
     display: flex;
-    flex-direction: row; 
-    gap: 25px;
     align-items: flex-start;
+    gap: 25px;
 }
 
 .reserva-imagen {
     width: 160px;
     height: 160px;
     object-fit: cover;
-    background-color: #e7e7e7;
-    border-radius: 4px;
-    flex-shrink: 0; 
+    border-radius: 12px;
+    flex-shrink: 0;
 }
 
 .reserva-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
     flex-grow: 1;
 }
 
@@ -43,46 +102,45 @@
     font-size: 1.3rem;
     margin-top: 0;
     margin-bottom: 10px;
-    color: #222;
 }
 
 .reserva-info p {
-    color: #777;
+    color: #7b86ad;
     line-height: 1.5;
     margin-bottom: 20px;
     max-width: 800px;
 }
 
+
 .reserva-botones {
     display: flex;
-    gap: 15px;
+    gap: 12px;
     flex-wrap: wrap;
 }
 
+.reserva-botones button {
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
 .reserva-btn-detalles {
-    background: white;
+    background-color: white;
     border: 1px solid #c8c8c8;
     color: #333;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
 }
 
 .reserva-btn-contacto {
-    background: white;
-    color: #2196f3;
+    background-color: white;
     border: 1px solid #2196f3;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
+    color: #2196f3;
 }
 
 .reserva-btn-cancelar {
-    background: #ff4242;
-    color: white;
+    background-color: #ff4242;
     border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
+    color: white;
 }
-
