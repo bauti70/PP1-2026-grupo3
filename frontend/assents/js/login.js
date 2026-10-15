@@ -61,10 +61,16 @@ form.addEventListener('submit', function (evento){
     if (hayError === true){
         return;
     }
-
+  
     localStorage.setItem('sesionIniciada', 'true');
 
-    window.open('index.html', '_self');
+    let paginaDestino = localStorage.getItem('volverA');
 
+    if (paginaDestino !== null) {
+        localStorage.removeItem('volverA'); 
 
+        window.open(paginaDestino, '_self');
+    } else {
+        window.open('index.html', '_self');
+    }
 });

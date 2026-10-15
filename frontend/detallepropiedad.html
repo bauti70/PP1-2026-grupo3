@@ -19,7 +19,7 @@
         </a>
     </div>
     <div class="nav-derecha">
-        <a href="login.html" style="text-decoration: none; color: inherit;">
+        <a href="login.html" onclick="localStorage.setItem('volverA', 'detallepropiedad.html')" style="text-decoration: none; color: inherit;">
             <div class="icono-usuario">
                 <i class="fa-regular fa-user"></i>
             </div>
@@ -98,6 +98,10 @@
                 <p id="error-huespedes" style="color:red; font-size:14px; margin-top: 5px; min-height: 20px;"></p>
             </div>
             <button type="submit" class="btn-confirmar">Reservar</button>
+            <div id="mensaje-bloqueo" style="display: none; text-align: center; margin-top: 15px; color: #d93025;">
+                <i class="fa-solid fa-lock" style="font-size: 24px; margin-bottom: 8px;"></i>
+                <p style="font-weight: bold; font-size: 14px; margin: 0;">Para reservar hace falta iniciar sesión.</p>
+            </div>
         </form>
 
         <section id="lista-reservas"></section>

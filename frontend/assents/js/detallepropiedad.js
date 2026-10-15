@@ -38,6 +38,16 @@ if(formReserva) {
     formReserva.addEventListener('submit', async function(evento){
         evento.preventDefault();
 
+        const sesion = localStorage.getItem('sesionIniciada');
+        const mensajeBloqueo = document.querySelector('#mensaje-bloqueo');
+
+        if (sesion !== 'true') {
+            mensajeBloqueo.style.display = 'block';
+            return; 
+        } else {
+            mensajeBloqueo.style.display = 'none';
+        }
+
         const fechaEntrada = document.querySelector('#llegada').value;
         const fechaSalida = document.querySelector('#salida').value;
         const huespedes = document.querySelector('#huespedes').value;
