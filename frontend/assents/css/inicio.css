@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap');
 
 :root {
   --morado: #5e5cee;
@@ -26,7 +25,6 @@ a {
   text-decoration: none;
 }
 
-/* Banner: menú a la izquierda, Login a la derecha */
 .nav-inicio { width: 100%; }
 
 .buscador-inicio {
@@ -53,14 +51,12 @@ a {
   font-weight: 700;
 }
 
-/* Contenido */
 .contenedor-inicio-galeria {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px 60px;
 }
 
-/* Título y buscador */
 .bloque-buscador {
   padding: 80px 0 60px;
   text-align: center;
@@ -114,7 +110,6 @@ a {
 
 .btn-buscar-inicio:hover { background: var(--morado-oscuro); }
 
-/* Destacados */
 .galeria-destinos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -154,14 +149,10 @@ a {
   color: var(--tinta);
 }
 
-/* Footer */
 .footer-inicio {
   padding: 40px 20px;
   text-align: center;
   color: var(--suave);
 }
 
-@media (max-width: 600px) {
-  .buscador-inicio { padding: 0 20px; }
-  .bloque-buscador { padding: 50px 0 40px; }
-}
+

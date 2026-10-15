@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap');
 
 * {
     box-sizing: border-box;
@@ -15,7 +14,6 @@ body {
     background-color: white;
 }
 
-/* Header */
 header nav {
     display: flex;
     align-items: center;
@@ -24,14 +22,12 @@ header nav {
     background: url("../../../docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg") center / cover;
 }
 
-/* Icono del menú */
 header nav::before {
     content: "☰";
     color: white;
     font-size: 26px;
 }
 
-/* Los dos enlaces se convierten en iconos (se oculta el texto) */
 header nav a {
     width: 40px;
     height: 40px;
@@ -41,12 +37,10 @@ header nav a {
     background-size: 26px;
 }
 
-/* Icono de la casa */
 header nav a:first-of-type {
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 11 12 3l9 8M5 10v10h14V10M10 20v-6h4v6'/></svg>");
 }
 
-/* Avatar a la derecha */
 header nav a:last-of-type {
     margin-left: auto;
     border-radius: 50%;
@@ -55,7 +49,6 @@ header nav a:last-of-type {
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235e5cee' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='8' r='4'/><path d='M4 21c0-4 3.6-7 8-7s8 3 8 7'/></svg>");
 }
 
-/* Huésped / Anfitrión (alineado con el formulario, que está centrado) */
 .role-toggle {
     display: flex;
     width: fit-content;
@@ -80,7 +73,6 @@ header nav a:last-of-type {
     color: white;
 }
 
-/* Formulario: columna izquierda con datos, derecha con la foto */
 .form-page {
     display: grid;
     grid-template-columns: 1fr 340px;
@@ -117,7 +109,6 @@ header nav a:last-of-type {
     gap: 20px;
 }
 
-/* Campos de a dos columnas */
 .contacto,
 .informacion_personal {
     display: grid;
@@ -156,7 +147,7 @@ header nav a:last-of-type {
     border-color: #5e5cee;
 }
 
-/* Foto de perfil */
+
 .col_derecha {
     padding: 24px;
     background-color: white;
@@ -196,7 +187,6 @@ header nav a:last-of-type {
     cursor: pointer;
 }
 
-/* Botón guardar */
 .subir {
     justify-self: end;
     padding: 12px 32px;
