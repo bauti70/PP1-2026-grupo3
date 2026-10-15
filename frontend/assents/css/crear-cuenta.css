@@ -146,3 +146,28 @@
 .icono-nav:hover {
     color: #5b7cfa;
 }
+
+.caja-requisitos {
+    background-color: #c9c9c9; 
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.caja-requisitos li {
+    margin-bottom: 5px;
+    transition: color 0.3s ease; 
+}
+
+.req-invalido {
+    color: #d93025; 
+}
+
+.req-valido {
+    color: #1e8e3e;
+}
+
+.req-invalido i, .req-valido i {
+    margin-right: 8px; 
+}

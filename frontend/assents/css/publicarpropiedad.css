@@ -12,8 +12,6 @@ body {
     color: #333;
     background-color: white;
 }
-
-/* Header */
 .navbar {
     display: flex;
     align-items: center;
@@ -22,14 +20,12 @@ body {
     background: url("../../../docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg") center / cover;
 }
 
-/* Icono del menú */
 .navbar::before {
     content: "☰";
     color: white;
     font-size: 26px;
 }
 
-/* Los dos enlaces se convierten en iconos (se oculta el texto) */
 .navbar a {
     width: 40px;
     height: 40px;
@@ -39,7 +35,6 @@ body {
     background-size: 26px;
 }
 
-/* Icono de la casa */
 .navbar a:first-of-type {
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 11 12 3l9 8M5 10v10h14V10M10 20v-6h4v6'/></svg>");
 }
@@ -51,7 +46,6 @@ body {
     border-radius: 20px;
 }
 
-/* Avatar a la derecha */
 .navbar a:last-of-type {
     margin-left: auto;
     border-radius: 50%;
@@ -60,7 +54,6 @@ body {
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235e5cee' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='8' r='4'/><path d='M4 21c0-4 3.6-7 8-7s8 3 8 7'/></svg>");
 }
 
-/* Formulario */
 .contenedor-principal {
     max-width: 1100px;
     margin: 24px auto 48px;
@@ -103,7 +96,6 @@ select:focus {
     border-color: #5e5cee;
 }
 
-/* Selects y servicios a la izquierda, subir imágenes a la derecha */
 .columnas-inferiores {
     display: grid;
     grid-template-columns: 3fr 2fr;
@@ -149,7 +141,6 @@ select:focus {
     clip: rect(0 0 0 0);
 }
 
-/* Caja de subir fotos */
 .columna-der {
     display: flex;
 }
@@ -180,7 +171,6 @@ select:focus {
     margin: 0;
 }
 
-/* Icono de subir */
 .caja-imagenes::before {
     content: "";
     width: 32px;
@@ -188,7 +178,6 @@ select:focus {
     background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23222' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 16V4m0 0-4 4m4-4 4 4M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4'/></svg>") center / contain no-repeat;
 }
 
-/* El input se oculta, pero se abre al hacer clic en la caja */
 .caja-imagenes input {
     position: absolute;
     width: 1px;
@@ -196,7 +185,6 @@ select:focus {
     opacity: 0;
 }
 
-/* Botón */
 .btn-publicar {
     display: block;
     width: 100%;

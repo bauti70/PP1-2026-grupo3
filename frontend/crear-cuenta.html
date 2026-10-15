@@ -14,7 +14,6 @@
                 <a href="#" class="icono-nav"><i class="fa-solid fa-bars"></i></a>
                 
                 <search class="buscador-crear-cuenta">
-                    <input type="text" placeholder="¿A dónde vamos?" required>
                 </search>
                 <a href="index.html" class="icono-nav"><i class="fa-solid fa-house"></i></a>
 
@@ -25,38 +24,58 @@
         <main>
             <h1 class="titulo-exterior">DISEÑEMOS TU CUENTA</h1>
 
-            <form class="cuenta-contenedor-columnas" action="procesar.php" method="post">
+            <form class="cuenta-contenedor-columnas" action="procesar.php" method="post" novalidate>
                 <div class="cuenta-columna-izquierda">  
                     <label class="cuenta-label" for="nombre">Nombre</label>
                     <input type="text" id="nombre" name="nombre" required>  
+                    <p id="error-nombre" style="color:red; font-size:14px; margin-top: 5px; margin-bottom: 15px;"></p>
+
 
                     <label class="cuenta-label" for="correo">Email</label>
                     <input type="email" id="correo" name="correo" required>
+                    <p id="error-correo" style="color:red; font-size:14px; margin-top: 5px; margin-bottom: 15px;"></p>
+
 
                     <label class="cuenta-label" for="clave">Crear contraseña</label>
+                    <small style="color: #555; font-size: 12px; margin-bottom: 8px; display: block;">Debe tener más de 8 caracteres, 1 mayúscula, 1 número y 1 carácter especial.</small>
                     <input type="password" id="clave" name="clave" required autocomplete="new-password">
+                    <div class="caja-requisitos">
+                        <p style="margin: 0 0 8px 0; font-weight: bold; font-size: 13px; color: #333;">La contraseña debe tener:</p>
+                        <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px;">
+                            <li id="req-largo" class="req-invalido"><i class="fa-solid fa-xmark"></i> Más de 8 caracteres</li>
+                            <li id="req-mayus" class="req-invalido"><i class="fa-solid fa-xmark"></i> 1 letra mayúscula</li>
+                            <li id="req-num" class="req-invalido"><i class="fa-solid fa-xmark"></i> 1 número</li>
+                            <li id="req-esp" class="req-invalido"><i class="fa-solid fa-xmark"></i> 1 carácter especial</li>
+                        </ul>
+                    </div>
+                    <p id="error-clave" style="color:red; font-size:14px; margin-top: 5px; margin-bottom: 15px;"></p>
                 
                     <label class="cuenta-label" for="clave_rep">Ingresa nuevamente su contraseña</label>
                     <input type="password" id="clave_rep" name="clave_rep" required autocomplete="new-password">
-                         
-                    <p class="cuenta-texto-link">¿Ya tiene una cuenta? Ingrese al siguiente enlace: <a href="login.html">iniciar sesion</a></p>
+                    <p id="error-clave-rep" style="color:red; font-size:14px; margin-top: 5px; margin-bottom: 15px;"></p>     
+
+
+                    <p class="cuenta-texto-link">¿Ya tiene una cuenta? Ingrese al siguiente enlace: <a href="login.html">INICIAR SESION</a></p>
                 </div>
 
                 <div class="cuenta-columna-derecha">
                     <p class="cuenta-titulo-roles"><strong>Seleccione que rol desea tomar:</strong></p>
                     
                     <select id="selector-rol" name="rol" class="cuenta-select">
-                        <option value="anfitrion">Rol</option>
-                        <option value="huesped">Huésped</option>
+                        <option value="huesped" selected>Huésped</option>
+                        <option value="anfitrion">Anfitrión</option>
                     </select>
                     
                     <div class="cuenta-caja-info" id="caja-info-dinamica">
                     </div>
+                    <p id="mensaje-exito" style="display: none; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; margin-bottom: 20px;">Usuario registrado</p>
 
-                    <button type="button" class="btn-crear-cuenta">CREAR CUENTA</button>
+
+                    <button type="submit" class="btn-crear-cuenta">CREAR CUENTA</button>
                 </div>    
             </form>
-        </main>     
+        </main>  
+           
         <script src="assents/js/crear-cuenta.js"></script>
 
 
