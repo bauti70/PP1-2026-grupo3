@@ -4,97 +4,61 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Crear Cuenta</title>
-        <link rel="stylesheet" href="assents/css/estilos.css">
+        <link rel="stylesheet" href="assents/css/crear-cuenta.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     </head>
     <body class="page-cuenta">
         <header class="cuenta-header">
             <nav>
-                <a href="index.html">Inicio</a>
+                <a href="#" class="icono-nav"><i class="fa-solid fa-bars"></i></a>
                 
                 <search class="buscador-crear-cuenta">
                     <input type="text" placeholder="¿A dónde vamos?" required>
                 </search>
-                <a href="login.html">Login</a>
+                <a href="index.html" class="icono-nav"><i class="fa-solid fa-house"></i></a>
 
             </nav>
         </header>
 
 
         <main>
+            <h1 class="titulo-exterior">DISEÑEMOS TU CUENTA</h1>
+
             <form class="cuenta-contenedor-columnas" action="procesar.php" method="post">
                 <div class="cuenta-columna-izquierda">  
-                    <label class="crear-cuenta." for="text">
-                        <p>
-                            <strong>CREAR CUENTA</strong>
-                        </p>
-                        <label>  
-                    <label class="cuenta-label" for="nombre"> INGRESE SU NOMBRE </label>
-                    <br>
-                    <input class="cuenta-input" type="text" id="nombre" name="nombre" required>  
-                    <br><br>
+                    <label class="cuenta-label" for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>  
 
-                    <label class="cuenta-label" for="correo"> INGRESE SU CORREO ELECTRONICO</label>
-                    <br>
+                    <label class="cuenta-label" for="correo">Email</label>
                     <input type="email" id="correo" name="correo" required>
-                    <br><br>
 
-                    <label class="cuenta-label" for="clave">INGRESE UNA CONTRASEÑA</label>
-                    <br>
-                    <input class="cuenta-input" type="password" id="clave" name="clave" required>
-                    <br><br>
+                    <label class="cuenta-label" for="clave">Crear contraseña</label>
+                    <input type="password" id="clave" name="clave" required autocomplete="new-password">
                 
-                    <label class="cuenta-label" for="clave_rep">INGRESE NUEVAMENTE SU CONTRASEÑA</label>
-                    <br>
-                    <input class="cuenta-input" type="password" id="clave_rep" name="clave_rep" required>
-                    <br><br>
+                    <label class="cuenta-label" for="clave_rep">Ingresa nuevamente su contraseña</label>
+                    <input type="password" id="clave_rep" name="clave_rep" required autocomplete="new-password">
                          
-                    <p>¿Ya tienes una cuenta? Ingrese al siguiente link <a href="login.html">INICIAR SESION</a></p>
+                    <p class="cuenta-texto-link">¿Ya tiene una cuenta? Ingrese al siguiente enlace: <a href="login.html">iniciar sesion</a></p>
                 </div>
-                
+
                 <div class="cuenta-columna-derecha">
-                <p class="cuenta-titulo-roles-principal"><strong>SELECCIONE QUE ROL DESEA TOMAR:</strong> </p>
-                
-                <div class="cuenta-caja-gris-roles">
+                    <p class="cuenta-titulo-roles"><strong>Seleccione que rol desea tomar:</strong></p>
                     
-                    <div class="cuenta-bloque-rol">
-                        <div class="cuenta-caja-negra">
-                            <label for="rol_anfitrion">ANFITRION</label>
-                            <input class="cuenta-input" type="radio" id="rol_anfitrion" name="rol" value="anfitrion">
-                        </div>
-                        <div class="cuenta-caja-info">
-                            <p><strong> ROL DE ANITRION:</strong></p>
-                            <ul>
-                                <li>Publica, edita y retira propiedades del catálogo.</li>
-                                <li>Controla qué fechas están libres o bloqueadas en tu calendario.</li>
-                                <li>Revisa y organiza las reservas entrantes.</li>
-                            </ul>
-                        </div>
+                    <select id="selector-rol" name="rol" class="cuenta-select">
+                        <option value="anfitrion">Rol</option>
+                        <option value="huesped">Huésped</option>
+                    </select>
+                    
+                    <div class="cuenta-caja-info" id="caja-info-dinamica">
                     </div>
 
-                    <div class="cuenta-bloque-rol">
-                        <div class="cuenta-caja-negra">
-                            <label for="rol_huesped">HUESPED</label>
-                            <input class="cuenta-input" type="radio" id="rol_huesped" name="rol" value="huesped">
-                        </div>
-                        <div class="cuenta-caja-info">
-                            <p><strong>ROL DE HUESPED:</strong></p>
-                            <ul>
-                                <li>Busca alojamiento para tus próximas fechas.</li>
-                                <li>Realiza nuevas reservas de forma segura.</li>
-                                <li>Accede al panel de "Mis reservas" para ver o cancelar tus estadías.</li>
-                            </ul>
-                        </div> 
-                    </div>
-                    <div>
-                        <button type="submit">Crear Cuenta</button>
-                    </div>
+                    <button type="button" class="btn-crear-cuenta">CREAR CUENTA</button>
                 </div>    
             </form>
-
-
-        </main>        
-        
-
+        </main>     
+        <script src="assents/js/crear-cuenta.js"></script>
 
 
     </body>
+</html>
