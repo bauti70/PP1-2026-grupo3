@@ -3,24 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservas Recibidas — Panel Anfitrión</title>
-    <link rel="stylesheet" href="assents/css/estilos.css">
+    <title>Reservas recibidas — Panel anfitrión</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assents/css/reservas-recibidas.css">
 </head>
-<body>
 
-    <header>
-        <nav class="navbar">
-            <a href="index.html">Inicio</a>
-            <input type="search" placeholder="¿A donde vamos?">
-            <a href="login.html">Login</a>
-        </nav>
+<body class="page-reservas-recibidas">
+    <header class="barra-superior-fondo" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg');">
+        <div class="nav-izquierda">
+            <i class="fa-solid fa-bars icono-blanco"></i>
+            <a href="index.html" class="icono-blanco" style="text-decoration: none;">
+                <i class="fa-solid fa-house icono-blanco"></i>
+            </a>
+        </div>
+        <div class="nav-derecha">
+                    <a href="login.html" onclick="localStorage.setItem('volverA', 'reservas-recibidas.html')" style="text-decoration: none; color: inherit;">
+                <div class="icono-usuario">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+            </a>
+        </div>
     </header>
 
     <main class="contenedor-principal">
-        
-        <section class="barra-herramientas-anfitrion">
+
+        <section class="barra-herramientas-anfitrion" aria-label="Filtros y notificaciones">
             <div class="grupo-filtro-orden">
                 <label for="ordenar">Mostrar:</label>
+
                 <select id="ordenar" name="ordenar">
                     <option value="recientes" selected>Más recientes</option>
                     <option value="pendientes">Pendientes</option>
@@ -30,66 +41,192 @@
             </div>
 
             <div class="caja-notificacion" role="status">
-                <span>🔔</span>
+                <i class="fa-regular fa-bell" aria-hidden="true"></i>
+
                 <p>Tenés <strong>1 solicitud pendiente</strong> por responder.</p>
             </div>
         </section>
 
-        <h1 class="titulo-seccion">Reservas Recibidas</h1>
+        <div class="cabecera-seccion">
+            <div class="icono-titulo">
+                <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+            </div>
 
-        <section class="lista-reservas-recibidas">
+            <div>
+                <h1 id="titulo-reservas" class="titulo-seccion">
+                    Reservas Recibidas
+                </h1>
 
+                <p class="descripcion-seccion">
+                    Gestioná las reservas de tus propiedades y mantené el
+                    contacto con tus huéspedes.
+                </p>
+            </div>
+        </div>
+
+        <section class="lista-reservas-recibidas" aria-labelledby="titulo-reservas">
             <article class="tarjeta-reserva-anfitrion">
-                <header class="encabezado-tarjeta-reserva">
-                    <h2 class="nombre-propiedad">Apartamento vista al río</h2>
-                    <span class="badge-estado estado-pendiente">Pendiente</span>
-                </header>
-                <div class="cuerpo-tarjeta-reserva">
-                    <div class="info-huesped">
-                        <p><strong>Huésped:</strong> Carlos Gómez</p>
-                        <p><strong>Cantidad:</strong> 2 huéspedes</p>
-                        <p><strong>Fechas:</strong> 10/07/2026 al 15/07/2026 (5 noches)</p>
-                        <p><strong>Total:</strong> $225.000</p>
+                <img class="imagen-propiedad" src="../docs/2da-entrega/imagenes_referencia/Apartamento vista al río.webp" alt="Apartamento vista al río" width="234" height="194">
+                <div class="info-reserva">
+
+                    <h2 class="nombre-propiedad"> Apartamento vista al río </h2>
+                    <p class="ubicacion-propiedad">
+                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                        <span>Palermo, Buenos Aires</span>
+                    </p>
+
+                    <p class="detalle-reserva">
+                        <i class="fa-regular fa-user" aria-hidden="true"></i>
+                        <span><strong>Huésped:</strong> Carlos Gómez</span>
+                    </p>
+
+                    <p class="detalle-reserva">
+                        <i class="fa-regular fa-user" aria-hidden="true"></i>
+                        <span><strong>Cantidad:</strong> 2 huéspedes</span>
+                    </p>
+
+                    <p class="detalle-reserva">
+                        <i class="fa-regular fa-calendar-days" aria-hidden="true"></i>
+                        <span>
+                            <strong>Fechas / Rango:</strong>
+                            10/07/2026 al 15/07/2026 (5 noches)
+                        </span>
+                    </p>
+
+                    <p class="monto-total">
+                        <i class="fa-solid fa-coins" aria-hidden="true"></i>
+                        <span>Monto total: <strong>$225.000</strong></span>
+                    </p>
+                </div>
+
+                <div class="acciones-reserva">
+                    <div class="estado-opciones">
+                        <span class="badge-estado estado-pendiente">
+                            <i class="fa-solid fa-clock" aria-hidden="true"></i> Pendiente de aprobación </span>
+                        <span class="opciones-reserva" aria-hidden="true">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </span>
                     </div>
-                    <div class="acciones-reserva">
-                        <button type="button" class="btn-contacto">Contactar huésped</button>
-                    </div>
+
+                    <button type="button" class="btn-contacto">
+                        <i class="fa-regular fa-message" aria-hidden="true"></i> 
+                        Contactar huésped
+                    </button>
                 </div>
             </article>
 
             <article class="tarjeta-reserva-anfitrion">
-                <header class="encabezado-tarjeta-reserva">
+                <img class="imagen-propiedad" src="../docs/2da-entrega/imagenes_referencia/Casa con jardín en Mendoza.jpg" alt="Casa con jardín en Mendoza" width="234" height="194">
+
+                <div class="info-reserva">
                     <h2 class="nombre-propiedad">Casa con jardín en Mendoza</h2>
-                    <span class="badge-estado estado-activa">Confirmada</span>
-                </header>
-                <div class="cuerpo-tarjeta-reserva">
-                    <div class="info-huesped">
-                        <p><strong>Huésped:</strong> María Laura Fernández</p>
-                        <p><strong>Cantidad:</strong> 4 huéspedes</p>
-                        <p><strong>Fechas:</strong> 20/07/2026 al 24/07/2026 (4 noches)</p>
-                        <p><strong>Total:</strong> $320.000</p>
-                    </div>
-                    <div class="acciones-reserva">
-                        <button type="button" class="btn-contacto">Contactar huésped</button>
-                    </div>
+
+                    <p class="ubicacion-propiedad">
+                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                        <span>Mendoza, Mendoza</span>
+                    </p>
+
+                    <p class="detalle-reserva">
+                        <i class="fa-regular fa-user" aria-hidden="true"></i>
+                        <span>
+                            <strong>Huésped:</strong> María Laura Fernández
+                        </span>
+                    </p>
+
+                    <p class="detalle-reserva">
+                        <i class="fa-regular fa-user" aria-hidden="true"></i>
+                        <span><strong>Cantidad:</strong> 4 huéspedes</span>
+                    </p>
+
+                    <p class="detalle-reserva">
+                        <i class="fa-regular fa-calendar-days" aria-hidden="true"></i>
+                        <span>
+                            <strong>Fechas / Rango:</strong>
+                            20/07/2026 al 24/07/2026 (4 noches)
+                        </span>
+                    </p>
+
+                    <p class="monto-total">
+                        <i class="fa-solid fa-coins" aria-hidden="true"></i>
+                        <span>Monto total: <strong>$320.000</strong></span>
+                    </p>
                 </div>
+
+                <div class="acciones-reserva">
+                    <div class="estado-opciones">
+                        <span class="badge-estado estado-activa">
+                            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                            Activa / Confirmada
+                        </span>
+
+                        <span class="opciones-reserva" aria-hidden="true">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </span>
+                    </div>
+
+                    <button type="button" class="btn-contacto">
+                        <i class="fa-regular fa-message" aria-hidden="true"></i>
+                        Contactar huésped
+                    </button>
+                </div>
+
             </article>
 
             <article class="tarjeta-reserva-anfitrion">
-                <header class="encabezado-tarjeta-reserva">
+                <img class="imagen-propiedad" src="../docs/2da-entrega/imagenes_referencia/Cabaña en Bariloche.jpg" alt="Cabaña en Bariloche" width="234" height="194">
+                <div class="info-reserva">
+                    
                     <h2 class="nombre-propiedad">Cabaña en Bariloche</h2>
-                    <span class="badge-estado estado-cancelada">Cancelada</span>
-                </header>
-                <div class="cuerpo-tarjeta-reserva">
-                    <div class="info-huesped">
-                        <p><strong>Huésped:</strong> Juan Pablo Martínez</p>
-                        <p><strong>Cantidad:</strong> 2 huéspedes</p>
-                        <p><strong>Fechas:</strong> 05/08/2026 al 09/08/2026 (4 noches)</p>
-                        <p><strong>Total:</strong> $180.000</p>
+                    <p class="ubicacion-propiedad">
+                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                        <span>Bariloche, Río Negro</span>
+                    </p>
+
+                    <p class="detalle-reserva">
+                        <i class="fa-regular fa-user" aria-hidden="true"></i>
+                        <span>
+                            <strong>Huésped:</strong> Juan Pablo Martínez
+                        </span>
+                    </p>
+
+                    <p class="detalle-reserva">
+                        <i class="fa-regular fa-user" aria-hidden="true"></i>
+                        <span><strong>Cantidad:</strong> 2 huéspedes</span>
+                    </p>
+
+                    <p class="detalle-reserva">
+                        <i class="fa-regular fa-calendar-days" aria-hidden="true"></i>
+                        <span>
+                            <strong>Fechas / Rango:</strong>
+                            05/08/2026 al 09/08/2026 (4 noches)
+                        </span>
+                    </p>
+
+                    <p class="monto-total">
+                        <i class="fa-solid fa-coins" aria-hidden="true"></i>
+                        <span>Monto total: <strong>$180.000</strong></span>
+                    </p>
+
+                </div>
+                <div class="acciones-reserva">
+                    <div class="estado-opciones">
+
+                        <span class="badge-estado estado-cancelada">
+                            <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>
+                            Cancelada
+                        </span>
+
+                        <span class="opciones-reserva" aria-hidden="true">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </span>
+
                     </div>
-                    <div class="acciones-reserva">
-                        <span class="nota-cancelado">Cancelada por el huésped</span>
-                    </div>
+
+                    <button type="button" class="btn-contacto btn-contacto-contorno">
+                        <i class="fa-regular fa-message" aria-hidden="true"></i>
+                        Contactar huésped
+                    </button>
+
                 </div>
             </article>
 
