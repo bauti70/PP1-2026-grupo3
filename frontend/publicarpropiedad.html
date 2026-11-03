@@ -3,90 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publicar Propiedad</title>
+    <title>Publicar propiedad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assents/css/publicarpropiedad.css">
 </head>
-<body>
 
-<header>
-    <nav class="navbar">
-        <a href="index.html">Inicio</a>
-        
-        <a href="editar.html">Perfil</a>
-    </nav>
-</header>
+<body class="page-publicar">
+    <header class="barra-superior-fondo" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg');">
+        <div class="nav-izquierda">
+            <i class="fa-solid fa-bars icono-blanco" aria-hidden="true"></i>
+            <a href="index.html" class="icono-blanco" aria-label="Ir al inicio">
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="nav-derecha">
+            <a href="editar.html" class="icono-usuario" aria-label="Ir a mi perfil">
+                <i class="fa-regular fa-user" aria-hidden="true"></i>
+            </a>
+        </div>
+    </header>
 
-<main class="contenedor-principal">
-    <form class="form-publicar">
-        <p><strong>Publicar propiedades</strong></p>
+    <main class="contenedor-principal">
 
-        <section class="datos-principales">
-            <label for="nombre">Nombre propiedad</label>
-            <input type="text" id="nombre" required>
+        <div class="encabezado-publicar">
+            <h1>Publicar propiedades</h1>
+            <p>Completá los datos de tu alojamiento y compartilo con quienes buscan su próximo destino.</p>
+        </div>
 
-            <label for="direccion">Dirección</label>
-            <input type="text" id="direccion" required>
+        <form id="form-publicar" class="form-publicar">
 
-            <label for="email">Email de contacto</label>
-            <input type="email" id="email" required>
+            <section class="datos-principales" aria-labelledby="titulo-datos">
+                <div class="titulo-panel">
+                    <span class="icono-panel">
+                        <i class="fa-solid fa-house" aria-hidden="true"></i>
+                    </span>
+                    <h2 id="titulo-datos">Datos de la propiedad</h2>
+                </div>
 
-            <label for="descripcion">Descripción</label>
-            <textarea id="descripcion" rows="4" required></textarea>
+                <div class="campo">
+                    <label for="nombre">Nombre propiedad</label>
+                    <div class="campo-con-icono">
+                        <i class="fa-solid fa-house" aria-hidden="true"></i>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ej: Cabaña junto al lago" required>
+                    </div>
+                </div>
 
-            <label for="precio">Precio por noche</label>
-            <input type="number" id="precio" min="0" required>
-        </section>
+                <div class="campo">
+                    <label for="direccion">Dirección</label>
+                    <div class="campo-con-icono">
+                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                        <input type="text" id="direccion" name="direccion" placeholder="Calle, número, ciudad y provincia" required>
+                    </div>
+                </div>
 
-        <section class="columnas-inferiores">
-            
-            <section class="columna-izq">
-                <label for="ocupantes">Cantidad de ocupantes máximos</label>
-                <select id="ocupantes">
-                    <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
-                </select>
+                <div class="campo">
+                    <label for="email">Email de contacto</label>
+                    <div class="campo-con-icono">
+                        <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+                        <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+                    </div>
+                </div>
 
-                <label for="ocupantes">Cantidad de ocupantes minimos</label>
-                <select id="ocupantes">
-                    <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
-                </select>
+                <div class="campo">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" name="descripcion" rows="4" placeholder="Contá cómo es tu alojamiento y qué lo hace especial..." required></textarea>
+                </div>
 
-                <label for="baños">Cantidad de baños</label>
-                <select id="baños">
-                    <option>1</option><option>2</option><option>3+</option>
-                </select>
-
-                <label for="habitaciones">Cantidad de habitaciones</label>
-                <select id="habitaciones">
-                    <option>1</option><option>2</option><option>3</option><option>4+</option>
-                </select>
-
-                <fieldset class="grupo-checkboxes">
-                    <legend class="oculto">Servicios incluidos</legend>
-                    
-                    <input type="checkbox" id="wifi">
-                    <label for="wifi" class="label-check">WiFi</label>
-                    
-                    <input type="checkbox" id="pileta">
-                    <label for="pileta" class="label-check">Pileta</label>
-                    
-                    <input type="checkbox" id="estacionamiento">
-                    <label for="estacionamiento" class="label-check">Estacionamiento</label>
-                </fieldset>
+                <div class="campo campo-ultimo">
+                    <label for="precio">Precio por noche</label>
+                    <div class="campo-con-icono">
+                        <i class="fa-solid fa-dollar-sign" aria-hidden="true"></i>
+                        <input type="number" id="precio" name="precio" min="0" placeholder="Ingresá el precio por noche" required>
+                    </div>
+                </div>
             </section>
 
-            <section class="columna-der">
-                <label for="imagenes" class="caja-imagenes">
-                    <p>subir imagenes para exponer</p>
-                    <input type="file" id="imagenes" multiple required>
-                </label>
+            <div class="columna-derecha">
+
+                <section class="fotos-propiedad" aria-labelledby="titulo-fotos">
+                    <div class="titulo-panel">
+                        <span class="icono-panel">
+                            <i class="fa-regular fa-image" aria-hidden="true"></i>
+                        </span>
+                        <h2 id="titulo-fotos">Fotos de la propiedad</h2>
+                    </div>
+
+                    <div class="caja-imagenes">
+                        <i class="fa-regular fa-image icono-subida" aria-hidden="true"></i>
+                        <p>Arrastrá tus imágenes o seleccioná archivos</p>
+                        <label for="imagenes" class="btn-imagenes">Subir imágenes</label>
+                        <input type="file" id="imagenes" name="imagenes" class="input-imagenes" accept="image/*" multiple required>
+                    </div>
+                </section>
+
+                <section class="servicios-propiedad" aria-label="Servicios de la propiedad">
+                    <fieldset class="grupo-checkboxes">
+                        <legend>Servicios</legend>
+
+                        <div class="fila-servicio">
+                            <input type="checkbox" id="wifi" name="servicios" value="wifi">
+                            <label for="wifi">Wi-Fi</label>
+                        </div>
+
+                        <div class="fila-servicio">
+                            <input type="checkbox" id="pileta" name="servicios" value="pileta">
+                            <label for="pileta">Pileta</label>
+                        </div>
+
+                        <div class="fila-servicio">
+                            <input type="checkbox" id="estacionamiento" name="servicios" value="estacionamiento">
+                            <label for="estacionamiento">Estacionamiento</label>
+                        </div>
+                    </fieldset>
+                </section>
+
+            </div>
+            <section class="capacidad-ambientes" aria-labelledby="titulo-capacidad">
+                <div class="titulo-panel">
+                    <span class="icono-panel">
+                        <i class="fa-solid fa-user-group" aria-hidden="true"></i>
+                    </span>
+                    <h2 id="titulo-capacidad">Capacidad y ambientes</h2>
+                </div>
+                <div class="campos-capacidad">
+
+                    <div class="campo-capacidad">
+                        <label for="ocupantes-maximos">Cantidad de ocupantes máximos</label>
+                        <select id="ocupantes-maximos" name="ocupantesMaximos">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5+">5+</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-capacidad">
+                        <label for="ocupantes-minimos">Cantidad de ocupantes mínimos</label>
+                        <select id="ocupantes-minimos" name="ocupantesMinimos">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5+">5+</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-capacidad">
+                        <label for="baños">Cantidad de baños</label>
+                        <select id="baños" name="banos">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3+">3+</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-capacidad">
+                        <label for="habitaciones">Cantidad de habitaciones</label>
+                        <select id="habitaciones" name="habitaciones">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4+">4+</option>
+                        </select>
+                    </div>
+
+                </div>
             </section>
 
-        </section>
+            <button type="button" class="btn-publicar">Publicar propiedad</button>
 
-        <input type="submit" value="Publicar propiedad" class="btn-publicar">
+        </form>
 
-    </form>
-</main>
+    </main>
 
 </body>
 </html>
