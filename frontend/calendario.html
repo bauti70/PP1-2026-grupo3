@@ -2,146 +2,256 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario de disponibilidad</title>
-    <link rel="stylesheet" href="assents/css/estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assents/css/calendario.css">
 </head>
+
 <body class="page-calendario">
 
-<header class="cal-header">
-    <p class="cal-nav-titulo">BARRA DE NAVEGACION</p>
-    <nav class="cal-nav">
-        <a href="index.html">Inicio</a>
-        <input class="cal-input-buscar" type="search" placeholder="¿A donde vamos?">
-        <a href="login.html">Login</a>
-    </nav>
-</header>
+    <header class="barra-superior-fondo" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg');">
+        <div class="nav-izquierda">
+            <i class="fa-solid fa-bars icono-blanco" aria-hidden="true"></i>
+            <a href="index.html" class="icono-blanco" aria-label="Ir al inicio">
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
+            </a>
+        </div>
 
+        <div class="nav-derecha">
+            <a href="login.html" class="icono-usuario" onclick="localStorage.setItem('volverA', 'calendario.html')" aria-label="Iniciar sesión">
+                <i class="fa-regular fa-user" aria-hidden="true"></i>
+            </a>
+        </div>
+    </header>
 
-<main class="cal-main">
+    <main class="cal-main">
 
-    <h1 class="cal-titulo-principal">Calendario de disponibilidad</h1>
-
-    <div class="cal-selector-propiedad">
-        <label for="propiedad">PROPIEDAD</label>
-        <select id="propiedad" class="cal-select" name="propiedad">
-            <option value="1">Apartamento vista al río</option>
-            <option value="2">Cabaña del bosque</option>
-            <option value="3">Depto centro</option>
-        </select>
-    </div>
-
-    <div class="cal-navegacion-mes">
-        <button type="button" class="cal-btn-mes">◄</button>
-        <h2 class="cal-mes-actual">Agosto 2026</h2>
-        <button type="button" class="cal-btn-mes">►</button>
-    </div>
-
-    <div class="cal-leyenda">
-        <label><input type="checkbox"> Libre</label>
-        <label><input type="checkbox" checked> Ocupada (con reserva)</label>
-        <label><input type="checkbox" checked> Bloqueada por vos</label>
-    </div>
-
-    <table class="cal-tabla">
-        <thead>
-            <tr>
-                <th>LUN</th>
-                <th>MAR</th>
-                <th>MIÉ</th>
-                <th>JUE</th>
-                <th>VIE</th>
-                <th>SÁB</th>
-                <th>DOM</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="cal-dia-fuera">27</td>
-                <td class="cal-dia-fuera">28</td>
-                <td class="cal-dia-fuera">29</td>
-                <td class="cal-dia-fuera">30</td>
-                <td class="cal-dia-fuera">31</td>
-                <td>1</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>4</td>
-                <td class="cal-dia-ocupada">5<br><span class="cal-etiqueta">OCUPADA</span></td>
-                <td class="cal-dia-ocupada">6<br><span class="cal-etiqueta">OCUPADA</span></td>
-                <td class="cal-dia-ocupada">7<br><span class="cal-etiqueta">OCUPADA</span></td>
-                <td>8</td>
-                <td>9</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>11</td>
-                <td class="cal-dia-seleccionado">12</td>
-                <td>13</td>
-                <td>14</td>
-                <td class="cal-dia-bloqueada">15<br><span class="cal-etiqueta">BLOQUEADA</span></td>
-                <td class="cal-dia-bloqueada">16<br><span class="cal-etiqueta">BLOQUEADA</span></td>
-            </tr>
-            <tr>
-                <td>17</td>
-                <td>18</td>
-                <td>19</td>
-                <td>20</td>
-                <td>21</td>
-                <td>22</td>
-                <td>23</td>
-            </tr>
-            <tr>
-                <td>24</td>
-                <td>25</td>
-                <td>26</td>
-                <td>27</td>
-                <td>28</td>
-                <td>29</td>
-                <td>30</td>
-            </tr>
-            <tr>
-                <td>31</td>
-                <td class="cal-dia-fuera">1</td>
-                <td class="cal-dia-fuera">2</td>
-                <td class="cal-dia-fuera">3</td>
-                <td class="cal-dia-fuera">4</td>
-                <td class="cal-dia-fuera">5</td>
-                <td class="cal-dia-fuera">6</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <form class="cal-form-bloqueo">
-        <h2 class="cal-subtitulo-form">BLOQUEAR O LIBERAR FECHAS</h2>
-
-        <div class="cal-fila-inputs">
-            <div class="cal-campo">
-                <label for="desde">DESDE</label>
-                <input type="date" id="desde" class="cal-input-form" value="2026-08-15">
+        <div class="cal-encabezado">
+            <div class="cal-presentacion">
+                <h1>Calendario de disponibilidad</h1>
+                <p>Consultá reservas y administrá los días disponibles de tu alojamiento.</p>
             </div>
 
-            <div class="cal-campo">
-                <label for="hasta">HASTA</label>
-                <input type="date" id="hasta" class="cal-input-form" value="2026-08-16">
-            </div>
+            <div class="cal-selector-propiedad">
+                <label for="propiedad">Propiedad</label>
 
-            <div class="cal-campo">
-                <label for="motivo">MOTIVO</label>
-                <select id="motivo" class="cal-input-form">
-                    <option value="personal">Uso personal</option>
-                    <option value="mantenimiento">Mantenimiento</option>
-                </select>
+                <div class="cal-select-con-icono">
+                    <span class="cal-icono-propiedad">
+                        <i class="fa-solid fa-building" aria-hidden="true"></i>
+                    </span>
+
+                    <select id="propiedad" name="propiedad">
+                        <option value="1">Apartamento vista al río</option>
+                        <option value="2">Cabaña del bosque</option>
+                        <option value="3">Depto centro</option>
+                    </select>
+                </div>
             </div>
         </div>
 
-        <div class="cal-acciones-form">
-            <button type="button" class="cal-btn-liberar">Liberar fechas</button>
-            <button type="button" class="cal-btn-bloquear">Bloquear fechas</button>
-        </div>
-    </form>
+        <div class="cal-distribucion">
 
-</main>
+            <section class="cal-panel-calendario" aria-labelledby="titulo-mes">
+
+                <div class="cal-navegacion-mes">
+                    <h2 id="titulo-mes" class="cal-mes-actual">Agosto <span>2026</span></h2>
+
+                    <div class="cal-controles-mes">
+                        <button type="button" class="cal-btn-mes" aria-label="Mes anterior">
+                            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                        </button>
+
+                        <button type="button" class="cal-btn-hoy">Hoy</button>
+
+                        <button type="button" class="cal-btn-mes" aria-label="Mes siguiente">
+                            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="cal-tabla-contenedor">
+                    <table class="cal-tabla" aria-label="Disponibilidad de agosto de 2026">
+
+                        <thead>
+                            <tr>
+                                <th scope="col">LUN</th>
+                                <th scope="col">MAR</th>
+                                <th scope="col">MIÉ</th>
+                                <th scope="col">JUE</th>
+                                <th scope="col">VIE</th>
+                                <th scope="col">SÁB</th>
+                                <th scope="col">DOM</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="cal-dia-fuera"><span class="cal-numero">27</span></td>
+                                <td class="cal-dia-fuera"><span class="cal-numero">28</span></td>
+                                <td class="cal-dia-fuera"><span class="cal-numero">29</span></td>
+                                <td class="cal-dia-fuera"><span class="cal-numero">30</span></td>
+                                <td class="cal-dia-fuera"><span class="cal-numero">31</span></td>
+                                <td><span class="cal-numero">1</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">2</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                            </tr>
+
+                            <tr>
+                                <td><span class="cal-numero">3</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">4</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">5</span><span class="cal-estado cal-ocupada"><i class="fa-solid fa-circle" aria-hidden="true"></i> Ocupada</span></td>
+                                <td><span class="cal-numero">6</span><span class="cal-estado cal-ocupada"><i class="fa-solid fa-circle" aria-hidden="true"></i> Ocupada</span></td>
+                                <td><span class="cal-numero">7</span><span class="cal-estado cal-ocupada"><i class="fa-solid fa-circle" aria-hidden="true"></i> Ocupada</span></td>
+                                <td><span class="cal-numero">8</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">9</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                            </tr>
+
+                            <tr>
+                                <td><span class="cal-numero">10</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">11</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+
+                                <td class="cal-dia-seleccionado" aria-label="12 de agosto, libre, seleccionado">
+                                    <span class="cal-numero">12</span>
+                                    <i class="fa-solid fa-circle-check cal-marca-seleccion" aria-hidden="true"></i>
+                                    <span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span>
+                                </td>
+
+                                <td><span class="cal-numero">13</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">14</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">15</span><span class="cal-estado cal-bloqueada"><i class="fa-solid fa-circle" aria-hidden="true"></i> Bloqueada</span></td>
+                                <td><span class="cal-numero">16</span><span class="cal-estado cal-bloqueada"><i class="fa-solid fa-circle" aria-hidden="true"></i> Bloqueada</span></td>
+                            </tr>
+
+                            <tr>
+                                <td><span class="cal-numero">17</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">18</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">19</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">20</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">21</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">22</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">23</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                            </tr>
+
+                            <tr>
+                                <td><span class="cal-numero">24</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">25</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">26</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">27</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">28</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">29</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td><span class="cal-numero">30</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                            </tr>
+
+                            <tr>
+                                <td><span class="cal-numero">31</span><span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span></td>
+                                <td class="cal-dia-fuera"><span class="cal-numero">1</span></td>
+                                <td class="cal-dia-fuera"><span class="cal-numero">2</span></td>
+                                <td class="cal-dia-fuera"><span class="cal-numero">3</span></td>
+                                <td class="cal-dia-fuera"><span class="cal-numero">4</span></td>
+                                <td class="cal-dia-fuera"><span class="cal-numero">5</span></td>
+                                <td class="cal-dia-fuera"><span class="cal-numero">6</span></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <div class="cal-pie-calendario">
+                    <div class="cal-leyenda" aria-label="Estados de disponibilidad">
+                        <span class="cal-estado cal-libre"><i class="fa-solid fa-circle" aria-hidden="true"></i> Libre</span>
+                        <span class="cal-estado cal-ocupada"><i class="fa-solid fa-circle" aria-hidden="true"></i> Ocupada</span>
+                        <span class="cal-estado cal-bloqueada"><i class="fa-solid fa-circle" aria-hidden="true"></i> Bloqueada</span>
+                    </div>
+
+                    <p class="cal-actualizacion">
+                        <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
+                        Actualizado hoy, 09:42
+                    </p>
+                </div>
+
+            </section>
+
+            <section class="cal-panel-gestion" aria-labelledby="titulo-gestion">
+
+                <div class="cal-titulo-gestion">
+                    <span class="cal-icono-gestion">
+                        <i class="fa-regular fa-calendar-days" aria-hidden="true"></i>
+                    </span>
+
+                    <div>
+                        <h2 id="titulo-gestion">Gestionar fechas</h2>
+                        <p>Bloqueá o liberá un rango.</p>
+                    </div>
+                </div>
+
+                <form id="form-bloqueo" class="cal-form-bloqueo">
+
+                    <div class="cal-modos">
+                        <button type="button" class="cal-modo cal-modo-activo">
+                            <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                            Bloquear
+                        </button>
+
+                        <button type="button" class="cal-modo">
+                            <i class="fa-solid fa-unlock" aria-hidden="true"></i>
+                            Liberar
+                        </button>
+                    </div>
+
+                    <div class="cal-campo">
+                        <label for="desde">Fecha de inicio</label>
+                        <input type="date" id="desde" name="desde" class="cal-input-form" value="2026-08-12">
+                    </div>
+
+                    <div class="cal-campo">
+                        <label for="hasta">Fecha de fin</label>
+                        <input type="date" id="hasta" name="hasta" class="cal-input-form" value="2026-08-14">
+                    </div>
+
+                    <div class="cal-campo">
+                        <label for="motivo">Motivo</label>
+                        <select id="motivo" name="motivo" class="cal-input-form">
+                            <option value="personal">Uso personal</option>
+                            <option value="mantenimiento">Mantenimiento</option>
+                        </select>
+                    </div>
+
+                    <div class="cal-seleccion-rapida">
+                        <p>Selección rápida</p>
+
+                        <div class="cal-botones-rapidos">
+                            <button type="button" class="cal-btn-rapido">Fin de semana</button>
+                            <button type="button" class="cal-btn-rapido">7 días</button>
+                            <button type="button" class="cal-btn-rapido">15 días</button>
+                        </div>
+                    </div>
+
+                    <div class="cal-resumen">
+                        <div class="cal-resumen-titulo">
+                            <span>Período seleccionado</span>
+                            <strong>3 días</strong>
+                        </div>
+
+                        <p>12–14 de agosto de 2026</p>
+                    </div>
+
+                    <button type="button" class="cal-btn-aplicar">
+                        <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                        Bloquear 3 días
+                    </button>
+
+                    <p class="cal-nota">
+                        <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                        <span>Los días con una reserva confirmada no pueden liberarse desde este formulario.</span>
+                    </p>
+
+                </form>
+
+            </section>
+
+        </div>
+
+    </main>
 
 </body>
 </html>
