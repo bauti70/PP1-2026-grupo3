@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar alojamiento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assents/css/editar_alojamiento.css">
+</head>
+
+<body class="page-editar-alojamiento">
+
+    <header class="barra-superior-fondo" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg');">
+        <div class="nav-izquierda">
+            <i class="fa-solid fa-bars icono-blanco" aria-hidden="true"></i>
+            <a href="index.html" class="icono-blanco" aria-label="Ir al inicio">
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div class="nav-centro">
+            <div class="buscador-header" role="search">
+                <input type="search" placeholder="¿A dónde vamos?" aria-label="Buscar un destino">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="nav-derecha">
+            <a href="login.html" class="icono-usuario" onclick="localStorage.setItem('volverA', 'editar_alojamiento.html')" aria-label="Iniciar sesión">
+                <i class="fa-regular fa-user" aria-hidden="true"></i>
+            </a>
+        </div>
+    </header>
+
+    <main class="editar-main">
+
+        <a href="mispropiedades.html" class="editar-volver">
+            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+            Volver a mis propiedades
+        </a>
+
+        <div class="editar-encabezado">
+            <h1>Editar alojamiento</h1>
+            <p>Modificá la información de tu propiedad y guardá los cambios cuando termines.</p>
+        </div>
+
+        <section class="editar-panel" aria-label="Información del alojamiento">
+
+            <div class="editar-vista-previa">
+
+                <div class="editar-imagen-principal">
+                    <img src="../docs/2da-entrega/imagenes_referencia/Apartamento vista al río.webp" alt="Apartamento vista al río">
+                    <span class="editar-tipo-preview">Apartamento</span>
+                </div>
+
+                <div class="editar-info-preview">
+                    <span class="editar-badge">
+                        <i class="fa-solid fa-circle" aria-hidden="true"></i>
+                        Publicada
+                    </span>
+
+                    <h2>Apartamento vista al río</h2>
+
+                    <p class="editar-ubicacion-preview">
+                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                        Palermo, Buenos Aires
+                    </p>
+
+                    <p class="editar-precio-preview">
+                        <strong>$18.500</strong>
+                        <span>/ noche</span>
+                    </p>
+
+                    <div class="editar-servicios-preview">
+                        <span><i class="fa-solid fa-wifi" aria-hidden="true"></i> Wi-Fi</span>
+                        <span><i class="fa-solid fa-mug-saucer" aria-hidden="true"></i> Desayuno</span>
+                        <span><i class="fa-solid fa-person-swimming" aria-hidden="true"></i> Pileta</span>
+                        <span><i class="fa-solid fa-square-parking" aria-hidden="true"></i> Cochera</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <form id="form-editar" class="editar-formulario">
+
+                <div class="editar-campos">
+
+                    <div class="editar-campo">
+                        <label for="titulo">Título del alojamiento</label>
+                        <input type="text" id="titulo" name="titulo" class="editar-input" value="Apartamento vista al río" required>
+                    </div>
+
+                    <div class="editar-campo">
+                        <label for="ubicacion">Ubicación</label>
+                        <div class="editar-input-grupo">
+                            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                            <input type="text" id="ubicacion" name="ubicacion" value="Palermo, Buenos Aires" required>
+                        </div>
+                    </div>
+
+                    <div class="editar-campo">
+                        <label for="tarifa">Precio por noche</label>
+                        <div class="editar-input-grupo">
+                            <input type="number" id="tarifa" name="tarifa" min="1" value="18500" required>
+                            <span class="editar-moneda">ARS</span>
+                        </div>
+                    </div>
+
+                    <div class="editar-campo">
+                        <label for="capacidad">Capacidad</label>
+                        <select id="capacidad" name="capacidad" class="editar-input">
+                            <option value="1">1 huésped</option>
+                            <option value="2">2 huéspedes</option>
+                            <option value="3">3 huéspedes</option>
+                            <option value="4" selected>4 huéspedes</option>
+                            <option value="5">5 huéspedes</option>
+                            <option value="6">6 huéspedes</option>
+                        </select>
+                    </div>
+
+                    <div class="editar-campo">
+                        <label for="tipo-propiedad">Tipo de propiedad</label>
+                        <select id="tipo-propiedad" name="tipoPropiedad" class="editar-input">
+                            <option value="apartamento" selected>Apartamento</option>
+                            <option value="casa">Casa</option>
+                            <option value="cabana">Cabaña</option>
+                        </select>
+                    </div>
+
+                    <div class="editar-campo">
+                        <label for="estado">Estado</label>
+                        <div class="editar-input-grupo">
+                            <i class="fa-solid fa-circle editar-punto-estado" aria-hidden="true"></i>
+                            <select id="estado" name="estado">
+                                <option value="publicada" selected>Publicada</option>
+                                <option value="retirada">Retirada</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="editar-descripcion">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" name="descripcion" class="editar-textarea" rows="4" required>Moderno apartamento con vista al río, ubicado en el corazón de Palermo. Cuenta con espacios amplios y luminosos, cocina equipada, balcón, Wi-Fi de alta velocidad y acceso a pileta del edificio. Ideal para familias o grupos de hasta 4 huéspedes.</textarea>
+                </div>
+
+                <fieldset class="editar-servicios">
+                    <legend>Servicios</legend>
+
+                    <div class="editar-lista-servicios">
+
+                        <label for="wifi" class="editar-servicio">
+                            <input type="checkbox" id="wifi" name="servicios" value="wifi" checked>
+                            <span>Wi-Fi</span>
+                        </label>
+
+                        <label for="desayuno" class="editar-servicio">
+                            <input type="checkbox" id="desayuno" name="servicios" value="desayuno" checked>
+                            <span>Desayuno</span>
+                        </label>
+
+                        <label for="pileta" class="editar-servicio">
+                            <input type="checkbox" id="pileta" name="servicios" value="pileta" checked>
+                            <span>Pileta</span>
+                        </label>
+
+                        <label for="cochera" class="editar-servicio">
+                            <input type="checkbox" id="cochera" name="servicios" value="cochera" checked>
+                            <span>Cochera</span>
+                        </label>
+
+                        <label for="aire" class="editar-servicio">
+                            <input type="checkbox" id="aire" name="servicios" value="aire">
+                            <span>Aire acondicionado</span>
+                        </label>
+
+                        <label for="mascotas" class="editar-servicio">
+                            <input type="checkbox" id="mascotas" name="servicios" value="mascotas">
+                            <span>Mascotas</span>
+                        </label>
+
+                    </div>
+                </fieldset>
+
+                <div class="editar-fotos">
+                    <h3>Fotos</h3>
+
+                    <div class="editar-galeria">
+                        <img class="editar-miniatura" src="../docs/2da-entrega/imagenes_referencia/Apartamento vista al río.webp" alt="Sala del apartamento">
+                        <img class="editar-miniatura" src="../docs/2da-entrega/imagenes_referencia/baño.webp" alt="Baño del apartamento">
+                        <img class="editar-miniatura" src="../docs/2da-entrega/imagenes_referencia/cocina.webp" alt="Cocina del apartamento">
+
+                        <label for="fotos" class="editar-cambiar-fotos">
+                            <i class="fa-regular fa-image" aria-hidden="true"></i>
+                            Cambiar fotos
+                            <input type="file" id="fotos" name="fotos" accept="image/*" multiple>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="editar-acciones">
+                    <a href="mispropiedades.html" class="editar-boton editar-btn-cancelar">Cancelar</a>
+
+                    <div class="editar-acciones-derecha">
+                        <button type="button" class="editar-boton editar-btn-retirar">Retirar publicación</button>
+                        <button type="button" class="editar-boton editar-btn-guardar">Guardar cambios</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

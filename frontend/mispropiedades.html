@@ -2,74 +2,208 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mis Propiedades</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis propiedades</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assents/css/mispropiedades.css">
-    <link rel="stylesheet" href="assents/css/global.css">
 </head>
-<body>
 
-<header class="page-catalogo">
-        <p class="nav-titulo">BARRA DE NAVEGACION</p>
-        <nav>
-            <a href="index.html">Inicio</a>
-            
-            <search class="buscador-header">
-                <input type="text" placeholder="¿A dónde vamos?" required>
-            </search>
+<body class="page-mispropiedades">
 
-            <a href="login.html">Login</a>
-        </nav>
+    <header class="barra-superior-fondo" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg');">
+        <div class="nav-izquierda">
+            <i class="fa-solid fa-bars icono-blanco" aria-hidden="true"></i>
+            <a href="index.html" class="icono-blanco" aria-label="Ir al inicio">
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div class="nav-centro">
+            <div class="buscador-header" role="search">
+                <input type="search" placeholder="¿A dónde vamos?" aria-label="Buscar un destino">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="nav-derecha">
+            <a href="login.html" class="icono-usuario" onclick="localStorage.setItem('volverA', 'mispropiedades.html')" aria-label="Iniciar sesión">
+                <i class="fa-regular fa-user" aria-hidden="true"></i>
+            </a>
+        </div>
     </header>
-<main>
-    <section>
-        <h2>Mis propiedades</h2>
-        <p id="mensaje-estado" style="font-weight: bold; margin: 15px 0;"></p>
-        <div id="lista-mis-propiedades"></div>
-    </section>
 
-    <hr>
+    <main class="misprop-contenedor">
 
-    <section>
-        <h2>Editar alojamiento</h2>
-        <form>
-            <label for="titulo">Título</label><br>
-            <input type="text" id="titulo" value="Apartamento vista al rio">
-            <br><br>
-            <label for="descripcion">Descripción</label><br>
-            <textarea id="descripcion" rows="5" cols="50">Apartamento amplio para 4 personas con excelente vista., totalmente equipado. A pasos del Parque 3 de Febrero y con fácil acceso al transporte público. Ideal para familias o grupos pequeños.</textarea>
-            <br><br>
-            <label for="tarifa">Tarifa por noche</label><br>
-            <input type="number" id="tarifa" value="45000">
-            <br><br>
-            <label for="capacidad">Capacidad</label><br>
-            <input type="number" id="capacidad" value="4">
-            <br><br>
-            <h3>Servicios</h3>
-            <input type="checkbox" id="wifi" checked>
-            <label for="wifi">Wi-Fi</label>
-            <input type="checkbox" id="pileta" checked>
-            <label for="pileta">Pileta</label>
-            <input type="checkbox" id="aire">
-            <label for="aire">Aire acondicionado</label><br>
+        <aside class="misprop-panel-gestion" aria-labelledby="titulo-gestion">
+            <h2 id="titulo-gestion" class="misprop-titulo-gestion">
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
+                Gestión
+            </h2>
 
-            <input type="checkbox" id="cochera" checked>
-            <label for="cochera">Estacionamiento</label><br>
+            <nav class="misprop-menu" aria-label="Gestión de alojamientos">
+                <a href="mispropiedades.html" class="misprop-enlace-activo" aria-current="page">
+                    <i class="fa-regular fa-building" aria-hidden="true"></i>
+                    Mis propiedades
+                </a>
+            </nav>
 
-            <input type="checkbox" id="mascotas">
-            <label for="mascotas">Acepta mascotas</label>
+            <fieldset class="misprop-filtros">
+                <legend>Filtrar por estado</legend>
 
-            <br><br>
+                <div class="misprop-opcion-filtro">
+                    <input type="checkbox" id="estado-todas" name="estado" value="todas" checked>
+                    <label for="estado-todas">Todas (3)</label>
+                </div>
 
-            <button type="submit">Guardar cambios</button>
-            <button type="reset">Cancelar</button>
+                <div class="misprop-opcion-filtro">
+                    <input type="checkbox" id="estado-publicadas" name="estado" value="publicadas">
+                    <label for="estado-publicadas">Publicadas (2)</label>
+                </div>
 
-        </form>
+                <div class="misprop-opcion-filtro">
+                    <input type="checkbox" id="estado-retiradas" name="estado" value="retiradas">
+                    <label for="estado-retiradas">Retiradas (1)</label>
+                </div>
+            </fieldset>
 
-    </section>
+            <div class="misprop-resumen-panel">
+                <div class="misprop-total">
+                    <div class="misprop-total-titulo">
+                        <i class="fa-regular fa-building" aria-hidden="true"></i>
+                        <span>Total de propiedades</span>
+                    </div>
 
-</main>
+                    <strong>3</strong>
+                </div>
+            </div>
+        </aside>
 
-<script src="assents/js/mispropiedades.js"></script>
+        <section class="misprop-contenido" aria-labelledby="titulo-propiedades">
+
+            <div class="misprop-encabezado">
+                <h1 id="titulo-propiedades">Mis propiedades</h1>
+                <p>Aquí podés ver, editar, retirar o republicar tus alojamientos.</p>
+            </div>
+
+            <div class="misprop-lista">
+
+                <article class="misprop-fila">
+                    <img class="misprop-imagen" src="../docs/2da-entrega/imagenes_referencia/Apartamento vista al río.webp" alt="Apartamento vista al río">
+
+                    <div class="misprop-datos">
+                        <div class="misprop-etiquetas">
+                            <span class="misprop-tipo">Apartamento</span>
+                            <span class="misprop-badge misprop-publicada">PUBLICADA</span>
+                        </div>
+
+                        <h2 class="misprop-nombre">Apartamento vista al río</h2>
+
+                        <p class="misprop-ubicacion">
+                            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                            Palermo, Buenos Aires
+                        </p>
+
+                        <p class="misprop-resumen">
+                            <span>Hasta 4 huéspedes</span>
+                            <span>·</span>
+                            <span>2 habitaciones</span>
+                            <span>·</span>
+                            <span>1 baño</span>
+                        </p>
+
+                        <p class="misprop-servicios">Wi-Fi · A/C</p>
+                    </div>
+
+                    <div class="misprop-acciones">
+                        <p class="misprop-precio">
+                            <strong>$18.500</strong>
+                            <span>/ NOCHE</span>
+                        </p>
+
+                        <button type="button" class="misprop-boton misprop-boton-editar">Editar</button>
+                        <button type="button" class="misprop-boton misprop-boton-retirar">Retirar</button>
+                    </div>
+                </article>
+
+                <article class="misprop-fila">
+                    <img class="misprop-imagen" src="../docs/2da-entrega/imagenes_referencia/Cabaña en Bariloche.jpg" alt="Cabaña del bosque">
+
+                    <div class="misprop-datos">
+                        <div class="misprop-etiquetas">
+                            <span class="misprop-tipo">Cabaña</span>
+                            <span class="misprop-badge misprop-publicada">PUBLICADA</span>
+                        </div>
+
+                        <h2 class="misprop-nombre">Cabaña del bosque</h2>
+
+                        <p class="misprop-ubicacion">
+                            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                            San Carlos de Bariloche
+                        </p>
+
+                        <p class="misprop-resumen">
+                            <span>Hasta 6 huéspedes</span>
+                            <span>·</span>
+                            <span>3 habitaciones</span>
+                        </p>
+
+                        <p class="misprop-servicios">Pileta · Desayuno</p>
+                    </div>
+
+                    <div class="misprop-acciones">
+                        <p class="misprop-precio">
+                            <strong>$24.000</strong>
+                            <span>/ NOCHE</span>
+                        </p>
+
+                        <button type="button" class="misprop-boton misprop-boton-editar">Editar</button>
+                        <button type="button" class="misprop-boton misprop-boton-retirar">Retirar</button>
+                    </div>
+                </article>
+
+                <article class="misprop-fila">
+                    <img class="misprop-imagen" src="../docs/2da-entrega/imagenes_referencia/Casa con jardín en Mendoza.jpg" alt="Casa con jardín en Mendoza">
+
+                    <div class="misprop-datos">
+                        <div class="misprop-etiquetas">
+                            <span class="misprop-tipo">Casa</span>
+                            <span class="misprop-badge misprop-retirada">RETIRADA</span>
+                        </div>
+
+                        <h2 class="misprop-nombre">Casa con jardín en Mendoza</h2>
+
+                        <p class="misprop-ubicacion">
+                            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                            Mendoza, Mendoza
+                        </p>
+
+                        <p class="misprop-resumen">
+                            <span>Hasta 2 huéspedes</span>
+                            <span>·</span>
+                            <span>1 habitación</span>
+                        </p>
+
+                        <p class="misprop-servicios">Wi-Fi</p>
+                    </div>
+
+                    <div class="misprop-acciones">
+                        <p class="misprop-precio">
+                            <strong>$12.000</strong>
+                            <span>/ NOCHE</span>
+                        </p>
+
+                        <button type="button" class="misprop-boton misprop-boton-editar">Editar</button>
+                        <button type="button" class="misprop-boton misprop-boton-republicar">Republicar</button>
+                    </div>
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="assents/js/mispropiedades.js"></script>
 
 </body>
 </html>
