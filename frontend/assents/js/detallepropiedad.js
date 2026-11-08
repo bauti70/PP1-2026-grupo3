@@ -1,116 +1,226 @@
 //console.log('funciona');
 const reservas = [];
 
-function formatearFecha(fecha){
-    let partes = fecha.split('-');
-    return partes[2] + '-' + partes[1] + '-' + partes[0];
-}
+let alojamientoSeleccionado = null;
 
-function crearItemReserva(reserva){
-    let html = '<article class="reserva-propiedad" style="margin-top: 15px; border-top: 2px solid #ccc; padding-top: 15px; background-color: #f9f9f9; padding: 15px; border-radius: 10px;">';
-    html = html + '<div class="reserva-info">';
-    html = html + '<h2 style="margin-top:0; font-size: 18px;">' + reserva.alojamiento + '</h2>';
-    html = html + '<p> Fecha de llegada: ' + formatearFecha(reserva.fechaEntrada) + ' hasta ' + formatearFecha(reserva.fechaSalida) + '</p>';
-    html = html + '<p><strong>Huéspedes:</strong> ' + reserva.huespedes + ' | <strong>Estado:</strong> ' + reserva.estado + '</p>';
-    html = html + '</div>';
-    html = html + '</article>';
-    return html;
-}
-
-function renderReservas(lista){
-    const contenedor = document.querySelector('#lista-reservas');
-    if(!contenedor) return; 
-    let html = '';
-    for (let i = 0; i < lista.length; i = i + 1){
-        html = html + crearItemReserva(lista[i]);
-    }
-    contenedor.innerHTML = html;
-}
-
-async function guardarReserva(reserva){
-    reservas.length = 0; 
-    reservas.push(reserva);
-}
-
+const infoPropiedad = document.querySelector('.info-propiedad');
+const columnaReserva = document.querySelector('.columna-reserva');
 const formReserva = document.querySelector('#form-reserva');
+const botonReservar = document.querySelector('.btn-confirmar');
 
-if(formReserva) {
-    formReserva.addEventListener('submit', async function(evento){
-        evento.preventDefault();
 
-        const sesion = localStorage.getItem('sesionIniciada');
-        const mensajeBloqueo = document.querySelector('#mensaje-bloqueo');
+function crearDetalle(alojamiento) {
+    let descripcion = `Alojamiento en ${alojamiento.ubicacion} para hasta ${alojamiento.capacidad} personas.`;
+    let calificacionHtml = '';
 
-        if (sesion !== 'true') {
-            mensajeBloqueo.style.display = 'block';
-            return; 
-        } else {
-            mensajeBloqueo.style.display = 'none';
+    if (typeof alojamiento.descripcion === 'string' && alojamiento.descripcion !== '') {
+        descripcion = alojamiento.descripcion;
+    }
+
+    if (typeof alojamiento.calificacion === 'number' && alojamiento.calificacion >= 0 && alojamiento.calificacion <= 5) {
+        calificacionHtml = `<p class="texto-secundario"><i class="fa-solid fa-star" aria-hidden="true"></i> ${alojamiento.calificacion} / 5</p>`;
+    }
+
+    return `
+        <div class="galeria-fotos galeria-una-foto">
+            <img src="${alojamiento.imagen}" alt="${alojamiento.nombre}" class="foto-principal">
+        </div>
+
+        <div class="encabezado-info">
+            <h1>${alojamiento.nombre}</h1>
+            <button type="button" class="btn-favorito" aria-label="Agregar a favoritos">
+                <i class="fa-regular fa-heart" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <p class="texto-secundario">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            ${alojamiento.ubicacion}
+        </p>
+
+        ${calificacionHtml}
+
+        <div class="contenedor-etiquetas">
+            <span class="etiqueta">
+                <i class="fa-regular fa-user" aria-hidden="true"></i>
+                Hasta ${alojamiento.capacidad} personas
+            </span>
+        </div>
+
+        <p class="descripcion-texto">${descripcion}</p>
+    `;
+}
+
+
+async function cargarDetalle() {
+    alojamientoSeleccionado = null;
+    columnaReserva.hidden = true;
+    botonReservar.disabled = true;
+
+    infoPropiedad.innerHTML = '<p class="mensaje-detalle">Cargando alojamiento...</p>';
+
+    const parametros = new URLSearchParams(window.location.search);
+    const idRecibido = parametros.get('id');
+
+    let idBuscado = 1;
+
+    if (idRecibido !== null) {
+        idBuscado = Number(idRecibido);
+    }
+
+    try {
+        const respuesta = await fetch('data/alojamientos.json');
+
+        if (respuesta.ok === false) {
+            throw new Error('No se pudo cargar el archivo de alojamientos.');
         }
 
-        const fechaEntrada = document.querySelector('#llegada').value;
-        const fechaSalida = document.querySelector('#salida').value;
-        const huespedes = document.querySelector('#huespedes').value;
+        const alojamientos = await respuesta.json();
 
-        const msjllegada = document.querySelector('#error-llegada');
-        const msjsalida = document.querySelector('#error-salida');
-        const msjhuespedes = document.querySelector('#error-huespedes');
-
-        msjllegada.textContent = '';
-        msjsalida.textContent = '';
-        msjhuespedes.textContent = '';
-
-        let formularioValido = true;
-
-        if (fechaEntrada === ''){
-            msjllegada.textContent = 'Por favor, ingrese una fecha de llegada.';
-            formularioValido = false;
-        }
-        
-        if (fechaSalida === ''){
-            msjsalida.textContent = 'Por favor, ingrese una fecha de salida.';
-            formularioValido = false;
-        }
-
-        if (fechaEntrada !== '' && fechaSalida !== ''){
-            if(fechaSalida <= fechaEntrada){
-                msjsalida.textContent = 'La fecha de salida es inválida. Debe ser posterior a la llegada.';
-                formularioValido = false;
+        for (let i = 0; i < alojamientos.length; i = i + 1) {
+            if (alojamientos[i].id === idBuscado) {
+                alojamientoSeleccionado = alojamientos[i];
+                break;
             }
-        }    
+        }
 
-        if (huespedes === '' || huespedes < 1 || huespedes > 4){
-            msjhuespedes.textContent = 'Ingrese una cantidad de huespedes valida (maximo 4).';
-            formularioValido = false;
-        } 
-        
-        if (formularioValido === false){
+        if (alojamientoSeleccionado === null) {
+            infoPropiedad.innerHTML = '<p class="mensaje-detalle">El alojamiento solicitado no está disponible.</p>';
             return;
         }
 
-        const reserva = {
-            id: reservas.length + 1,
-            alojamiento: 'Apartamento vista al rio',
-            fechaEntrada: fechaEntrada,
-            fechaSalida: fechaSalida,
-            huespedes: huespedes,
-            estado: 'CONFIRMADA'
+        infoPropiedad.innerHTML = crearDetalle(alojamientoSeleccionado);
+
+        document.querySelector('.precio-encabezado h2').textContent = '$' + alojamientoSeleccionado.precioNoche;
+        document.querySelector('#huespedes').max = alojamientoSeleccionado.capacidad;
+        document.title = alojamientoSeleccionado.nombre + ' - Detalle';
+
+        botonReservar.disabled = false;
+        columnaReserva.hidden = false;
+    } catch (error) {
+        alojamientoSeleccionado = null;
+
+        infoPropiedad.innerHTML = '<p class="mensaje-detalle error">No pudimos cargar el alojamiento. Recargá la página para volver a intentar.</p>';
+        console.error(error);
+    }
+}
+
+
+function formatearFecha(fecha) {
+    const partes = fecha.split('-');
+    return partes[2] + '-' + partes[1] + '-' + partes[0];
+}
+
+
+function crearItemReserva(reserva) {
+    return `
+        <article class="reserva-propiedad">
+            <h2>${reserva.alojamiento}</h2>
+            <p>Fecha de llegada: ${formatearFecha(reserva.fechaEntrada)} hasta ${formatearFecha(reserva.fechaSalida)}</p>
+            <p><strong>Huéspedes:</strong> ${reserva.huespedes} | <strong>Estado:</strong> ${reserva.estado}</p>
+        </article>
+    `;
+}
+
+
+function renderReservas(lista) {
+    const contenedor = document.querySelector('#lista-reservas');
+    let html = '';
+
+    for (let i = 0; i < lista.length; i = i + 1) {
+        html = html + crearItemReserva(lista[i]);
+    }
+
+    contenedor.innerHTML = html;
+}
+
+
+async function guardarReserva(reserva) {
+    reservas.length = 0;
+    reservas.push(reserva);
+}
+
+
+formReserva.addEventListener('submit', async function(evento) {
+    evento.preventDefault();
+
+    if (alojamientoSeleccionado === null) {
+        return;
+    }
+
+    const sesion = localStorage.getItem('sesionIniciada');
+    const mensajeBloqueo = document.querySelector('#mensaje-bloqueo');
+
+    if (sesion !== 'true') {
+        mensajeBloqueo.style.display = 'block';
+        return;
+    }
+
+    mensajeBloqueo.style.display = 'none';
+
+    const fechaEntrada = document.querySelector('#llegada').value;
+    const fechaSalida = document.querySelector('#salida').value;
+    const huespedes = Number(document.querySelector('#huespedes').value);
+
+    const msjLlegada = document.querySelector('#error-llegada');
+    const msjSalida = document.querySelector('#error-salida');
+    const msjHuespedes = document.querySelector('#error-huespedes');
+
+    msjLlegada.textContent = '';
+    msjSalida.textContent = '';
+    msjHuespedes.textContent = '';
+
+    let hayError = false;
+
+    if (fechaEntrada === '') {
+        msjLlegada.textContent = 'Por favor, ingresá una fecha de llegada.';
+        hayError = true;
+    }
+
+    if (fechaSalida === '') {
+        msjSalida.textContent = 'Por favor, ingresá una fecha de salida.';
+        hayError = true;
+    }
+
+    if (fechaEntrada !== '' && fechaSalida !== '' && fechaSalida <= fechaEntrada) {
+        msjSalida.textContent = 'La salida debe ser posterior a la llegada.';
+        hayError = true;
+    }
+
+    if (huespedes < 1 || huespedes > alojamientoSeleccionado.capacidad || huespedes % 1 !== 0) {
+        msjHuespedes.textContent = 'Ingresá una cantidad entera de huéspedes entre 1 y ' + alojamientoSeleccionado.capacidad + '.';
+        hayError = true;
+    }
+
+    if (hayError === true) {
+        return;
+    }
+
+    const reserva = {
+        id: reservas.length + 1,
+        alojamientoId: alojamientoSeleccionado.id,
+        alojamiento: alojamientoSeleccionado.nombre,
+        fechaEntrada: fechaEntrada,
+        fechaSalida: fechaSalida,
+        huespedes: huespedes,
+        estado: 'CONFIRMADA'
+    };
+
+    await guardarReserva(reserva);
+    renderReservas(reservas);
+    formReserva.reset();
+
+    if (typeof toastr !== 'undefined') {
+        toastr.options = {
+            closeButton: true,
+            progressBar: true,
+            positionClass: 'toast-bottom-right',
+            timeOut: '4000'
         };
 
-        await guardarReserva(reserva);
-        renderReservas(reservas);
-        formReserva.reset();
+        toastr.success('¡Tu reserva fue procesada con éxito!', 'Reserva confirmada');
+    }
+});
 
-        if (typeof toastr !== 'undefined') {
-            toastr.options = {
-                "closeButton": true,
-                "progressBar": true,
-                "positionClass": "toast-bottom-right",
-                "timeOut": "4000"
-            };
-            toastr.success('¡SU RESERVA FUE PROCESADA CON EXITO!', 'Reserva Confirmada');
-        } else {
-            alert('¡SU RESERVA FUE PROCESADA CON EXITO!');
-        }
-    });
-}
+
+cargarDetalle();

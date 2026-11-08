@@ -55,9 +55,6 @@ form.addEventListener('submit', function (evento){
         return;
     }
 
-    window.open('index.html', '_self');
-
-
     if (hayError === true){
         return;
     }

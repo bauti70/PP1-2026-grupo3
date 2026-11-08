@@ -4,58 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Reservas — Inicio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assents/css/inicio.css">
 </head>
+
 <body>
 
     <header class="page-catalogo">
-        <nav class="nav-inicio">
-            <search class="buscador-inicio">
-            <a href="login.html">Login</a>
+        <nav class="nav-inicio" aria-label="Navegación principal">
+            <div class="buscador-inicio">
+                <a href="login.html" id="enlace-login" class="enlace-usuario" aria-label="Iniciar sesión" title="Iniciar sesión">
+                    <i class="fa-regular fa-user" aria-hidden="true"></i>
+                </a>
+            </div>
         </nav>
     </header>
 
     <main class="contenedor-inicio-galeria">
-        
+
         <section class="bloque-buscador">
             <h1 class="titulo-gigante">¿A dónde vamos?</h1>
-            
+
             <search class="buscador-central">
-                <form action="catalog-filtro.html" id="form-busqueda-inicio">
-                    <input type="text" id="input-busqueda" placeholder="Buscá tu próximo destino..." required>
-                    <button type="submit" class="btn-buscar-inicio">Buscar</button>
+                <form id="form-busqueda-inicio" action="catalog-filtro.html" method="GET" novalidate>
+                    <input type="search" id="input-busqueda" name="ciudad" placeholder="Escribí una ciudad..." aria-label="Ciudad del alojamiento" aria-describedby="error-busqueda" required>
+                    <button type="submit" id="btn-buscar-inicio" class="btn-buscar-inicio">Buscar</button>
                 </form>
-                <p id="mensaje-login" style="color: red; font-weight: bold; margin-top: 10px;"></p>
+
+                <p id="error-busqueda" class="error-busqueda" role="alert"></p>
             </search>
         </section>
-        <section class="galeria-destinos">
-            
-            <figure class="destino-item">
-                <img src="../docs/2da-entrega/imagenes_referencia/vacaciones-en-la-montana-en-espana.webp" alt="Montañas">
-                <figcaption>Aventura en la montaña</figcaption>
-            </figure>
 
-            <figure class="destino-item">
-                <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=400" alt="Playa">
-                <figcaption>Descanso en la playa</figcaption>
-            </figure>
+        <section class="seccion-destacados" aria-labelledby="titulo-destacados">
+            <h2 id="titulo-destacados" class="titulo-destacados">Destacados</h2>
+            <p class="descripcion-destacados">Sugerencias de alojamientos con excelentes calificaciones.</p>
 
-            <figure class="destino-item">
-                <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?w=400" alt="Ciudad">
-                <figcaption>Escapada urbana</figcaption>
-            </figure>
-
-            <figure class="destino-item">
-                <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400" alt="Campo">
-                <figcaption>Tranquilidad rural</figcaption>
-            </figure>
-
+            <div id="lista-destacados" class="galeria-destinos" aria-live="polite"></div>
         </section>
-        
+
     </main>
 
     <footer class="footer-inicio">
         <small>Grupo N° 3 — PP1 2026</small>
     </footer>
+
+    <script src="assents/js/index.js"></script>
+
 </body>
 </html>

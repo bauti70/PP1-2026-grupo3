@@ -391,3 +391,26 @@ body {
 .btn-lupa:hover {
     color: #333;
 }
+
+.mensaje {
+    grid-column: 1 / -1;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.mensaje.cargando {
+    background-color: #efedff;
+    color: #5e5cee;
+}
+
+.mensaje.vacio {
+    background-color: #ffffff;
+    color: #687386;
+}
+
+.mensaje.error {
+    background-color: #fff0f3;
+    color: #b00020;
+}
