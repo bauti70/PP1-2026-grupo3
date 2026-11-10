@@ -2,21 +2,39 @@
 //alojamiento.length
 //alojamiento[0].nombre
 
+const formBusqueda = document.querySelector('#form-busqueda-header');
+const inputBusqueda = document.querySelector('#busqueda-header');
+const errorBusqueda = document.querySelector('#error-busqueda-header');
 const formFiltros = document.querySelector('#form-filtros');
 const inputUbicacion = document.querySelector('#ubi');
+const inputEntrada = document.querySelector('#entrada');
+const inputSalida = document.querySelector('#sali');
 const inputPrecioMin = document.querySelector('#min');
 const inputPrecioMax = document.querySelector('#max');
+const checkWifi = document.querySelector('#wifi');
+const checkDesayuno = document.querySelector('#des');
+const checkPileta = document.querySelector('#pile');
+const checkEstacionamiento = document.querySelector('#miento');
+const selectTipo = document.querySelector('#tipo-alojamiento');
+const selectOrden = document.querySelector('#orden-alojamientos');
+const errorFechas = document.querySelector('#error-fechas');
+const errorPrecios = document.querySelector('#error-precios');
 const contadorResultados = document.querySelector('.resultados-count');
+const contenedor = document.querySelector('#lista-alojamientos');
 
 let todosLosAlojamientos = [];
 let datosCargados = false;
-
-const parametros = new URLSearchParams(window.location.search);
-const ciudadRecibida = parametros.get('ciudad');
-
-if (ciudadRecibida !== null) {
-    inputUbicacion.value = ciudadRecibida;
-}
+let filtrosAplicados = {
+    ubicacion: '',
+    entrada: '',
+    salida: '',
+    precioMin: '',
+    precioMax: '',
+    wifi: false,
+    desayuno: false,
+    pileta: false,
+    estacionamiento: false
+};
 
 
 function normalizarTexto(texto) {
@@ -61,19 +79,17 @@ function normalizarTexto(texto) {
 function contieneTexto(texto, busqueda) {
     let encontrado = false;
 
-    if (busqueda !== '') {
-        for (let i = 0; i <= texto.length - busqueda.length; i = i + 1) {
-            let coincide = true;
+    for (let i = 0; i <= texto.length - busqueda.length; i = i + 1) {
+        let coincide = true;
 
-            for (let j = 0; j < busqueda.length; j = j + 1) {
-                if (texto[i + j] !== busqueda[j]) {
-                    coincide = false;
-                }
+        for (let j = 0; j < busqueda.length; j = j + 1) {
+            if (texto[i + j] !== busqueda[j]) {
+                coincide = false;
             }
+        }
 
-            if (coincide === true) {
-                encontrado = true;
-            }
+        if (coincide === true) {
+            encontrado = true;
         }
     }
 
@@ -81,15 +97,141 @@ function contieneTexto(texto, busqueda) {
 }
 
 
-function crearTarjeta(alojamiento) {
-    let categoria = '';
+function obtenerFechaHoy() {
+    const hoy = new Date();
+    let mes = '' + (hoy.getMonth() + 1);
+    let dia = '' + hoy.getDate();
 
-    for (let i = 0; i < alojamiento.nombre.length; i = i + 1) {
-        if (alojamiento.nombre[i] === ' ') {
-            break;
+    if (hoy.getMonth() + 1 < 10) {
+        mes = '0' + mes;
+    }
+
+    if (hoy.getDate() < 10) {
+        dia = '0' + dia;
+    }
+
+    return hoy.getFullYear() + '-' + mes + '-' + dia;
+}
+
+
+function formatearFecha(fecha) {
+    const partes = fecha.split('-');
+    return partes[2] + '/' + partes[1] + '/' + partes[0];
+}
+
+
+function validarFiltros() {
+    let hayError = false;
+
+    errorFechas.textContent = '';
+    errorPrecios.textContent = '';
+
+    if (inputEntrada.validity.badInput === true || inputSalida.validity.badInput === true) {
+        errorFechas.textContent = 'Ingresá fechas válidas.';
+        hayError = true;
+    } else if ((inputEntrada.value === '' && inputSalida.value !== '') || (inputEntrada.value !== '' && inputSalida.value === '')) {
+        errorFechas.textContent = 'Completá tanto la entrada como la salida.';
+        hayError = true;
+    } else if (inputEntrada.value !== '' && inputSalida.value !== '') {
+        if (inputEntrada.value < obtenerFechaHoy()) {
+            errorFechas.textContent = 'La entrada no puede ser anterior a hoy.';
+            hayError = true;
+        } else if (inputSalida.value <= inputEntrada.value) {
+            errorFechas.textContent = 'La salida debe ser posterior a la entrada.';
+            hayError = true;
         }
+    }
 
-        categoria = categoria + alojamiento.nombre[i];
+    if (inputPrecioMin.validity.badInput === true || inputPrecioMax.validity.badInput === true) {
+        errorPrecios.textContent = 'Ingresá precios válidos.';
+        hayError = true;
+    } else if ((inputPrecioMin.value !== '' && Number(inputPrecioMin.value) < 0) || (inputPrecioMax.value !== '' && Number(inputPrecioMax.value) < 0)) {
+        errorPrecios.textContent = 'Los precios no pueden ser negativos.';
+        hayError = true;
+    } else if (inputPrecioMin.value !== '' && inputPrecioMax.value !== '' && Number(inputPrecioMin.value) > Number(inputPrecioMax.value)) {
+        errorPrecios.textContent = 'El precio mínimo no puede superar al máximo.';
+        hayError = true;
+    }
+
+    return hayError === false;
+}
+
+
+function estaDisponible(alojamiento, entrada, salida) {
+    let disponible = true;
+
+    if (entrada !== '' && salida !== '') {
+        for (let i = 0; i < alojamiento.periodosNoDisponibles.length; i = i + 1) {
+            const periodo = alojamiento.periodosNoDisponibles[i];
+
+            if (entrada < periodo.salida && salida > periodo.entrada) {
+                disponible = false;
+            }
+        }
+    }
+
+    return disponible;
+}
+
+
+function ordenarAlojamientos(lista) {
+    const orden = selectOrden.value;
+
+    for (let i = 0; i < lista.length - 1; i = i + 1) {
+        for (let j = 0; j < lista.length - 1 - i; j = j + 1) {
+            let intercambiar = false;
+
+            if (orden === 'precio-menor' && lista[j].precioNoche > lista[j + 1].precioNoche) {
+                intercambiar = true;
+            } else if (orden === 'precio-mayor' && lista[j].precioNoche < lista[j + 1].precioNoche) {
+                intercambiar = true;
+            } else if ((orden === 'puntuacion' || orden === 'destacados') && lista[j].calificacion < lista[j + 1].calificacion) {
+                intercambiar = true;
+            }
+
+            if (intercambiar === true) {
+                const auxiliar = lista[j];
+                lista[j] = lista[j + 1];
+                lista[j + 1] = auxiliar;
+            }
+        }
+    }
+}
+
+
+function crearServicios(servicios) {
+    let html = '';
+
+    if (servicios.wifi === true) {
+        html = html + '<span><i class="fa-solid fa-wifi" aria-hidden="true"></i> Wi-Fi</span>';
+    }
+
+    if (servicios.desayuno === true) {
+        html = html + '<span><i class="fa-solid fa-mug-hot" aria-hidden="true"></i> Desayuno</span>';
+    }
+
+    if (servicios.pileta === true) {
+        html = html + '<span><i class="fa-solid fa-water-ladder" aria-hidden="true"></i> Pileta</span>';
+    }
+
+    if (servicios.estacionamiento === true) {
+        html = html + '<span><i class="fa-solid fa-square-parking" aria-hidden="true"></i> Estacionamiento</span>';
+    }
+
+    return html;
+}
+
+
+function crearTarjeta(alojamiento) {
+    let destacadoHtml = '';
+    let disponibilidadHtml = '';
+
+    if (alojamiento.calificacion >= 4.5) {
+        destacadoHtml = '<span class="badge-destacado">Destacado</span>';
+    }
+
+    if (filtrosAplicados.entrada !== '' && filtrosAplicados.salida !== '') {
+        disponibilidadHtml = `<p class="tarjeta-disponibilidad"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Disponible del ${formatearFecha(filtrosAplicados.entrada)} al ${formatearFecha(filtrosAplicados.salida)}</p>`;
     }
 
     return `
@@ -97,13 +239,16 @@ function crearTarjeta(alojamiento) {
             <div class="tarjeta-imagen-wrapper">
                 <img src="${alojamiento.imagen}" alt="${alojamiento.nombre}">
                 <i class="fa-regular fa-heart icono-favorito" aria-hidden="true"></i>
-                <span class="badge-categoria">${categoria}</span>
+                <span class="badge-categoria">${alojamiento.tipo}</span>
+                ${destacadoHtml}
             </div>
 
             <div class="tarjeta-cuerpo">
                 <div class="tarjeta-info-izq">
                     <h3 class="tarjeta-titulo">${alojamiento.nombre}</h3>
                     <p class="tarjeta-ubicacion"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> ${alojamiento.ubicacion}</p>
+                    <p class="tarjeta-puntuacion"><i class="fa-solid fa-star" aria-hidden="true"></i> ${alojamiento.calificacion} / 5</p>
+                    <p class="tarjeta-capacidad">Hasta ${alojamiento.capacidad} huéspedes</p>
                 </div>
 
                 <div class="tarjeta-info-der">
@@ -111,6 +256,9 @@ function crearTarjeta(alojamiento) {
                     <a href="detallepropiedad.html?id=${alojamiento.id}" class="btn-detalles">Ver detalles</a>
                 </div>
             </div>
+
+            <div class="tarjeta-servicios">${crearServicios(alojamiento.servicios)}</div>
+            ${disponibilidadHtml}
         </article>
     `;
 }
@@ -125,21 +273,7 @@ function actualizarContador(cantidad) {
 }
 
 
-function renderAlojamientos(lista) {
-    const contenedor = document.querySelector('#lista-alojamientos');
-    let html = '';
-
-    for (let i = 0; i < lista.length; i = i + 1) {
-        html = html + crearTarjeta(lista[i]);
-    }
-
-    contenedor.innerHTML = html;
-    actualizarContador(lista.length);
-}
-
-
 function mostrarMensaje(texto, tipo) {
-    const contenedor = document.querySelector('#lista-alojamientos');
     contenedor.innerHTML = `<p class="mensaje ${tipo}">${texto}</p>`;
 }
 
@@ -155,42 +289,50 @@ function aplicarFiltros() {
         return;
     }
 
-    const ciudad = normalizarTexto(inputUbicacion.value);
-    const precioMin = inputPrecioMin.value;
-    const precioMax = inputPrecioMax.value;
-
-    let hayError = false;
-
-    if ((precioMin !== '' && Number(precioMin) < 0) || (precioMax !== '' && Number(precioMax) < 0)) {
-        mostrarMensaje('Los precios no pueden ser negativos.', 'error');
-        hayError = true;
-    } else if (precioMin !== '' && precioMax !== '' && Number(precioMin) > Number(precioMax)) {
-        mostrarMensaje('El precio mínimo no puede superar al máximo.', 'error');
-        hayError = true;
-    }
-
-    if (hayError === true) {
-        contadorResultados.textContent = '';
-        return;
-    }
-
+    const ciudad = normalizarTexto(filtrosAplicados.ubicacion);
     const filtrados = [];
 
     for (let i = 0; i < todosLosAlojamientos.length; i = i + 1) {
         const alojamiento = todosLosAlojamientos[i];
-        const ubicacion = normalizarTexto(alojamiento.ubicacion);
-
         let pasaFiltro = true;
 
-        if (ciudad !== '' && contieneTexto(ubicacion, ciudad) === false) {
+        if (ciudad !== '' && contieneTexto(normalizarTexto(alojamiento.ubicacion), ciudad) === false) {
             pasaFiltro = false;
         }
 
-        if (precioMin !== '' && alojamiento.precioNoche < Number(precioMin)) {
+        if (selectTipo.value !== '' && alojamiento.tipo !== selectTipo.value) {
             pasaFiltro = false;
         }
 
-        if (precioMax !== '' && alojamiento.precioNoche > Number(precioMax)) {
+        if (filtrosAplicados.wifi === true && alojamiento.servicios.wifi !== true) {
+            pasaFiltro = false;
+        }
+
+        if (filtrosAplicados.desayuno === true && alojamiento.servicios.desayuno !== true) {
+            pasaFiltro = false;
+        }
+
+        if (filtrosAplicados.pileta === true && alojamiento.servicios.pileta !== true) {
+            pasaFiltro = false;
+        }
+
+        if (filtrosAplicados.estacionamiento === true && alojamiento.servicios.estacionamiento !== true) {
+            pasaFiltro = false;
+        }
+
+        if (filtrosAplicados.precioMin !== '' && alojamiento.precioNoche < Number(filtrosAplicados.precioMin)) {
+            pasaFiltro = false;
+        }
+
+        if (filtrosAplicados.precioMax !== '' && alojamiento.precioNoche > Number(filtrosAplicados.precioMax)) {
+            pasaFiltro = false;
+        }
+
+        if (selectOrden.value === 'destacados' && alojamiento.calificacion < 4.5) {
+            pasaFiltro = false;
+        }
+
+        if (estaDisponible(alojamiento, filtrosAplicados.entrada, filtrosAplicados.salida) === false) {
             pasaFiltro = false;
         }
 
@@ -199,18 +341,27 @@ function aplicarFiltros() {
         }
     }
 
+    actualizarContador(filtrados.length);
+
     if (filtrados.length === 0) {
-        actualizarContador(0);
-        mostrarMensaje('No encontramos alojamientos que coincidan con la ubicación y los precios indicados.', 'vacio');
-    } else {
-        renderAlojamientos(filtrados);
+        mostrarMensaje('No hay alojamientos disponibles que coincidan con los filtros elegidos.', 'vacio');
+        return;
     }
+
+    ordenarAlojamientos(filtrados);
+
+    let html = '';
+
+    for (let i = 0; i < filtrados.length; i = i + 1) {
+        html = html + crearTarjeta(filtrados[i]);
+    }
+
+    contenedor.innerHTML = html;
 }
 
 async function cargarAlojamientos() {
     datosCargados = false;
     contadorResultados.textContent = '';
-
     mostrarMensaje('Cargando alojamientos...', 'cargando');
 
     try {
@@ -222,7 +373,6 @@ async function cargarAlojamientos() {
 
         todosLosAlojamientos = await respuesta.json();
         datosCargados = true;
-
         aplicarFiltros();
     } catch (error) {
         todosLosAlojamientos = [];
@@ -234,8 +384,54 @@ async function cargarAlojamientos() {
     }
 }
 
+
+formBusqueda.addEventListener('submit', function(evento) {
+    evento.preventDefault();
+    errorBusqueda.textContent = '';
+
+    let hayError = false;
+
+    if (normalizarTexto(inputBusqueda.value) === '') {
+        errorBusqueda.textContent = 'Escribí una ciudad para buscar.';
+        hayError = true;
+    }
+
+    if (hayError === true) {
+        return;
+    }
+
+    filtrosAplicados.ubicacion = inputBusqueda.value;
+    inputUbicacion.value = inputBusqueda.value;
+    aplicarFiltros();
+});
+
+
+inputBusqueda.addEventListener('input', function() {
+    errorBusqueda.textContent = '';
+});
+
+
 formFiltros.addEventListener('submit', function(evento) {
     evento.preventDefault();
+    errorBusqueda.textContent = '';
+
+    if (validarFiltros() === false) {
+        return;
+    }
+
+    filtrosAplicados = {
+        ubicacion: inputUbicacion.value,
+        entrada: inputEntrada.value,
+        salida: inputSalida.value,
+        precioMin: inputPrecioMin.value,
+        precioMax: inputPrecioMax.value,
+        wifi: checkWifi.checked,
+        desayuno: checkDesayuno.checked,
+        pileta: checkPileta.checked,
+        estacionamiento: checkEstacionamiento.checked
+    };
+
+    inputBusqueda.value = filtrosAplicados.ubicacion;
     aplicarFiltros();
 });
 
@@ -244,5 +440,27 @@ formFiltros.addEventListener('reset', function() {
     window.location.href = 'catalog-filtro.html';
 });
 
+
+selectTipo.addEventListener('change', function() {
+    aplicarFiltros();
+});
+
+
+selectOrden.addEventListener('change', function() {
+    aplicarFiltros();
+});
+
+
+const parametros = new URLSearchParams(window.location.search);
+const ciudadRecibida = parametros.get('ciudad');
+
+if (ciudadRecibida !== null) {
+    inputUbicacion.value = ciudadRecibida;
+    inputBusqueda.value = ciudadRecibida;
+    filtrosAplicados.ubicacion = ciudadRecibida;
+}
+
+inputEntrada.min = obtenerFechaHoy();
+inputSalida.min = obtenerFechaHoy();
 
 cargarAlojamientos();

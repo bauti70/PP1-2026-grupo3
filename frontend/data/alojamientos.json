@@ -7,7 +7,20 @@
         "precioNoche": 225000,
         "imagen": "../docs/2da-entrega/imagenes_referencia/Apartamento vista al río.webp",
         "descripcion": "Apartamento con vista al río en Palermo, ideal para una estadía en Buenos Aires.",
-        "calificacion": 4.9
+        "calificacion": 4.9,
+        "tipo": "Apartamento",
+        "servicios": {
+            "wifi": true,
+            "desayuno": false,
+            "pileta": true,
+            "estacionamiento": true
+        },
+        "periodosNoDisponibles": [
+            {
+                "entrada": "2026-12-20",
+                "salida": "2026-12-25"
+            }
+        ]
     },
     {
         "id": 2,
@@ -17,7 +30,20 @@
         "precioNoche": 15000,
         "imagen": "../docs/2da-entrega/imagenes_referencia/Casa en la montaña.jpg",
         "descripcion": "Casa para descansar en Bariloche y disfrutar de una escapada a la montaña.",
-        "calificacion": 4.8
+        "calificacion": 4.8,
+        "tipo": "Casa",
+        "servicios": {
+            "wifi": true,
+            "desayuno": true,
+            "pileta": false,
+            "estacionamiento": true
+        },
+        "periodosNoDisponibles": [
+            {
+                "entrada": "2026-12-10",
+                "salida": "2026-12-15"
+            }
+        ]
     },
     {
         "id": 3,
@@ -27,7 +53,15 @@
         "precioNoche": 8000,
         "imagen": "../docs/2da-entrega/imagenes_referencia/Departamento Céntrico.jpg",
         "descripcion": "Departamento céntrico para conocer Mendoza durante una escapada en pareja.",
-        "calificacion": 4.3
+        "calificacion": 4.3,
+        "tipo": "Apartamento",
+        "servicios": {
+            "wifi": true,
+            "desayuno": false,
+            "pileta": false,
+            "estacionamiento": false
+        },
+        "periodosNoDisponibles": []
     },
     {
         "id": 4,
@@ -37,7 +71,20 @@
         "precioNoche": 12500,
         "imagen": "../docs/2da-entrega/imagenes_referencia/Cabaña en el lago.jpg",
         "descripcion": "Cabaña para una estadía tranquila en El Durazno, Córdoba.",
-        "calificacion": 4.2
+        "calificacion": 4.2,
+        "tipo": "Cabaña",
+        "servicios": {
+            "wifi": false,
+            "desayuno": true,
+            "pileta": true,
+            "estacionamiento": true
+        },
+        "periodosNoDisponibles": [
+            {
+                "entrada": "2026-12-28",
+                "salida": "2027-01-03"
+            }
+        ]
     },
     {
         "id": 5,
@@ -47,7 +94,20 @@
         "precioNoche": 24000,
         "imagen": "../docs/2da-entrega/imagenes_referencia/Cabaña en Bariloche.jpg",
         "descripcion": "Cabaña en Bariloche con capacidad para seis personas, pensada para compartir en familia o con amigos.",
-        "calificacion": 4.9
+        "calificacion": 4.9,
+        "tipo": "Cabaña",
+        "servicios": {
+            "wifi": true,
+            "desayuno": true,
+            "pileta": true,
+            "estacionamiento": true
+        },
+        "periodosNoDisponibles": [
+            {
+                "entrada": "2026-12-20",
+                "salida": "2026-12-23"
+            }
+        ]
     },
     {
         "id": 6,
@@ -57,7 +117,20 @@
         "precioNoche": 10000,
         "imagen": "../docs/2da-entrega/imagenes_referencia/selina-salta.webp",
         "descripcion": "Alojamiento en Salta Capital para recorrer la ciudad y disfrutar de una escapada al norte.",
-        "calificacion": 4.6
+        "calificacion": 4.6,
+        "tipo": "Alojamiento",
+        "servicios": {
+            "wifi": true,
+            "desayuno": true,
+            "pileta": false,
+            "estacionamiento": false
+        },
+        "periodosNoDisponibles": [
+            {
+                "entrada": "2026-12-24",
+                "salida": "2026-12-28"
+            }
+        ]
     },
     {
         "id": 7,
@@ -67,6 +140,14 @@
         "precioNoche": 10000,
         "imagen": "../docs/2da-entrega/imagenes_referencia/selina-salta.webp",
         "descripcion": "Una alternativa para dos personas que buscan alojarse en Salta Capital.",
-        "calificacion": 4.1
+        "calificacion": 4.1,
+        "tipo": "Alojamiento",
+        "servicios": {
+            "wifi": true,
+            "desayuno": false,
+            "pileta": false,
+            "estacionamiento": true
+        },
+        "periodosNoDisponibles": []
     }
 ]

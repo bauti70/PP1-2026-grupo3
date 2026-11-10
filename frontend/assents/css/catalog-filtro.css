@@ -96,13 +96,16 @@ body {
     padding: 25px;
     border-radius: 12px;
     border: 1px solid #eee;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
     position: sticky;
     top: 20px;
+    height: calc(100vh - 140px);
+    min-height: 0;
 }
 
 .grupo-filtros {
     border: none;
+    min-width: 0;
 }
 
 .titulo-filtro {
@@ -413,4 +416,123 @@ body {
 .mensaje.error {
     background-color: #fff0f3;
     color: #b00020;
+}
+
+.campo-busqueda-header {
+    flex: 1;
+    min-width: 0;
+}
+
+.error-busqueda-header, .error-filtro {
+    color: #b00020;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.error-filtro {
+    margin-top: 8px;
+}
+
+.controles-resultados {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.badge-destacado {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    background-color: #fff4cc;
+    color: #805900;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.tarjeta-puntuacion {
+    margin-top: 8px;
+    color: #946b00;
+    font-size: 13px;
+}
+
+.tarjeta-capacidad {
+    margin-top: 8px;
+    color: #777777;
+    font-size: 12px;
+}
+
+.tarjeta-servicios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 20px 20px;
+}
+
+.tarjeta-servicios span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 8px;
+    border-radius: 6px;
+    background-color: #f0edf7;
+    color: #514a74;
+    font-size: 12px;
+}
+
+.tarjeta-disponibilidad {
+    padding: 0 20px 20px;
+    color: #047857;
+    font-size: 13px;
+}
+
+#form-filtros {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+}
+
+.campos-filtros {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.campos-filtros .input-wrapper input {
+    min-width: 0;
+}
+
+.campos-filtros .contenedor-precios .input-wrapper {
+    flex: 1;
+    min-width: 0;
+}
+
+.acciones-filtros {
+    display: flex;
+    flex-shrink: 0;
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid #eeeeee;
+}
+
+.acciones-filtros .btn-buscar {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+    margin: 0;
+    padding: 12px 6px;
+    font-size: 13px;
+}
+
+.acciones-filtros .btn-limpiar {
+    background-color: #6c757d;
+}
+
+.acciones-filtros .btn-limpiar:hover {
+    background-color: #5a6268;
 }

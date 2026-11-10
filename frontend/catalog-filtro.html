@@ -9,117 +9,133 @@
 </head>
 
 <body class="page-catalogo-body">
-    
+
     <header class="barra-superior-fondo" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg');">
-       
+
         <div class="nav-izquierda">
-            <i class="fa-solid fa-bars icono-blanco"></i>
-            <a href="index.html" class="icono-blanco" style="text-decoration: none;">
-                <i class="fa-solid fa-house"></i>
+            <i class="fa-solid fa-bars icono-blanco" aria-hidden="true"></i>
+            <a href="index.html" class="icono-blanco" style="text-decoration: none;" aria-label="Ir al inicio">
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
             </a>
         </div>
-        
+
         <div class="nav-centro">
-            <form class="buscador-header" action="#" method="GET">
-                <input type="text" placeholder="¿A dónde vamos?" required>
+            <form id="form-busqueda-header" class="buscador-header" action="catalog-filtro.html" method="GET" novalidate>
+                <div class="campo-busqueda-header">
+                    <input type="search" id="busqueda-header" name="ciudad" placeholder="¿A dónde vamos?" aria-label="Buscar una ciudad" aria-describedby="error-busqueda-header" required>
+                    <p id="error-busqueda-header" class="error-busqueda-header" role="alert"></p>
+                </div>
+
                 <button type="submit" class="btn-lupa" title="Buscar">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                 </button>
             </form>
         </div>
 
         <div class="nav-derecha">
-            <a href="login.html" style="text-decoration: none; color: inherit;">
+            <a href="login.html" style="text-decoration: none; color: inherit;" aria-label="Iniciar sesión">
                 <div class="icono-usuario">
-                    <i class="fa-regular fa-user"></i>
+                    <i class="fa-regular fa-user" aria-hidden="true"></i>
                 </div>
-            </a>    
+            </a>
         </div>
-        
+
     </header>
 
     <main class="contenedor-catalogo">
+
         <aside class="panel-filtros">
-            <form id="form-filtros">
-                <fieldset class="grupo-filtros">
-                    <legend class="titulo-filtro"><i class="fa-solid fa-filter"></i> Filtros</legend>
+            <form id="form-filtros" novalidate>
 
-                    <label for="ubi"><i class="fa-solid fa-location-dot"></i> Ubicación</label>
-                    <div class="input-wrapper">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <input type="text" id="ubi" placeholder="Ciudad, Provincia">
-                    </div>
+                <div class="campos-filtros">
+                    <fieldset class="grupo-filtros">
+                        <legend class="titulo-filtro"><i class="fa-solid fa-filter" aria-hidden="true"></i> Filtros</legend>
 
-                    <label for="entrada"><i class="fa-regular fa-calendar"></i> Entrada</label>
-                    <div class="input-wrapper">
-                        <i class="fa-regular fa-calendar"></i>
-                        <input type="date" id="entrada">
-                    </div>
-
-                    <label for="sali"><i class="fa-regular fa-calendar-days"></i> Salida</label>
-                    <div class="input-wrapper">
-                        <i class="fa-regular fa-calendar-days"></i>
-                        <input type="date" id="sali">
-                    </div>
-                    
-                    <div class="separador"></div>
-                    
-                    <label class="opcion-check"><input type="checkbox" id="wifi" checked> <i class="fa-solid fa-wifi"></i> Wi-Fi</label>
-                    <label class="opcion-check"><input type="checkbox" id="des" checked> <i class="fa-solid fa-mug-hot"></i> Desayuno</label>
-                    <label class="opcion-check"><input type="checkbox" id="pile" checked> <i class="fa-solid fa-water-ladder"></i> Pileta</label>
-                    <label class="opcion-check"><input type="checkbox" id="miento" checked> <i class="fa-solid fa-square-parking"></i> Estacionamiento</label>
-
-                    <div class="separador"></div>
-                    <label><i class="fa-solid fa-dollar-sign"></i> Precio</label>
-                    
-                    <div class="contenedor-precios">
+                        <label for="ubi"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Ubicación</label>
                         <div class="input-wrapper">
-                            <span>$</span>
-                            <input type="number" id="min" placeholder="Mínimo">
+                            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                            <input type="text" id="ubi" placeholder="Ciudad, Provincia">
                         </div>
-                        <div class="input-wrapper">
-                            <span>$</span>
-                            <input type="number" id="max" placeholder="Máximo">
-                        </div>
-                    </div>
 
-                    <input type="reset" value="Limpiar filtros" class="btn-buscar" style="background-color: #6c757d; margin-bottom: 10px;">
+                        <label for="entrada"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Entrada</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+                            <input type="date" id="entrada" aria-describedby="error-fechas">
+                        </div>
+
+                        <label for="sali"><i class="fa-regular fa-calendar-days" aria-hidden="true"></i> Salida</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-calendar-days" aria-hidden="true"></i>
+                            <input type="date" id="sali" aria-describedby="error-fechas">
+                        </div>
+
+                        <p id="error-fechas" class="error-filtro" role="alert"></p>
+
+                        <div class="separador"></div>
+
+                        <label class="opcion-check"><input type="checkbox" id="wifi"> <i class="fa-solid fa-wifi" aria-hidden="true"></i> Wi-Fi</label>
+                        <label class="opcion-check"><input type="checkbox" id="des"> <i class="fa-solid fa-mug-hot" aria-hidden="true"></i> Desayuno</label>
+                        <label class="opcion-check"><input type="checkbox" id="pile"> <i class="fa-solid fa-water-ladder" aria-hidden="true"></i> Pileta</label>
+                        <label class="opcion-check"><input type="checkbox" id="miento"> <i class="fa-solid fa-square-parking" aria-hidden="true"></i> Estacionamiento</label>
+
+                        <div class="separador"></div>
+
+                        <label for="min"><i class="fa-solid fa-dollar-sign" aria-hidden="true"></i> Precio por noche</label>
+                        <div class="contenedor-precios">
+                            <div class="input-wrapper">
+                                <span>$</span>
+                                <input type="number" id="min" min="0" placeholder="Mínimo" aria-label="Precio mínimo" aria-describedby="error-precios">
+                            </div>
+
+                            <div class="input-wrapper">
+                                <span>$</span>
+                                <input type="number" id="max" min="0" placeholder="Máximo" aria-label="Precio máximo" aria-describedby="error-precios">
+                            </div>
+                        </div>
+
+                        <p id="error-precios" class="error-filtro" role="alert"></p>
+                    </fieldset>
+                </div>
+
+                <div class="acciones-filtros">
                     <input type="submit" value="Buscar" class="btn-buscar">
-                </fieldset>
+                    <input type="reset" value="Limpiar filtros" class="btn-buscar btn-limpiar">
+                </div>
+
             </form>
         </aside>
 
         <section class="lista-tarjetas">
-            
+
             <div class="resultados-header">
-                <h2>Resultados <span class="resultados-count">(12 alojamientos)</span></h2>
-                <button class="btn-ordenar"><i class="fa-solid fa-arrow-up-short-wide"></i> Más relevantes <i class="fa-solid fa-chevron-down"></i></button>
+                <h2>Resultados <span class="resultados-count"></span></h2>
+
+                <div class="controles-resultados">
+                    <select id="tipo-alojamiento" class="btn-ordenar" aria-label="Tipo de alojamiento">
+                        <option value="">Todos los tipos</option>
+                        <option value="Apartamento">Apartamento</option>
+                        <option value="Casa">Casa</option>
+                        <option value="Cabaña">Cabaña</option>
+                        <option value="Alojamiento">Alojamiento</option>
+                    </select>
+
+                    <select id="orden-alojamientos" class="btn-ordenar" aria-label="Ordenar resultados">
+                        <option value="relevantes">Más relevantes</option>
+                        <option value="destacados">Destacados</option>
+                        <option value="precio-menor">Precio más bajo</option>
+                        <option value="precio-mayor">Precio más alto</option>
+                        <option value="puntuacion">Mejor puntuación</option>
+                    </select>
+                </div>
             </div>
 
-            <div id="lista-alojamientos" class="grilla-alojamientos">
-                
-                <!--
-                <article class="tarjeta">
-                    <div class="tarjeta-imagen-wrapper">
-                        <img src="../docs/2da-entrega/imagenes_referencia/Casa en la montaña.jpg" alt="Casa en la montaña">
-                        <i class="fa-regular fa-heart icono-favorito"></i>
-                        <span class="badge-categoria">Casa</span>
-                    </div>
-                    <div class="tarjeta-cuerpo">
-                        <div class="tarjeta-info-izq">
-                            <h3 class="tarjeta-titulo">Casa en la montaña</h3>
-                            <p class="tarjeta-ubicacion"><i class="fa-solid fa-location-dot"></i> Bariloche, Río Negro</p>
-                        </div>
-                        <div class="tarjeta-info-der">
-                            <p class="tarjeta-precio"><strong>$15.000</strong> <span class="noche">/ noche</span></p>
-                            <button class="btn-detalles">Button</button>
-                        </div>
-                    </div>
-                </article>
-                -->
-            </div>    
+            <div id="lista-alojamientos" class="grilla-alojamientos" aria-live="polite"></div>
+
         </section>
+
     </main>
+
     <script src="assents/js/catalogo.js"></script>
+
 </body>
 </html>
