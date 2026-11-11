@@ -524,3 +524,54 @@ a:focus-visible, button:focus-visible, select:focus-visible {
     outline: 2px solid #a2b3ff;
     outline-offset: 3px;
 }
+
+/* Interacción del calendario */
+
+.cal-tabla td[data-fecha] {
+    cursor: pointer;
+}
+
+.cal-tabla td[data-fecha]:hover {
+    background-color: #f4f7ff;
+}
+
+.cal-tabla td.cal-dia-seleccionado:hover {
+    background-color: #edf2ff;
+}
+
+.cal-tabla td:focus-visible {
+    outline: 2px solid #a2b3ff;
+    outline-offset: -2px;
+}
+
+.cal-modo:hover {
+    color: #3d5ee8;
+}
+
+.cal-input-form:disabled {
+    background-color: #f5f6f9;
+    color: #9aa4b3;
+    cursor: not-allowed;
+}
+
+.cal-mensaje {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.cal-mensaje[hidden] {
+    display: none;
+}
+
+.cal-mensaje-ok {
+    background-color: #e7f6f0;
+    color: #258368;
+}
+
+.cal-mensaje-error {
+    background-color: #ffedf0;
+    color: #bd4d61;
+}
