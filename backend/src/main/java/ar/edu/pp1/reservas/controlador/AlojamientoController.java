@@ -7,11 +7,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/api/alojamientos")
@@ -29,11 +31,59 @@ public class AlojamientoController {
     }
 
     @GetMapping
-    public List<Alojamiento> listar() {
+    public List<Alojamiento> listar(
+            @RequestParam(required = false)
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate entrada,
+            @RequestParam(required = false)
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate salida
+    ) {
+        if ((entrada == null) != (salida == null)) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Completá ambas fechas"
+            );
+        }
+
+        if (entrada != null &&
+                (entrada.isBefore(LocalDate.now()) || !salida.isAfter(entrada))) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Rango de fechas inválido"
+            );
+        }
+
         return repository.findByPublicadoTrue()
                 .stream()
+                .filter(alojamiento ->
+                        entrada == null ||
+                                estaDisponibleEnFechas(alojamiento.getId(), entrada, salida))
                 .map(this::agregarServicios)
                 .toList();
+    }
+    private boolean estaDisponibleEnFechas(
+            Long idAlojamiento,
+            LocalDate entrada,
+            LocalDate salida
+    ) {
+        Long ocupaciones = jdbcTemplate.queryForObject("""
+            SELECT
+                (SELECT COUNT(*) FROM reserva r
+                 WHERE r.id_alojamiento = ?
+                   AND r.estado = 'CONFIRMADA'
+                   AND r.fecha_check_in < ?
+                   AND r.fecha_check_out > ?)
+                +
+                (SELECT COUNT(*) FROM bloqueo_disponibilidad b
+                 WHERE b.id_alojamiento = ?
+                   AND b.fecha >= ?
+                   AND b.fecha < ?)
+            """,
+                Long.class,
+                idAlojamiento, salida, entrada,
+                idAlojamiento, entrada, salida
+        );
+
+        return ocupaciones != null && ocupaciones == 0;
     }
 
     @GetMapping("/{id}")

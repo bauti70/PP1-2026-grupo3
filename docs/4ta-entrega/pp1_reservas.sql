@@ -264,3 +264,17 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2026-11-12  3:44:16
+
+
+DESCRIBE bloqueo_disponibilidad;
+DESCRIBE pp1_reservas.bloqueo_disponibilidad;
+
+INSERT INTO pp1_reservas.bloqueo_disponibilidad
+(id_alojamiento, fecha, motivo)
+VALUES
+(7, '2026-11-21', 'PRUEBA_FILTRO_FECHAS');
+
+DELETE FROM pp1_reservas.bloqueo_disponibilidad
+WHERE id_alojamiento = 7
+  AND fecha = '2026-11-21'
+  AND motivo = 'PRUEBA_FILTRO_FECHAS';

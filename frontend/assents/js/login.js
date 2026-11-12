@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 64e320e46cb2d19ec5d93784f8fe495903bd5602
 const form = document.querySelector('#form-login');
 
 form.addEventListener('submit', async function (evento){

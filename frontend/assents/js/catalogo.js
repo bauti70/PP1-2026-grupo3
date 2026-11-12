@@ -380,7 +380,18 @@ async function cargarAlojamientos() {
     mostrarMensaje('Cargando alojamientos...', 'cargando');
 
     try {
-        const respuesta = await fetch('http://localhost:8080/api/alojamientos');
+        const parametrosFechas = new URLSearchParams();
+
+        if (filtrosAplicados.entrada !== '' && filtrosAplicados.salida !== '') {
+            parametrosFechas.set('entrada', filtrosAplicados.entrada);
+            parametrosFechas.set('salida', filtrosAplicados.salida);
+        }
+
+        const ruta = 'http://localhost:8080/api/alojamientos';
+        const consulta = parametrosFechas.toString();
+        const url = consulta ? ruta + '?' + consulta : ruta;
+
+        const respuesta = await fetch(url);
 
         if (respuesta.ok === false) {
             throw new Error('No se pudo cargar el archivo de alojamientos.');
@@ -389,15 +400,15 @@ async function cargarAlojamientos() {
         const datosApi = await respuesta.json();
         const calificacionesInicio = await cargarCalificacionesInicio();
 
-const ciudades = {
-    1: 'Mar del Plata',
-    2: 'Villa Carlos Paz',
-    3: 'San Carlos de Bariloche',
-    4: 'Mendoza',
-    5: 'Buenos Aires',
-    6: 'El Durazno',
-    7: 'Salta Capital',
-    8: 'Santa Rosa'
+        const ciudades = {
+            1: 'Mar del Plata',
+            2: 'Villa Carlos Paz',
+            3: 'San Carlos de Bariloche',
+            4: 'Mendoza',
+            5: 'Buenos Aires',
+            6: 'El Durazno',
+            7: 'Salta Capital',
+            8: 'Santa Rosa'
 };
 
 todosLosAlojamientos = datosApi.map(function(alojamiento) {
@@ -474,7 +485,7 @@ formFiltros.addEventListener('submit', function(evento) {
     };
 
     inputBusqueda.value = filtrosAplicados.ubicacion;
-    aplicarFiltros();
+    cargarAlojamientos();
 });
 
 
