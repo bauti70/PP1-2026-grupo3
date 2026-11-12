@@ -5,8 +5,7 @@
         'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
     var ESTADOS = { libre: 'Libre', ocupada: 'Ocupada', bloqueada: 'Bloqueada' };
 
-    // Reservas de ejemplo por propiedad: [días desde hoy (inicio), días desde hoy (fin)].
-    // Cuando haya backend, esto debe venir de ahí.
+   
     var RESERVAS = {
         '1': [[3, 5], [20, 23]],
         '2': [[8, 12]],
@@ -51,7 +50,7 @@
         bloqueadas: {}
     };
 
-    /* ---------- Datos ---------- */
+    
 
     function claveStorage() { return 'calendario:bloqueos:' + el.propiedad.value; }
 
@@ -90,7 +89,7 @@
         return dias;
     }
 
-    /* ---------- Render ---------- */
+   
 
     function celda(fecha, fuera, enRango) {
         var iso = aISO(fecha);
@@ -112,7 +111,7 @@
         var anio = estado.mes.getFullYear();
         var mes = estado.mes.getMonth();
         var diasMes = new Date(anio, mes + 1, 0).getDate();
-        var offset = (estado.mes.getDay() + 6) % 7; // semana empieza el lunes
+        var offset = (estado.mes.getDay() + 6) % 7; 
         var semanas = Math.ceil((offset + diasMes) / 7);
         var rango = {};
         diasDelRango().forEach(function (d) { rango[d] = true; });
@@ -176,7 +175,7 @@
 
     function limpiarMensaje() { el.mensaje.hidden = true; }
 
-    /* ---------- Selección ---------- */
+  
 
     function fijarRango(a, b) {
         if (a > b) { var t = a; a = b; b = t; }
@@ -217,7 +216,7 @@
         if (nueva) nueva.focus();
     });
 
-    /* ---------- Navegación ---------- */
+    
 
     el.prev.addEventListener('click', function () {
         estado.mes = new Date(estado.mes.getFullYear(), estado.mes.getMonth() - 1, 1);
@@ -243,7 +242,7 @@
         renderCalendario();
     });
 
-    /* ---------- Formulario ---------- */
+   
 
     document.querySelectorAll('.cal-modo').forEach(function (b) {
         b.addEventListener('click', function () {
@@ -277,8 +276,8 @@
             var ini = deISO(estado.inicio);
             var fin;
             if (b.dataset.rapido === 'finde') {
-                var hastaSabado = (6 - ini.getDay() + 7) % 7; // próximo sábado (o el mismo día)
-                if (ini.getDay() === 0) hastaSabado = 6; // domingo → sábado siguiente
+                var hastaSabado = (6 - ini.getDay() + 7) % 7; 
+                if (ini.getDay() === 0) hastaSabado = 6; 
                 ini = sumar(ini, hastaSabado);
                 fin = sumar(ini, 1);
             } else {
@@ -329,7 +328,7 @@
     el.aplicar.addEventListener('click', aplicar);
     el.form.addEventListener('submit', function (e) { e.preventDefault(); aplicar(); });
 
-    /* ---------- Inicio ---------- */
+   
 
     cargarPropiedad();
     render();

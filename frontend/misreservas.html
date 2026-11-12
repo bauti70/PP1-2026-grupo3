@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis reservas</title>
+    <link rel="stylesheet" href="assents/css/menu.css">
     <link rel="stylesheet" href="assents/css/misreservas.css">
 </head>
 <body class="page-reservas">
@@ -11,8 +12,8 @@
     <header class="reserva-header">
         <p class="nav-titulo"></p>
         <nav class="reserva-nav">
+          <button class="btn-menu">☰</button>
           <a href="index.html">Inicio</a>
-          
           <a href="login.html">Login</a>
         </nav>
     </header>
@@ -26,11 +27,16 @@
             <img class="reserva-imagen" src="../docs/2da-entrega/imagenes_referencia/Apartamento vista al río.webp" alt="Apartamento vista al río">
             <div class="reserva-info">
                 <h2>Apartamento vista al río</h2>
-                <p>Apartamento amplio para 4 personas con excelente vista., totalmente equipado. A pasos del Parque 3 de Febrero y con fácil acceso al transporte público. Ideal para familias o grupos pequeños.</p>
+                <p>Apartamento amplio para 4 personas con excelente vista, totalmente equipado. A pasos del Parque 3 de Febrero y con fácil acceso al transporte público. Ideal para familias o grupos pequeños.</p>
                 <div class="reserva-botones">
                     <button class="reserva-btn-detalles">Ver detalles</button>
                     <button class="reserva-btn-contacto">Contactar Anfitrión</button>
                     <button class="reserva-btn-cancelar">Cancelar</button>
+                </div>
+                <div class="reserva-detalles" hidden>
+                    <p><strong>Entrada:</strong> 15/12/2026</p>
+                    <p><strong>Salida:</strong> 20/12/2026</p>
+                    <p><strong>Huéspedes:</strong> 4</p>
                 </div>
             </div>
         </article>
@@ -47,6 +53,11 @@
                     <button class="reserva-btn-contacto">Contactar Anfitrión</button>
                     <button class="reserva-btn-cancelar">Cancelar</button>
                 </div>
+                <div class="reserva-detalles" hidden>
+                    <p><strong>Entrada:</strong> 10/01/2027</p>
+                    <p><strong>Salida:</strong> 15/01/2027</p>
+                    <p><strong>Huéspedes:</strong> 6</p>
+                </div>
             </div>
         </article>
     </section>
@@ -62,11 +73,20 @@
                     <button class="reserva-btn-contacto">Contactar Anfitrión</button>
                     <button class="reserva-btn-cancelar">Cancelar</button>
                 </div>
+                <div class="reserva-detalles" hidden>
+                    <p><strong>Entrada:</strong> 05/02/2027</p>
+                    <p><strong>Salida:</strong> 10/02/2027</p>
+                    <p><strong>Huéspedes:</strong> 2</p>
+                </div>
             </div>
         </article>
     </section>
 
+    <p class="reserva-vacio" hidden>No hay reservas para mostrar.</p>
+
     </main>
 
+    <script src="assents/js/menu.js"></script>
+    <script src="assents/js/misreservas.js"></script>
 </body>
 </html>

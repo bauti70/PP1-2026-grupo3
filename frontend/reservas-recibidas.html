@@ -7,12 +7,15 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assents/css/reservas-recibidas.css">
+    <link rel="stylesheet" href="assents/css/menu.css">
 </head>
 
 <body class="page-reservas-recibidas">
     <header class="barra-superior-fondo" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg');">
         <div class="nav-izquierda">
-            <i class="fa-solid fa-bars icono-blanco"></i>
+            <button type="button" class="btn-menu">
+                <i class="fa-solid fa-bars icono-blanco" aria-hidden="true"></i>
+            </button>
             <a href="index.html" class="icono-blanco" style="text-decoration: none;">
                 <i class="fa-solid fa-house icono-blanco"></i>
             </a>
@@ -103,9 +106,12 @@
                     <div class="estado-opciones">
                         <span class="badge-estado estado-pendiente">
                             <i class="fa-solid fa-clock" aria-hidden="true"></i> Pendiente de aprobación </span>
-                        <span class="opciones-reserva" aria-hidden="true">
-                            <i class="fa-solid fa-ellipsis"></i>
-                        </span>
+                        <div class="opciones-reserva">
+                            <button type="button" class="btn-opciones" aria-label="Opciones de la reserva" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+                            </button>
+                            <div class="menu-opciones" hidden></div>
+                        </div>
                     </div>
 
                     <button type="button" class="btn-contacto">
@@ -159,9 +165,12 @@
                             Activa / Confirmada
                         </span>
 
-                        <span class="opciones-reserva" aria-hidden="true">
-                            <i class="fa-solid fa-ellipsis"></i>
-                        </span>
+                        <div class="opciones-reserva">
+                            <button type="button" class="btn-opciones" aria-label="Opciones de la reserva" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+                            </button>
+                            <div class="menu-opciones" hidden></div>
+                        </div>
                     </div>
 
                     <button type="button" class="btn-contacto">
@@ -216,9 +225,12 @@
                             Cancelada
                         </span>
 
-                        <span class="opciones-reserva" aria-hidden="true">
-                            <i class="fa-solid fa-ellipsis"></i>
-                        </span>
+                        <div class="opciones-reserva">
+                            <button type="button" class="btn-opciones" aria-label="Opciones de la reserva" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+                            </button>
+                            <div class="menu-opciones" hidden></div>
+                        </div>
 
                     </div>
 
@@ -230,9 +242,14 @@
                 </div>
             </article>
 
+            <p class="reservas-vacio" hidden>No hay reservas para mostrar.</p>
+
         </section>
 
     </main>
+
+    <script src="assents/js/reservas-recibidas.js"></script>
+    <script src="assents/js/menu.js"></script>
 
 </body>
 </html>

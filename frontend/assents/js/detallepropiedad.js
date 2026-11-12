@@ -1,4 +1,3 @@
-//console.log('funciona');
 const reservas = [];
 
 let alojamientoSeleccionado = null;
@@ -7,41 +6,6 @@ const infoPropiedad = document.querySelector('.info-propiedad');
 const columnaReserva = document.querySelector('.columna-reserva');
 const formReserva = document.querySelector('#form-reserva');
 const botonReservar = document.querySelector('.btn-confirmar');
-
-
-function crearServicios(servicios) {
-    let html = '';
-
-    if (servicios.wifi === true) {
-        html = html + '<span class="etiqueta"><i class="fa-solid fa-wifi" aria-hidden="true"></i> Wi-Fi</span>';
-    }
-
-    if (servicios.desayuno === true) {
-        html = html + '<span class="etiqueta"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i> Desayuno</span>';
-    }
-
-    if (servicios.pileta === true) {
-        html = html + '<span class="etiqueta"><i class="fa-solid fa-water-ladder" aria-hidden="true"></i> Pileta</span>';
-    }
-
-    if (servicios.estacionamiento === true) {
-        html = html + '<span class="etiqueta"><i class="fa-solid fa-square-parking" aria-hidden="true"></i> Estacionamiento</span>';
-    }
-
-    if (servicios.aireAcondicionado === true) {
-        html = html + '<span class="etiqueta"><i class="fa-regular fa-snowflake" aria-hidden="true"></i> Aire acondicionado</span>';
-    }
-
-    if (servicios.aceptaMascotas === true) {
-        html = html + '<span class="etiqueta"><i class="fa-solid fa-paw" aria-hidden="true"></i> Acepta mascotas</span>';
-    }
-
-    if (html === '') {
-        html = '<p class="texto-secundario">No se informaron servicios para este alojamiento.</p>';
-    }
-
-    return html;
-}
 
 
 function crearDetalle(alojamiento) {
@@ -53,24 +17,30 @@ function crearDetalle(alojamiento) {
     }
 
     if (typeof alojamiento.calificacion === 'number' && alojamiento.calificacion >= 0 && alojamiento.calificacion <= 5) {
-        calificacionHtml = `<p class="detalle-calificacion"><i class="fa-solid fa-star" aria-hidden="true"></i> ${alojamiento.calificacion} / 5</p>`;
+    let resenas = '';
+
+    if (Number.isInteger(alojamiento.resenas) && alojamiento.resenas >= 0) {
+        resenas = ' (' + pluralizar(alojamiento.resenas, 'reseña', 'reseñas') + ')';
     }
 
+    calificacionHtml = `<p class="detalle-calificacion"><i class="fa-solid fa-star" aria-hidden="true"></i> ${alojamiento.calificacion} / 5${resenas}</p>`;
+}
+
+    const favorito = esFavorito(alojamiento.id);
+
     return `
-        <div class="galeria-fotos galeria-una-foto">
-            <img src="${alojamiento.imagen}" alt="${alojamiento.nombre}" class="foto-principal">
-        </div>
+        ${crearCarrusel(obtenerImagenes(alojamiento), alojamiento.nombre)}
 
         <div class="encabezado-info">
-            <h1>${alojamiento.nombre}</h1>
-            <button type="button" class="btn-favorito" aria-label="Agregar a favoritos">
-                <i class="fa-regular fa-heart" aria-hidden="true"></i>
+            <h1>${escapar(alojamiento.nombre)}</h1>
+            <button type="button" class="btn-favorito${favorito ? ' activo' : ''}" aria-label="Agregar a favoritos" aria-pressed="${favorito}">
+                <i class="${favorito ? 'fa-solid' : 'fa-regular'} fa-heart" aria-hidden="true"></i>
             </button>
         </div>
 
         <p class="texto-secundario">
             <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-            ${alojamiento.ubicacion}
+            ${escapar(alojamiento.ubicacion)}
         </p>
 
         ${calificacionHtml}
@@ -82,14 +52,7 @@ function crearDetalle(alojamiento) {
             </span>
         </div>
 
-        <section class="servicios-propiedad" aria-labelledby="titulo-servicios">
-            <h2 id="titulo-servicios">Servicios</h2>
-            <div class="contenedor-etiquetas">
-                ${crearServicios(alojamiento.servicios || {})}
-            </div>
-        </section>
-
-        <p class="descripcion-texto">${descripcion}</p>
+        <p class="descripcion-texto">${escapar(descripcion)}</p>
     `;
 }
 
@@ -149,9 +112,16 @@ async function cargarDetalle() {
         }
 
         infoPropiedad.innerHTML = crearDetalle(alojamientoSeleccionado);
+        iniciarCarrusel();
+        iniciarFavorito();
 
-        document.querySelector('.precio-encabezado h2').textContent = '$' + alojamientoSeleccionado.precioNoche;
-        document.querySelector('#huespedes').max = alojamientoSeleccionado.capacidad;
+        const hoy = fechaHoyISO();
+
+        document.querySelector('.precio-encabezado h2').textContent = formatearPrecio(alojamientoSeleccionado.precioNoche);
+        inputHuespedes.max = alojamientoSeleccionado.capacidad;
+        inputHuespedes.placeholder = 'Máx. ' + alojamientoSeleccionado.capacidad;
+        inputLlegada.min = hoy;
+        inputSalida.min = sumarDias(hoy, 1);
         document.title = alojamientoSeleccionado.nombre + ' - Detalle';
 
         botonReservar.disabled = false;
@@ -165,16 +135,46 @@ async function cargarDetalle() {
 }
 
 
-function formatearFecha(fecha) {
-    const partes = fecha.split('-');
-    return partes[2] + '-' + partes[1] + '-' + partes[0];
+
+
+function actualizarTotal() {
+    if (alojamientoSeleccionado === null || seccionTotal === null) {
+        return;
+    }
+
+    const llegada = inputLlegada.value;
+    const salida = inputSalida.value;
+
+    if (llegada === '' || salida === '' || salida <= llegada) {
+        seccionTotal.hidden = true;
+        return;
+    }
+
+    const noches = calcularNoches(llegada, salida);
+    const precio = Number(alojamientoSeleccionado.precioNoche);
+
+    tarifaTexto.textContent = formatearPrecio(precio) + ' x ' + pluralizar(noches, 'noche', 'noches');
+    totalValor.textContent = formatearPrecio(precio * noches);
+    seccionTotal.hidden = false;
 }
+
+inputLlegada.addEventListener('change', function () {
+    if (inputLlegada.value !== '') {
+        inputSalida.min = sumarDias(inputLlegada.value, 1);
+    }
+
+    actualizarTotal();
+});
+
+inputSalida.addEventListener('change', actualizarTotal);
+
+
 
 
 function crearItemReserva(reserva) {
     return `
         <article class="reserva-propiedad">
-            <h2>${reserva.alojamiento}</h2>
+            <h2>${escapar(reserva.alojamiento)}</h2>
             <p>Fecha de llegada: ${formatearFecha(reserva.fechaEntrada)} hasta ${formatearFecha(reserva.fechaSalida)}</p>
             <p><strong>Huéspedes:</strong> ${reserva.huespedes} | <strong>Estado:</strong> ${reserva.estado}</p>
         </article>
@@ -195,12 +195,11 @@ function renderReservas(lista) {
 
 
 async function guardarReserva(reserva) {
-    reservas.length = 0;
     reservas.push(reserva);
 }
 
 
-formReserva.addEventListener('submit', async function(evento) {
+formReserva.addEventListener('submit', async function (evento) {
     evento.preventDefault();
 
     if (alojamientoSeleccionado === null) {
@@ -211,15 +210,17 @@ formReserva.addEventListener('submit', async function(evento) {
     const mensajeBloqueo = document.querySelector('#mensaje-bloqueo');
 
     if (sesion !== 'true') {
+        mensajeBloqueo.hidden = false;
         mensajeBloqueo.style.display = 'block';
         return;
     }
 
+    mensajeBloqueo.hidden = true;
     mensajeBloqueo.style.display = 'none';
 
-    const fechaEntrada = document.querySelector('#llegada').value;
-    const fechaSalida = document.querySelector('#salida').value;
-    const huespedes = Number(document.querySelector('#huespedes').value);
+    const fechaEntrada = inputLlegada.value;
+    const fechaSalida = inputSalida.value;
+    const huespedes = Number(inputHuespedes.value);
 
     const msjLlegada = document.querySelector('#error-llegada');
     const msjSalida = document.querySelector('#error-salida');
@@ -233,6 +234,9 @@ formReserva.addEventListener('submit', async function(evento) {
 
     if (fechaEntrada === '') {
         msjLlegada.textContent = 'Por favor, ingresá una fecha de llegada.';
+        hayError = true;
+    } else if (fechaEntrada < fechaHoyISO()) {
+        msjLlegada.textContent = 'La llegada no puede ser una fecha pasada.';
         hayError = true;
     }
 
@@ -268,6 +272,7 @@ formReserva.addEventListener('submit', async function(evento) {
     await guardarReserva(reserva);
     renderReservas(reservas);
     formReserva.reset();
+    actualizarTotal();
 
     if (typeof toastr !== 'undefined') {
         toastr.options = {

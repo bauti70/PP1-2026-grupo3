@@ -525,7 +525,7 @@ a:focus-visible, button:focus-visible, select:focus-visible {
     outline-offset: 3px;
 }
 
-/* Interacción del calendario */
+
 
 .cal-tabla td[data-fecha] {
     cursor: pointer;

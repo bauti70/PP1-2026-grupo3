@@ -6,13 +6,16 @@
     <title>Mis propiedades</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assents/css/mispropiedades.css">
+    <link rel="stylesheet" href="assents/css/menu.css"> 
 </head>
 
 <body class="page-mispropiedades">
 
     <header class="barra-superior-fondo" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg');">
         <div class="nav-izquierda">
+            <button type="button" class="btn-menu">
             <i class="fa-solid fa-bars icono-blanco" aria-hidden="true"></i>
+            </button>
             <a href="index.html" class="icono-blanco" aria-label="Ir al inicio">
                 <i class="fa-solid fa-house" aria-hidden="true"></i>
             </a>
@@ -87,7 +90,7 @@
 
             <div class="misprop-lista">
 
-                <article class="misprop-fila">
+                <article class="misprop-fila" data-id="1">
                     <img class="misprop-imagen" src="../docs/2da-entrega/imagenes_referencia/Apartamento vista al río.webp" alt="Apartamento vista al río">
 
                     <div class="misprop-datos">
@@ -125,7 +128,7 @@
                     </div>
                 </article>
 
-                <article class="misprop-fila">
+                <article class="misprop-fila" data-id="2">
                     <img class="misprop-imagen" src="../docs/2da-entrega/imagenes_referencia/Cabaña en Bariloche.jpg" alt="Cabaña del bosque">
 
                     <div class="misprop-datos">
@@ -161,7 +164,7 @@
                     </div>
                 </article>
 
-                <article class="misprop-fila">
+                <article class="misprop-fila" data-id="3">
                     <img class="misprop-imagen" src="../docs/2da-entrega/imagenes_referencia/Casa con jardín en Mendoza.jpg" alt="Casa con jardín en Mendoza">
 
                     <div class="misprop-datos">
@@ -197,6 +200,8 @@
                     </div>
                 </article>
 
+                <p class="misprop-vacio" hidden>No hay propiedades para mostrar.</p>
+
             </div>
 
         </section>
@@ -204,6 +209,7 @@
     </main>
 
     <script src="assents/js/mispropiedades.js"></script>
+    <script src="assents/js/menu.js"></script> 
 
 </body>
 </html>

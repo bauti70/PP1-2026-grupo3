@@ -6,12 +6,15 @@
     <title>Publicar propiedad</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assents/css/publicarpropiedad.css">
+    <link rel="stylesheet" href="assents/css/menu.css">
 </head>
 
 <body class="page-publicar">
     <header class="barra-superior-fondo" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg');">
         <div class="nav-izquierda">
-            <i class="fa-solid fa-bars icono-blanco" aria-hidden="true"></i>
+            <button type="button" class="btn-menu">
+                <i class="fa-solid fa-bars icono-blanco" aria-hidden="true"></i>
+            </button>
             <a href="index.html" class="icono-blanco" aria-label="Ir al inicio">
                 <i class="fa-solid fa-house" aria-hidden="true"></i>
             </a>
@@ -73,7 +76,7 @@
                     <label for="precio">Precio por noche</label>
                     <div class="campo-con-icono">
                         <i class="fa-solid fa-dollar-sign" aria-hidden="true"></i>
-                        <input type="number" id="precio" name="precio" min="0" placeholder="Ingresá el precio por noche" required>
+                        <input type="number" id="precio" name="precio" min="1" step="1" placeholder="Ingresá el precio por noche" required>
                     </div>
                 </div>
             </section>
@@ -94,6 +97,9 @@
                         <label for="imagenes" class="btn-imagenes">Subir imágenes</label>
                         <input type="file" id="imagenes" name="imagenes" class="input-imagenes" accept="image/*" multiple required>
                     </div>
+
+                    <p class="mensaje-imagenes"></p>
+                    <div class="vista-previa"></div>
                 </section>
 
                 <section class="servicios-propiedad" aria-label="Servicios de la propiedad">
@@ -171,11 +177,16 @@
                 </div>
             </section>
 
-            <button type="button" class="btn-publicar">Publicar propiedad</button>
+            <button type="submit" class="btn-publicar">Publicar propiedad</button>
+
+            <p id="mensaje-publicado" class="mensaje-publicado" role="status" hidden></p>
 
         </form>
 
     </main>
+
+    <script src="assents/js/publicarpropiedad.js"></script>
+    <script src="assents/js/menu.js"></script>
 
 </body>
 </html>
