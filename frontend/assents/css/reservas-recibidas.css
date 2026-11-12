@@ -330,7 +330,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 
 
-/* Botón de los tres puntos y su menú */
+
 .btn-opciones {
     padding: 4px 8px;
     border: none;
@@ -384,7 +384,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     font-size: 13px;
 }
 
-/* Mensaje cuando el filtro no devuelve nada */
+
 .reservas-vacio {
     padding: 40px 0;
     color: #6f7c99;

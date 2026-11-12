@@ -1,4 +1,4 @@
-/* Botón hamburguesa: sin estilo propio, deja el de tu icono */
+
 .btn-menu {
     background: none;
     border: none;
@@ -6,7 +6,7 @@
     cursor: pointer;
 }
 
-/* Versión flotante, para páginas sin botón propio */
+
 .btn-menu-flotante {
     color: white;
     font-size: 26px;
@@ -20,7 +20,7 @@
     z-index: 998;
 }
 
-/* Fondo oscuro */
+
 .menu-fondo {
     display: none;
     position: fixed;
@@ -36,7 +36,7 @@
     display: block;
 }
 
-/* Menú lateral */
+
 .menu-lateral {
     position: fixed;
     top: 0;

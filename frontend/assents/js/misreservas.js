@@ -1,7 +1,7 @@
 var main = document.querySelector('.reserva-main');
 var mensajeVacio = document.querySelector('.reserva-vacio');
 
-// Muestra u oculta el mensaje si no hay reservas visibles
+
 function actualizarVacio() {
     var tarjetas = document.querySelectorAll('.reserva-tarjeta');
     var visibles = 0;
@@ -15,7 +15,7 @@ function actualizarVacio() {
     mensajeVacio.hidden = visibles > 0;
 }
 
-// Botones de cada reserva
+
 main.addEventListener('click', function (e) {
     var boton = e.target.closest('button');
     if (!boton) {

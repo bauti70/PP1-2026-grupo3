@@ -10,7 +10,7 @@ const ESTADOS = {
 };
 
 
-// ---------- Estado de cada reserva ----------
+
 
 function obtenerEstado(tarjeta) {
     const badge = tarjeta.querySelector('.badge-estado');
@@ -31,7 +31,7 @@ function cambiarEstado(tarjeta, nuevoEstado) {
     badge.className = 'badge-estado ' + datos.clase;
     badge.innerHTML = '<i class="fa-solid ' + datos.icono + '" aria-hidden="true"></i> ' + datos.texto;
 
-    // Solo el estilo del botón: relleno si está viva, contorno si está cancelada
+   
     const botonContacto = tarjeta.querySelector('.btn-contacto');
     if (nuevoEstado === 'cancelada') {
         botonContacto.classList.add('btn-contacto-contorno');
@@ -44,7 +44,7 @@ function cambiarEstado(tarjeta, nuevoEstado) {
 }
 
 
-// ---------- Aviso de solicitudes pendientes ----------
+
 
 function actualizarNotificacion() {
     let pendientes = 0;
@@ -65,7 +65,7 @@ function actualizarNotificacion() {
 }
 
 
-// ---------- Filtro "Mostrar" ----------
+
 
 function aplicarFiltro() {
     const filtro = selectorMostrar.value;
@@ -97,7 +97,7 @@ function aplicarFiltro() {
 selectorMostrar.addEventListener('change', aplicarFiltro);
 
 
-// ---------- Menú de los tres puntos ----------
+
 
 function cerrarMenus() {
     const menus = document.querySelectorAll('.menu-opciones');
@@ -130,7 +130,7 @@ document.addEventListener('click', function(e) {
     const botonOpciones = e.target.closest('.btn-opciones');
     const botonAccion = e.target.closest('.menu-opciones button');
 
-    // Abrir o cerrar el menú de una reserva
+   
     if (botonOpciones) {
         const tarjeta = botonOpciones.closest('.tarjeta-reserva-anfitrion');
         const menu = tarjeta.querySelector('.menu-opciones');
@@ -146,7 +146,7 @@ document.addEventListener('click', function(e) {
         return;
     }
 
-    // Elegir una acción del menú
+   
     if (botonAccion) {
         const tarjeta = botonAccion.closest('.tarjeta-reserva-anfitrion');
         const nombre = tarjeta.querySelector('.nombre-propiedad').textContent.trim();
@@ -168,7 +168,7 @@ document.addEventListener('click', function(e) {
         return;
     }
 
-    // Click en cualquier otro lado: cerrar menús
+    
     cerrarMenus();
 });
 
@@ -179,7 +179,7 @@ document.addEventListener('keydown', function(e) {
 });
 
 
-// ---------- Al cargar la página ----------
+
 
 actualizarNotificacion();
 aplicarFiltro();

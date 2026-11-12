@@ -7,7 +7,7 @@ const secciones = {
     anfitrion: document.querySelector('#seccion-anfitrion')
 };
 
-// Orden en que aparecen los campos de cada vista (sirve para mostrar errores y enfocar el primero)
+
 const ORDEN = {
     huesped: ['nombre', 'contraseña', 'Email', 'telefono', 'nacimiento', 'ciudad', 'idioma'],
     anfitrion: ['nom_pub', 'dni', 'pago', 'Contactar']
@@ -23,11 +23,11 @@ const botonQuitarFoto = document.querySelector('#quitar-foto');
 const mensajeGuardado = document.querySelector('#mensaje-guardado');
 
 let rolActivo = 'huesped';
-let fotoPendiente = null; // null = sin cambios, '' = quitar foto, texto = foto nueva
+let fotoPendiente = null; 
 let temporizadorMensaje = null;
 
 
-/* ---------- Almacenamiento ---------- */
+
 
 function leerPerfil() {
     try {
@@ -67,7 +67,7 @@ function cargarPerfil() {
 }
 
 
-/* ---------- Fechas ---------- */
+
 
 function aISO(fecha) {
     const mes = String(fecha.getMonth() + 1).padStart(2, '0');
@@ -81,7 +81,7 @@ function fechaHaceAnios(anios) {
 }
 
 
-/* ---------- Vistas Huésped / Anfitrión ---------- */
+
 
 function cambiarRol(rol) {
     rolActivo = rol;
@@ -105,7 +105,7 @@ for (let i = 0; i < botonesRol.length; i = i + 1) {
 }
 
 
-/* ---------- Errores ---------- */
+
 
 function ponerError(id, texto) {
     const mensaje = document.getElementById('error-' + id);
@@ -158,7 +158,7 @@ function ocultarMensaje() {
 }
 
 
-/* ---------- Validaciones ---------- */
+
 
 function valor(id) {
     return document.getElementById(id).value.trim();
@@ -255,7 +255,7 @@ function validarAnfitrion() {
 }
 
 
-/* ---------- Contraseña: mostrar / ocultar ---------- */
+
 
 botonVerClave.addEventListener('click', function () {
     const visible = inputClave.type === 'text';
@@ -265,7 +265,7 @@ botonVerClave.addEventListener('click', function () {
 });
 
 
-/* ---------- Foto de perfil ---------- */
+
 
 function mostrarFoto(origen) {
     imagenPerfil.hidden = origen === '';
@@ -340,7 +340,7 @@ botonQuitarFoto.addEventListener('click', function () {
 });
 
 
-/* ---------- Guardar ---------- */
+
 
 form.addEventListener('submit', function (evento) {
     evento.preventDefault();
@@ -377,7 +377,7 @@ form.addEventListener('submit', function (evento) {
 });
 
 
-/* ---------- Inicio ---------- */
+
 
 inputNacimiento.max = fechaHaceAnios(18);
 cargarPerfil();

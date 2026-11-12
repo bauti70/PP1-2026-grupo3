@@ -337,7 +337,7 @@ a:focus-visible, button:focus-visible {
 }
 
 
-/* Vista previa de las imágenes */
+
 .mensaje-imagenes {
     margin-top: 12px;
     color: #77748e;
@@ -371,7 +371,7 @@ a:focus-visible, button:focus-visible {
     outline-offset: 3px;
 }
 
-/* Mensaje al publicar */
+
 .mensaje-publicado {
     grid-column: 1 / -1;
     margin-left: 24px;

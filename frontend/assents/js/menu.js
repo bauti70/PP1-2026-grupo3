@@ -17,7 +17,7 @@ if (paginaActual === '') {
     paginaActual = 'index.html';
 }
 
-// Botón
+
 var botonMenu = document.querySelector('.btn-menu');
 if (!botonMenu) {
     botonMenu = document.createElement('button');
@@ -27,12 +27,12 @@ if (!botonMenu) {
 }
 botonMenu.setAttribute('aria-label', 'Abrir menú');
 
-// Fondo oscuro
+
 var fondoMenu = document.createElement('div');
 fondoMenu.className = 'menu-fondo';
 document.body.appendChild(fondoMenu);
 
-// Menú lateral
+
 var menuLateral = document.createElement('nav');
 menuLateral.className = 'menu-lateral';
 
@@ -47,7 +47,7 @@ for (var i = 0; i < paginas.length; i++) {
 menuLateral.innerHTML = html;
 document.body.appendChild(menuLateral);
 
-// Abrir y cerrar
+
 function abrirMenu() {
     menuLateral.classList.add('abierto');
     fondoMenu.classList.add('abierto');

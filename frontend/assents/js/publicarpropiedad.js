@@ -16,7 +16,7 @@ const MAX_IMAGENES = 10;
 const MAX_MB = 5;
 
 
-// ---------- Textos: no aceptar solo espacios ----------
+
 
 function validarTexto(campo) {
     if (campo.value !== '' && campo.value.trim() === '') {
@@ -35,7 +35,7 @@ for (let i = 0; i < camposTexto.length; i = i + 1) {
 }
 
 
-// ---------- Ocupantes: el mínimo no puede superar al máximo ----------
+
 
 function validarOcupantes() {
     if (parseInt(ocupantesMin.value) > parseInt(ocupantesMax.value)) {
@@ -49,7 +49,7 @@ ocupantesMax.addEventListener('change', validarOcupantes);
 ocupantesMin.addEventListener('change', validarOcupantes);
 
 
-// ---------- Imágenes: validación y vista previa ----------
+
 
 function mostrarImagenes() {
     const archivos = campoImagenes.files;
@@ -100,7 +100,7 @@ function mostrarImagenes() {
 
 campoImagenes.addEventListener('change', mostrarImagenes);
 
-// Resaltar la caja al arrastrar archivos encima
+
 cajaImagenes.addEventListener('dragover', function() {
     cajaImagenes.classList.add('arrastrando');
 });
@@ -114,8 +114,7 @@ cajaImagenes.addEventListener('drop', function() {
 });
 
 
-// ---------- Publicar ----------
-// El navegador valida los campos "required" antes de llegar acá.
+
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -141,7 +140,7 @@ form.addEventListener('submit', function(e) {
         cantidadImagenes: campoImagenes.files.length
     };
 
-    // Se guarda en el navegador (todavía no hay servidor)
+   
     const guardadas = JSON.parse(localStorage.getItem('propiedadesPublicadas')) || [];
     guardadas.push(propiedad);
     localStorage.setItem('propiedadesPublicadas', JSON.stringify(guardadas));

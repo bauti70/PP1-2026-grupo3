@@ -1,4 +1,4 @@
-/*GLOBAL*/
+
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -12,7 +12,7 @@ body{
 
 
 
-/*PANTALLA CREAR CUENTA*/
+
 .page-cuenta{
     font-family: "Arial", sans-serif;
 }
@@ -159,7 +159,7 @@ label[for="rol_anfitrion"], label[for="rol_huesped"]{
 }
 
 
-/* RESERVAS RECIBIDAS */
+
 main.contenedor-principal {
     display: flex;
     flex-direction: column;
@@ -277,11 +277,10 @@ main.contenedor-principal {
 }
 
 
-/* perfil editar */
 
 
 
-/* EDITAR ALOJAMIENTO */
+
 .page-gestionar-propiedades{
     background-color: #ffffff;
 }
@@ -451,7 +450,7 @@ misprop-nav a{
     font-weight: bold;
 }
 
-/* CALENDARIO */
+
 
 .page-calendario {
     background-color: #ffffff;
@@ -709,7 +708,7 @@ misprop-nav a{
     font-family: 'Courier New', Courier, monospace;
 }
 
-/*BOTON ERROR*/
+
 #error-reserva.visible {
     color:#b00020;
     font-weight: bold;

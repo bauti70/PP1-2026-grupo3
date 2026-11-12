@@ -1,6 +1,4 @@
-//console.log('funciona');
-//alojamiento.length
-//alojamiento[0].nombre
+
 
 const formBusqueda = document.querySelector('#form-busqueda-header');
 const inputBusqueda = document.querySelector('#busqueda-header');

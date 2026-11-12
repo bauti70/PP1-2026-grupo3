@@ -1,4 +1,4 @@
-//EL LOGIN VALIDA
+
 const form = document.querySelector('#form-login');
 
 form.addEventListener('submit', async function (evento){

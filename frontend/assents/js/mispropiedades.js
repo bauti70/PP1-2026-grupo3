@@ -7,7 +7,7 @@ const buscador = document.querySelector('.buscador-header input');
 const lupa = document.querySelector('.buscador-header i');
 
 
-// ---------- Estado de cada propiedad ----------
+
 
 function estaPublicada(fila) {
     const badge = fila.querySelector('.misprop-badge');
@@ -15,7 +15,7 @@ function estaPublicada(fila) {
 }
 
 
-// ---------- Contadores del panel ----------
+
 
 function actualizarContadores() {
     let publicadas = 0;
@@ -36,7 +36,7 @@ function actualizarContadores() {
 }
 
 
-// ---------- Filtro por estado ----------
+
 
 function aplicarFiltro() {
     let visibles = 0;
@@ -60,7 +60,7 @@ function aplicarFiltro() {
     mensajeVacio.hidden = visibles > 0;
 }
 
-// "Todas" siempre queda marcada al tocarla y desmarca las otras
+
 checkTodas.addEventListener('change', function() {
     checkTodas.checked = true;
     checkPublicadas.checked = false;
@@ -68,7 +68,7 @@ checkTodas.addEventListener('change', function() {
     aplicarFiltro();
 });
 
-// Publicadas / Retiradas: si no hay ninguna (o están las dos), vuelve a "Todas"
+
 function cambioFiltroEstado() {
     if (checkPublicadas.checked === checkRetiradas.checked) {
         checkTodas.checked = true;
@@ -84,7 +84,7 @@ checkPublicadas.addEventListener('change', cambioFiltroEstado);
 checkRetiradas.addEventListener('change', cambioFiltroEstado);
 
 
-// ---------- Botón Editar ----------
+
 
 const botonesEditar = document.querySelectorAll('.misprop-boton-editar');
 
@@ -96,7 +96,7 @@ for (let i = 0; i < botonesEditar.length; i = i + 1) {
 }
 
 
-// ---------- Botones Retirar / Republicar ----------
+
 
 const botonesEstado = document.querySelectorAll('.misprop-boton-retirar, .misprop-boton-republicar');
 
@@ -135,7 +135,7 @@ for (let i = 0; i < botonesEstado.length; i = i + 1) {
 }
 
 
-// ---------- Buscador del header: lleva al catálogo ----------
+
 
 function buscarDestino() {
     const texto = buscador.value.trim();
@@ -157,7 +157,7 @@ lupa.style.cursor = 'pointer';
 lupa.addEventListener('click', buscarDestino);
 
 
-// ---------- Al cargar la página ----------
+
 
 actualizarContadores();
 aplicarFiltro();
