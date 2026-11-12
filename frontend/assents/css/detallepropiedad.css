@@ -5,9 +5,17 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     color: #333;
     background-color: #ffffff;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
 }
 
 .barra-superior-fondo {
@@ -15,6 +23,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 40px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../../../docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg');
     background-size: cover;
     background-position: center;
     height: 80px;
@@ -61,33 +70,152 @@ body {
 }
 
 .info-propiedad {
-    flex: 2; 
+    flex: 2;
+    min-width: 0;
 }
 
+
+
 .galeria-fotos {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     margin-bottom: 30px;
 }
 
+.carrusel {
+    position: relative;
+}
+
+.carrusel:focus-visible {
+    outline: 2px solid #a2b3ff;
+    outline-offset: 3px;
+}
+
+.carrusel-ventana {
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: #f0f1f5;
+}
+
+.carrusel-pista {
+    display: flex;
+    transition: transform 0.4s ease;
+}
+
+.carrusel-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+}
+
 .foto-principal {
+    display: block;
     width: 100%;
-    height: 350px;
+    height: 420px;
     object-fit: cover;
+}
+
+.carrusel-btn {
+    position: absolute;
+    top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    transform: translateY(-50%);
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    font-size: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.carrusel-btn:hover {
+    background-color: #ffffff;
+}
+
+.carrusel-btn:focus-visible {
+    outline: 2px solid #a2b3ff;
+    outline-offset: 2px;
+}
+
+.carrusel-prev {
+    left: 12px;
+}
+
+.carrusel-next {
+    right: 12px;
+}
+
+.carrusel-contador {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    font-size: 12px;
 }
 
 .fotos-secundarias {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    gap: 10px;
+    padding-bottom: 4px;
+    overflow-x: auto;
 }
 
-.fotos-secundarias img {
+.carrusel-miniatura {
+    flex: 0 0 90px;
+    height: 62px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background: none;
+    opacity: 0.6;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.carrusel-miniatura:hover {
+    opacity: 1;
+}
+
+.carrusel-miniatura:focus-visible {
+    outline: 2px solid #a2b3ff;
+    outline-offset: 2px;
+}
+
+.carrusel-miniatura img {
+    display: block;
     width: 100%;
-    height: 167.5px; 
+    height: 100%;
     object-fit: cover;
 }
+
+.carrusel-miniatura-activa {
+    border-color: #007BFF;
+    opacity: 1;
+}
+
+.galeria-una-foto {
+    gap: 0;
+}
+
+.carrusel-vacio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 260px;
+    border-radius: 12px;
+    background-color: #f0f1f5;
+    color: #8a93a3;
+    font-size: 14px;
+}
+
+
 
 .encabezado-info {
     display: flex;
@@ -108,6 +236,14 @@ body {
     font-size: 24px;
     cursor: pointer;
     color: #555;
+}
+
+.btn-favorito:hover {
+    color: #d93025;
+}
+
+.btn-favorito.activo {
+    color: #d93025;
 }
 
 .texto-secundario {
@@ -145,6 +281,7 @@ body {
     border-top: 1px solid #eee;
     padding-top: 30px;
 }
+
 
 .columna-reserva {
     flex: 1;
@@ -194,6 +331,7 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-width: 0;
 }
 
 .caja-input label {
@@ -211,6 +349,11 @@ body {
     gap: 10px;
 }
 
+.input-con-icono:focus-within {
+    border-color: #6b83f5;
+    box-shadow: 0 0 0 3px #d4ddff;
+}
+
 .input-con-icono i {
     color: #888;
 }
@@ -219,12 +362,24 @@ body {
     border: none;
     outline: none;
     width: 100%;
+    min-width: 0;
     font-size: 14px;
     color: #555;
+    background-color: transparent;
+}
+
+.mensaje-error {
+    margin-top: 5px;
+    color: #d93025;
+    font-size: 13px;
+}
+
+.mensaje-error:empty {
+    display: none;
 }
 
 .seccion-total {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     border-top: 1px solid #eee;
     padding-top: 20px;
 }
@@ -254,6 +409,11 @@ body {
     color: #666;
 }
 
+.fila-valor strong {
+    color: #1a1a1a;
+    font-size: 16px;
+}
+
 .btn-confirmar {
     width: 100%;
     background-color: #007BFF;
@@ -270,8 +430,26 @@ body {
     background-color: #0069d9;
 }
 
-.galeria-una-foto {
-    grid-template-columns: 1fr;
+.btn-confirmar:disabled {
+    background-color: #9bbcf0;
+    cursor: not-allowed;
+}
+
+.mensaje-bloqueo {
+    margin-top: 15px;
+    color: #d93025;
+    text-align: center;
+}
+
+.mensaje-bloqueo i {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+
+.mensaje-bloqueo p {
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .mensaje-detalle {
@@ -298,4 +476,57 @@ body {
 .reserva-propiedad h2 {
     margin-bottom: 10px;
     font-size: 18px;
+}
+
+
+
+@media (max-width: 900px) {
+    .barra-superior-fondo {
+        padding: 15px 20px;
+    }
+
+    .contenedor-detalle {
+        flex-direction: column;
+        gap: 30px;
+        margin: 24px auto;
+        padding: 0 20px;
+    }
+
+    .info-propiedad {
+        flex: none;
+        width: 100%;
+    }
+
+    .columna-reserva {
+        flex: none;
+        width: 100%;
+    }
+
+    .foto-principal {
+        height: 260px;
+    }
+
+    .encabezado-info h1 {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contenedor-fechas {
+        flex-direction: column;
+    }
+
+    .tarjeta-reserva {
+        padding: 20px;
+    }
+
+    .foto-principal {
+        height: 220px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carrusel-pista {
+        transition: none;
+    }
 }

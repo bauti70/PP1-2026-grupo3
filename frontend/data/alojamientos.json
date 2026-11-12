@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "nombre": "Apartamento vista al rio",
+        "nombre": "Apartamento vista al río",
         "ubicacion": "Palermo, Buenos Aires",
         "capacidad": 2,
         "precioNoche": 225000,
@@ -20,12 +20,18 @@
                 "entrada": "2026-12-20",
                 "salida": "2026-12-25"
             }
+        ],
+        "imagenes": [
+            "../docs/2da-entrega/imagenes_referencia/Apartamento vista al río.webp",
+            "../docs/2da-entrega/imagenes_referencia/Imagen principal.webp",
+            "../docs/2da-entrega/imagenes_referencia/cocina.webp",
+            "../docs/2da-entrega/imagenes_referencia/baño.webp"
         ]
     },
     {
         "id": 2,
         "nombre": "Casa en la montaña",
-        "ubicacion": "Bariloche, Rio Negro",
+        "ubicacion": "Bariloche, Río Negro",
         "capacidad": 4,
         "precioNoche": 15000,
         "imagen": "../docs/2da-entrega/imagenes_referencia/Casa en la montaña.jpg",
@@ -47,7 +53,7 @@
     },
     {
         "id": 3,
-        "nombre": "Departamento Centrico",
+        "nombre": "Departamento Céntrico",
         "ubicacion": "Mendoza",
         "capacidad": 2,
         "precioNoche": 8000,
@@ -66,7 +72,7 @@
     {
         "id": 4,
         "nombre": "Cabaña en el lago",
-        "ubicacion": "Cordoba, El Durazno",
+        "ubicacion": "Córdoba, El Durazno",
         "capacidad": 3,
         "precioNoche": 12500,
         "imagen": "../docs/2da-entrega/imagenes_referencia/Cabaña en el lago.jpg",

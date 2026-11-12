@@ -14,6 +14,15 @@ html, body {
   padding: 0;
 }
 
+.page-catalogo {
+    position: relative;
+}
+
+.buscador-inicio .btn-menu {
+    color: white;
+    font-size: 26px;
+}
+
 body {
   font-family: 'Nunito', sans-serif;
   color: var(--tinta);
@@ -36,12 +45,6 @@ a {
   background: url("../../../docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg") center / cover;
 }
 
-.buscador-inicio::before {
-  content: "☰";
-  color: #fff;
-  font-size: 32px;
-  line-height: 1;
-}
 
 .nav-inicio a {
   padding: 9px 22px;

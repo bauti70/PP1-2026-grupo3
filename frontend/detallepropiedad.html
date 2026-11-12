@@ -5,23 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle de Propiedad</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="assents/css/detallepropiedad.css">
     <link rel="stylesheet" href="assents/css/toastr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assents/css/menu.css">
 </head>
 <body>
 
-<header class="barra-superior-fondo" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../docs/2da-entrega/imagenes_referencia/inmacus-hdb-908121_1920.jpg');">
+<header class="barra-superior-fondo">
     <div class="nav-izquierda">
-        <i class="fa-solid fa-bars icono-blanco"></i>
-        <a href="index.html" class="icono-blanco" style="text-decoration: none;">
-            <i class="fa-solid fa-house icono-blanco"></i>
+        <button type="button" class="btn-menu">
+            <i class="fa-solid fa-bars icono-blanco" aria-hidden="true"></i>
+            </button>
+        <a href="index.html" class="icono-blanco" aria-label="Ir al inicio">
+            <i class="fa-solid fa-house" aria-hidden="true"></i>
         </a>
     </div>
     <div class="nav-derecha">
-                <a href="login.html" onclick="localStorage.setItem('volverA', 'detallepropiedad.html' + window.location.search)" style="text-decoration: none; color: inherit;">
+        <a href="login.html" onclick="localStorage.setItem('volverA', 'detallepropiedad.html' + window.location.search)" aria-label="Iniciar sesión">
             <div class="icono-usuario">
-                <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-user" aria-hidden="true"></i>
             </div>
         </a>
     </div>
@@ -30,77 +36,64 @@
 <main class="contenedor-detalle">
 
     <section class="info-propiedad">
-       <div class="galeria-fotos">
-            <img src="../docs/2da-entrega/imagenes_referencia/Imagen principal.webp" alt="Imagen principal" class="foto-principal">
-            <div class="fotos-secundarias">
-                <img src="../docs/2da-entrega/imagenes_referencia/cocina.webp" alt="Cocina">
-                <img src="../docs/2da-entrega/imagenes_referencia/baño.webp" alt="Baño">
-            </div>
-        </div>
-
-        <div class="encabezado-info">
-            <h1>Apartamento vista rio</h1>
-            <button class="btn-favorito"><i class="fa-regular fa-heart"></i></button>
-        </div>
-
-        <p class="texto-secundario"><i class="fa-solid fa-location-dot"></i> Palermo, Buenos Aires</p>
-        <p class="texto-secundario"><i class="fa-solid fa-star"></i> 4.8 (127 reseñas)</p>
-        <div class="contenedor-etiquetas">
-            <span class="etiqueta"><i class="fa-regular fa-user"></i> Hasta 4 personas</span>
-            <span class="etiqueta"><i class="fa-solid fa-bed"></i> 2 habitaciones</span>
-            <span class="etiqueta"><i class="fa-solid fa-bath"></i> 1 baño</span>
-            <span class="etiqueta"><i class="fa-solid fa-wifi"></i> WiFi</span>
-            <span class="etiqueta"><i class="fa-regular fa-snowflake"></i> A/C</span>
-        </div>
-
-        <p class="descripcion-texto">
-            Amplio apartamento con vista al río, totalmente equipado. A pasos del
-            Parque 3 de Febrero y con fácil acceso al transporte público. Ideal para
-            familias o grupos pequeños.
-        </p>
-
+        <p class="mensaje-detalle">Cargando alojamiento...</p>
     </section>
 
     <aside class="columna-reserva">
         <form id="form-reserva" class="tarjeta-reserva" novalidate>
             <div class="precio-encabezado">
-                <h2>$45.000</h2> <span class="noche">/ noche</span>
+                <h2>$0</h2> <span class="noche">/ noche</span>
             </div>
+
             <div class="seccion-form">
                 <h3>Fechas</h3>
                 <div class="contenedor-fechas">
                     <div class="caja-input">
                         <label for="llegada">Llegada</label>
                         <div class="input-con-icono">
-                            <i class="fa-regular fa-calendar"></i>
-                            <input type="date" id="llegada" placeholder="dd/mm/aa">
+                            <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+                            <input type="date" id="llegada" name="llegada">
                         </div>
-                        <p id="error-llegada" style="color:red; font-size:14px; margin-top: 5px; min-height: 20px;"></p>
+                        <p id="error-llegada" class="mensaje-error" role="alert"></p>
                     </div>
                     <div class="caja-input">
                         <label for="salida">Salida</label>
                         <div class="input-con-icono">
-                            <i class="fa-regular fa-calendar"></i>
-                            <input type="date" id="salida" placeholder="dd/mm/aa">
+                            <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+                            <input type="date" id="salida" name="salida">
                         </div>
-                        <p id="error-salida" style="color:red; font-size:14px; margin-top: 5px; min-height: 20px;"></p>
+                        <p id="error-salida" class="mensaje-error" role="alert"></p>
                     </div>
                 </div>
             </div>
+
             <div class="seccion-form">
                 <h3>Huéspedes</h3>
                 <div class="caja-input input-huespedes">
                     <div class="input-con-icono">
-                        <i class="fa-regular fa-user"></i>
-                        <input type="number" id="huespedes" min="1" max="4" placeholder="Cantidad" value="">
+                        <i class="fa-regular fa-user" aria-hidden="true"></i>
+                        <input type="number" id="huespedes" name="huespedes" min="1" max="4" placeholder="Cantidad" value="">
                     </div>
                 </div>
-                <p id="error-huespedes" style="color:red; font-size:14px; margin-top: 5px; min-height: 20px;"></p>
+                <p id="error-huespedes" class="mensaje-error" role="alert"></p>
             </div>
+
+            <div id="seccion-total" class="seccion-total" hidden>
+                <h3>Total</h3>
+                <div class="detalle-tarifa">
+                    <p id="tarifa-texto" class="tarifa-texto"></p>
+                    <div class="fila-valor">
+                        <span>Total de la estadía</span>
+                        <strong id="total-valor"></strong>
+                    </div>
+                </div>
+            </div>
+
             <button type="submit" class="btn-confirmar">Reservar</button>
-            <div id="mensaje-bloqueo" style="display: none; text-align: center; margin-top: 15px; color: #d93025;">
-                <i class="fa-solid fa-lock" style="font-size: 24px; margin-bottom: 8px;"></i>
-                <p style="font-weight: bold; font-size: 14px; margin: 0;">Para reservar hace falta iniciar sesión.</p>
+
+            <div id="mensaje-bloqueo" class="mensaje-bloqueo" hidden>
+                <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                <p>Para reservar hace falta iniciar sesión.</p>
             </div>
         </form>
 
@@ -111,6 +104,7 @@
 <script src="assents/js/jquery.min.js"></script>
 <script src="assents/js/toastr.min.js"></script>
 <script src="assents/js/detallepropiedad.js"></script>
+<script src="assents/js/menu.js"></script> 
 
 </body>
 </html>

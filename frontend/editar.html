@@ -5,49 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi perfil</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap">
     <link rel="stylesheet" href="assents/css/editarperfil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assents/css/menu.css"> 
 
 </head>
 
 <body>
     <header>
-        
+
         <nav>
-            <a href="index.html">Inicio</a>
-            
-            <a href="editar.html">Perfil</a>
+            <button type="button" class="btn-menu">
+            <i class="fa-solid fa-bars icono-blanco" aria-hidden="true"></i>
+            </button>
+            <a href="index.html" aria-label="Inicio">Inicio</a>
+            <a href="editar.html" aria-label="Perfil">Perfil</a>
         </nav>
     </header>
     <div class="role-toggle">
-        <button class="active">Huésped</button>
-        <button>Anfitrión</button>
+        <button type="button" class="active" data-rol="huesped" aria-pressed="true">Huésped</button>
+        <button type="button" data-rol="anfitrion" aria-pressed="false">Anfitrión</button>
     </div>
 
-    <form class="form-page">
+    <form class="form-page" novalidate>
         <div class="col_izquierda">
         <h1 class="titulo-pag">Mi perfil</h1>
         <p class="info-titulo">ver y editar sus propios datos. No afecta reservas ni propiedades</p>
 
-        <section class="form_com">
+        <section class="form_com" id="seccion-huesped">
          <div class="nc">
             <label for="nombre">Nombre completo</label>
-            <input id="nombre" type="text" value="Pepe Argento">
+            <input id="nombre" type="text" value="Pepe Argento" autocomplete="name">
+            <p class="mensaje-error" id="error-nombre"></p>
          </div>
 
          <div class="contraseña">
             <label for="contraseña">Contraseña</label>
-            <input id="contraseña" type="password" value="vivaracing">
-         </div> 
+            <input id="contraseña" type="password" placeholder="Dejar vacío para no cambiarla" autocomplete="new-password">
+            <small class="ayuda">Más de 8 caracteres, 1 mayúscula, 1 número y 1 carácter especial.</small>
+            <button type="button" class="ver-clave" id="ver-clave">Mostrar</button>
+            <p class="mensaje-error" id="error-contraseña"></p>
+         </div>
 
          <div class="contacto">
             <div class="Email">
-                <label class="Email">Email</label>
-                <input id="Email" type="email" value="pepe2@gmail.com">
+                <label class="Email" for="Email">Email</label>
+                <input id="Email" type="email" value="pepe2@gmail.com" autocomplete="email">
+                <p class="mensaje-error" id="error-Email"></p>
             </div>
 
             <div class="Telefono">
                 <label for="telefono">Telefono</label>
-                <input id="telefono" type="tel" value="+54 9 555-5432">
+                <input id="telefono" type="tel" value="+54 9 555-5432" autocomplete="tel">
+                <p class="mensaje-error" id="error-telefono"></p>
             </div>
 
          </div>
@@ -55,15 +68,17 @@
 
             <div class="nacimiento">
             <label for="nacimiento">Fecha de nacimiento</label>
-            <input id="nacimiento" type="date" value="2006-06-16">
+            <input id="nacimiento" type="date" value="2006-06-16" autocomplete="bday">
+            <p class="mensaje-error" id="error-nacimiento"></p>
             </div>
 
             <div class="ciudad">
                 <label for="ciudad">Ciudad</label>
-                <input id="ciudad" type="text" value="Buenos Aires, Argentina">    
+                <input id="ciudad" type="text" value="Buenos Aires, Argentina">
+                <p class="mensaje-error" id="error-ciudad"></p>
             </div>
          </section>
-            
+
          <div class="idioma">
             <label for="idioma">Idioma preferido</label>
             <select id="idioma">
@@ -74,49 +89,59 @@
          </div>
         </section>
 
-        <section class="info_anfitrion">
+        <section class="info_anfitrion seccion-oculta" id="seccion-anfitrion">
             <div class="anfi_info">DATOS DE ANFITRION</div>
 
             <div class="nom_pub">
                 <label for="nom_pub">Nombre publico / Empresa</label>
                 <input id="nom_pub" type="text" value="Argentum">
+                <p class="mensaje-error" id="error-nom_pub"></p>
             </div>
 
             <div class="dni">
                 <label for="dni">Ingrese su DNI / numero de documento</label>
-                <input id="dni" type="number" value="38764981">
+                <input id="dni" type="text" inputmode="numeric" maxlength="8" value="38764981">
+                <p class="mensaje-error" id="error-dni"></p>
             </div>
 
 
             <div class="pago">
                 <label for="pago">CBU / Alias para cobro</label>
                 <input id="pago" type="text" value="pepearg.pago.mp">
+                <p class="mensaje-error" id="error-pago"></p>
             </div>
 
             <div class="Contactar">
-                <label class="Contactar">Contacto preferido</label>
+                <label class="Contactar" for="Contactar">Contacto preferido</label>
                 <select id="Contactar">
                     <option>Whatsapp</option>
                     <option>Email</option>
                     <option>llamada telefónica</option>
                 </select>
             </div>
-            
+
         </section>
     </div>
 
         <div class="col_derecha">
             <div class="sub_img">
+                <img class="foto-perfil" id="foto-perfil" alt="Foto de perfil" hidden>
                 <p>SUBIR FOTO DE PERFIL</p>
-                <button type="button">Cambiar foto</button>
+                <button type="button" id="cambiar-foto">Cambiar foto</button>
+                <button type="button" class="quitar-foto" id="quitar-foto" hidden>Quitar foto</button>
+                <input type="file" id="foto" accept="image/*" hidden>
+                <p class="mensaje-error" id="error-foto"></p>
             </div>
         </div>
 
         <button type="submit" class="subir">Guardar cambios</button>
-      
 
-        
+        <p class="mensaje-exito" id="mensaje-guardado" role="status" hidden></p>
+
     </form>
+
+    <script src="assents/js/editarperfil.js"></script>
+     <script src="assents/js/menu.js"></script> 
 </body>
 
 </html>
