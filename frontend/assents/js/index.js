@@ -13,6 +13,7 @@ function mostrarEstado(texto, tipo, contenedor) {
 
 
 function crearTarjetaInicio(alojamiento) {
+    const idActual = obtenerIdAlojamientoActual(alojamiento.nombre);
     let descripcion = `Alojamiento en ${alojamiento.ubicacion} para hasta ${alojamiento.capacidad} personas.`;
     let calificacionHtml = '';
 
@@ -25,7 +26,7 @@ function crearTarjetaInicio(alojamiento) {
     }
 
     return `
-        <a href="detallepropiedad.html?id=${alojamiento.id}" class="destino-item">
+        <a href="detallepropiedad.html?id=${idActual}" class="destino-item">
             <img src="${alojamiento.imagen}" alt="${alojamiento.nombre}">
 
             <div class="destino-info">
@@ -47,7 +48,7 @@ function mostrarDestacados() {
     for (let i = 0; i < alojamientosInicio.length; i = i + 1) {
         const alojamiento = alojamientosInicio[i];
 
-        if (typeof alojamiento.calificacion === 'number' && alojamiento.calificacion >= 4.5 && alojamiento.calificacion <= 5) {
+        if (obtenerIdAlojamientoActual(alojamiento.nombre) !== null && typeof alojamiento.calificacion === 'number' && alojamiento.calificacion >= 4.5 && alojamiento.calificacion <= 5) {
             html = html + crearTarjetaInicio(alojamiento);
             cantidadDestacados = cantidadDestacados + 1;
         }

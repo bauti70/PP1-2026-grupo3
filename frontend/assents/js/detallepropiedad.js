@@ -9,6 +9,41 @@ const formReserva = document.querySelector('#form-reserva');
 const botonReservar = document.querySelector('.btn-confirmar');
 
 
+function crearServicios(servicios) {
+    let html = '';
+
+    if (servicios.wifi === true) {
+        html = html + '<span class="etiqueta"><i class="fa-solid fa-wifi" aria-hidden="true"></i> Wi-Fi</span>';
+    }
+
+    if (servicios.desayuno === true) {
+        html = html + '<span class="etiqueta"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i> Desayuno</span>';
+    }
+
+    if (servicios.pileta === true) {
+        html = html + '<span class="etiqueta"><i class="fa-solid fa-water-ladder" aria-hidden="true"></i> Pileta</span>';
+    }
+
+    if (servicios.estacionamiento === true) {
+        html = html + '<span class="etiqueta"><i class="fa-solid fa-square-parking" aria-hidden="true"></i> Estacionamiento</span>';
+    }
+
+    if (servicios.aireAcondicionado === true) {
+        html = html + '<span class="etiqueta"><i class="fa-regular fa-snowflake" aria-hidden="true"></i> Aire acondicionado</span>';
+    }
+
+    if (servicios.aceptaMascotas === true) {
+        html = html + '<span class="etiqueta"><i class="fa-solid fa-paw" aria-hidden="true"></i> Acepta mascotas</span>';
+    }
+
+    if (html === '') {
+        html = '<p class="texto-secundario">No se informaron servicios para este alojamiento.</p>';
+    }
+
+    return html;
+}
+
+
 function crearDetalle(alojamiento) {
     let descripcion = `Alojamiento en ${alojamiento.ubicacion} para hasta ${alojamiento.capacidad} personas.`;
     let calificacionHtml = '';
@@ -18,7 +53,7 @@ function crearDetalle(alojamiento) {
     }
 
     if (typeof alojamiento.calificacion === 'number' && alojamiento.calificacion >= 0 && alojamiento.calificacion <= 5) {
-        calificacionHtml = `<p class="texto-secundario"><i class="fa-solid fa-star" aria-hidden="true"></i> ${alojamiento.calificacion} / 5</p>`;
+        calificacionHtml = `<p class="detalle-calificacion"><i class="fa-solid fa-star" aria-hidden="true"></i> ${alojamiento.calificacion} / 5</p>`;
     }
 
     return `
@@ -47,6 +82,13 @@ function crearDetalle(alojamiento) {
             </span>
         </div>
 
+        <section class="servicios-propiedad" aria-labelledby="titulo-servicios">
+            <h2 id="titulo-servicios">Servicios</h2>
+            <div class="contenedor-etiquetas">
+                ${crearServicios(alojamiento.servicios || {})}
+            </div>
+        </section>
+
         <p class="descripcion-texto">${descripcion}</p>
     `;
 }
@@ -69,20 +111,37 @@ async function cargarDetalle() {
     }
 
     try {
-        const respuesta = await fetch('data/alojamientos.json');
+        const respuesta = await fetch('http://localhost:8080/api/alojamientos/' + idBuscado);
 
         if (respuesta.ok === false) {
             throw new Error('No se pudo cargar el archivo de alojamientos.');
         }
 
-        const alojamientos = await respuesta.json();
+        
+        const datosApi = await respuesta.json();
+        const calificacionesInicio = await cargarCalificacionesInicio();
 
-        for (let i = 0; i < alojamientos.length; i = i + 1) {
-            if (alojamientos[i].id === idBuscado) {
-                alojamientoSeleccionado = alojamientos[i];
-                break;
-            }
-        }
+        const ciudades = {
+            1: 'Mar del Plata',
+            2: 'Villa Carlos Paz',
+            3: 'San Carlos de Bariloche',
+            4: 'Mendoza',
+            5: 'Buenos Aires',
+            6: 'El Durazno',
+            7: 'Salta Capital',
+            8: 'Santa Rosa'
+        };
+
+        alojamientoSeleccionado = {
+            ...datosApi,
+            precioNoche: datosApi.precioPorNoche,
+            ubicacion: ciudades[datosApi.idCiudad] || 'Ubicación pendiente',
+            imagen: datosApi.id === 1
+                ? 'assents/img/cabana-bariloche.jpg'
+                : datosApi.imagen.replace('assets/', 'assents/'),
+            calificacion: obtenerCalificacionAlojamiento(datosApi, calificacionesInicio)
+        };
+
 
         if (alojamientoSeleccionado === null) {
             infoPropiedad.innerHTML = '<p class="mensaje-detalle">El alojamiento solicitado no está disponible.</p>';

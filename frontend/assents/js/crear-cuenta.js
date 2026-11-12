@@ -92,20 +92,23 @@ if (selector) {
 
 const formCrear = document.querySelector('.cuenta-contenedor-columnas');
 
-formCrear.addEventListener('submit', function (evento) {
+formCrear.addEventListener('submit', async function (evento) {
     evento.preventDefault();
 
     const nombre = document.querySelector('#nombre').value;
+    const apellido = document.querySelector('#apellido').value.trim();
     const correo = document.querySelector('#correo').value;
     const clave = document.querySelector('#clave').value;
     const claveRep = document.querySelector('#clave_rep').value;
 
     const msjNombre = document.querySelector('#error-nombre');
+    const msjApellido = document.querySelector('#error-apellido');
     const msjCorreo = document.querySelector('#error-correo');
     const msjClave = document.querySelector('#error-clave');
     const msjClaveRep = document.querySelector('#error-clave-rep');
 
     msjNombre.textContent = '';
+    msjApellido.textContent = '';
     msjCorreo.textContent = '';
     msjClave.textContent = '';
     msjClaveRep.textContent = '';
@@ -115,6 +118,11 @@ formCrear.addEventListener('submit', function (evento) {
     if (nombre === '') {
         msjNombre.textContent = 'El nombre no puede estar vacío.';
         hayError = true;
+    }
+
+    if (apellido === '' || apellido.length > 60) {
+    msjApellido.textContent = 'Ingresá un apellido válido.';
+    hayError = true;
     }
 
     if (correo === '') {
@@ -170,13 +178,47 @@ formCrear.addEventListener('submit', function (evento) {
     }
 
     const mensajeExito = document.getElementById('mensaje-exito');
-    const botonCrearFormulario = document.querySelector('.btn-crear-cuenta');
+const botonCrearFormulario = document.querySelector('.btn-crear-cuenta');
 
-    mensajeExito.style.display = 'block';
+mensajeExito.style.display = 'none';
+botonCrearFormulario.disabled = true;
 
-    botonCrearFormulario.style.display = 'none';
+try {
+    const respuesta = await fetch('http://localhost:8080/api/registro', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            nombre: nombre.trim(),
+            apellido: apellido,
+            email: correo.trim(),
+            password: clave,
+            telefono: null
+        })
+    });
 
-    setTimeout(function() {
-        window.open('detallepropiedad.html', '_self');
-    }, 3000);
+    if (respuesta.status === 201) {
+        mensajeExito.textContent = '¡Cuenta creada correctamente! Ahora podés iniciar sesión.';
+        mensajeExito.style.display = 'block';
+
+        setTimeout(function () {
+            window.location.href = 'login.html';
+        }, 2000);
+
+        return;
+    }
+
+    if (respuesta.status === 409) {
+        msjCorreo.textContent = 'Este correo ya está registrado.';
+    } else if (respuesta.status === 400) {
+        msjCorreo.textContent = 'Los datos ingresados no son válidos.';
+    } else {
+        msjCorreo.textContent = 'No se pudo crear la cuenta.';
+    }
+
+    } catch (error) {
+        msjCorreo.textContent = 'No se pudo conectar con el servidor.';
+    }
+botonCrearFormulario.disabled = false;
 });

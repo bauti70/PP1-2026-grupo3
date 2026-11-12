@@ -71,6 +71,14 @@
 
                         <p id="error-fechas" class="error-filtro" role="alert"></p>
 
+                        <label for="huespedes"><i class="fa-solid fa-users" aria-hidden="true"></i> Huéspedes</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-users" aria-hidden="true"></i>
+                            <input type="number" id="huespedes" min="1" step="1" placeholder="Cantidad de huéspedes" aria-describedby="error-huespedes">
+                        </div>
+
+                        <p id="error-huespedes" class="error-filtro" role="alert"></p>
+
                         <div class="separador"></div>
 
                         <label class="opcion-check"><input type="checkbox" id="wifi"> <i class="fa-solid fa-wifi" aria-hidden="true"></i> Wi-Fi</label>
@@ -135,6 +143,7 @@
 
     </main>
 
+    <script src="assents/js/referencias-alojamientos.js"></script>
     <script src="assents/js/catalogo.js"></script>
 
 </body>

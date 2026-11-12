@@ -9,6 +9,7 @@ const formFiltros = document.querySelector('#form-filtros');
 const inputUbicacion = document.querySelector('#ubi');
 const inputEntrada = document.querySelector('#entrada');
 const inputSalida = document.querySelector('#sali');
+const inputHuespedes = document.querySelector('#huespedes');
 const inputPrecioMin = document.querySelector('#min');
 const inputPrecioMax = document.querySelector('#max');
 const checkWifi = document.querySelector('#wifi');
@@ -19,6 +20,7 @@ const selectTipo = document.querySelector('#tipo-alojamiento');
 const selectOrden = document.querySelector('#orden-alojamientos');
 const errorFechas = document.querySelector('#error-fechas');
 const errorPrecios = document.querySelector('#error-precios');
+const errorHuespedes = document.querySelector('#error-huespedes');
 const contadorResultados = document.querySelector('.resultados-count');
 const contenedor = document.querySelector('#lista-alojamientos');
 
@@ -28,6 +30,7 @@ let filtrosAplicados = {
     ubicacion: '',
     entrada: '',
     salida: '',
+    huespedes: '',
     precioMin: '',
     precioMax: '',
     wifi: false,
@@ -125,6 +128,7 @@ function validarFiltros() {
 
     errorFechas.textContent = '';
     errorPrecios.textContent = '';
+    errorHuespedes.textContent = '';
 
     if (inputEntrada.validity.badInput === true || inputSalida.validity.badInput === true) {
         errorFechas.textContent = 'Ingresá fechas válidas.';
@@ -152,6 +156,18 @@ function validarFiltros() {
         errorPrecios.textContent = 'El precio mínimo no puede superar al máximo.';
         hayError = true;
     }
+        if (inputHuespedes.validity.badInput === true) {
+        errorHuespedes.textContent = 'Ingresá una cantidad válida de huéspedes.';
+        hayError = true;
+    } else if (inputHuespedes.value !== '') {
+        const cantidadHuespedes = Number(inputHuespedes.value);
+
+        if (cantidadHuespedes < 1 || cantidadHuespedes % 1 !== 0) {
+            errorHuespedes.textContent = 'Ingresá un número entero de 1 o más huéspedes.';
+            hayError = true;
+        }
+    }
+
 
     return hayError === false;
 }
@@ -225,13 +241,14 @@ function crearServicios(servicios) {
 function crearTarjeta(alojamiento) {
     let destacadoHtml = '';
     let disponibilidadHtml = '';
+    let calificacionHtml = '';
+
+    if (typeof alojamiento.calificacion === 'number' && alojamiento.calificacion >= 0 && alojamiento.calificacion <= 5) {
+        calificacionHtml = `<p class="tarjeta-puntuacion"><i class="fa-solid fa-star" aria-hidden="true"></i> ${alojamiento.calificacion} / 5</p>`;
+    }
 
     if (alojamiento.calificacion >= 4.5) {
         destacadoHtml = '<span class="badge-destacado">Destacado</span>';
-    }
-
-    if (filtrosAplicados.entrada !== '' && filtrosAplicados.salida !== '') {
-        disponibilidadHtml = `<p class="tarjeta-disponibilidad"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Disponible del ${formatearFecha(filtrosAplicados.entrada)} al ${formatearFecha(filtrosAplicados.salida)}</p>`;
     }
 
     return `
@@ -247,7 +264,7 @@ function crearTarjeta(alojamiento) {
                 <div class="tarjeta-info-izq">
                     <h3 class="tarjeta-titulo">${alojamiento.nombre}</h3>
                     <p class="tarjeta-ubicacion"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> ${alojamiento.ubicacion}</p>
-                    <p class="tarjeta-puntuacion"><i class="fa-solid fa-star" aria-hidden="true"></i> ${alojamiento.calificacion} / 5</p>
+                    ${calificacionHtml}
                     <p class="tarjeta-capacidad">Hasta ${alojamiento.capacidad} huéspedes</p>
                 </div>
 
@@ -296,6 +313,10 @@ function aplicarFiltros() {
         const alojamiento = todosLosAlojamientos[i];
         let pasaFiltro = true;
 
+        if (filtrosAplicados.huespedes !== '' && alojamiento.capacidad < Number(filtrosAplicados.huespedes)) {
+            pasaFiltro = false;
+        }
+
         if (ciudad !== '' && contieneTexto(normalizarTexto(alojamiento.ubicacion), ciudad) === false) {
             pasaFiltro = false;
         }
@@ -325,10 +346,6 @@ function aplicarFiltros() {
         }
 
         if (filtrosAplicados.precioMax !== '' && alojamiento.precioNoche > Number(filtrosAplicados.precioMax)) {
-            pasaFiltro = false;
-        }
-
-        if (selectOrden.value === 'destacados' && alojamiento.calificacion < 4.5) {
             pasaFiltro = false;
         }
 
@@ -365,13 +382,39 @@ async function cargarAlojamientos() {
     mostrarMensaje('Cargando alojamientos...', 'cargando');
 
     try {
-        const respuesta = await fetch('data/alojamientos.json');
+        const respuesta = await fetch('http://localhost:8080/api/alojamientos');
 
         if (respuesta.ok === false) {
             throw new Error('No se pudo cargar el archivo de alojamientos.');
         }
 
-        todosLosAlojamientos = await respuesta.json();
+        const datosApi = await respuesta.json();
+        const calificacionesInicio = await cargarCalificacionesInicio();
+
+const ciudades = {
+    1: 'Mar del Plata',
+    2: 'Villa Carlos Paz',
+    3: 'San Carlos de Bariloche',
+    4: 'Mendoza',
+    5: 'Buenos Aires',
+    6: 'El Durazno',
+    7: 'Salta Capital',
+    8: 'Santa Rosa'
+};
+
+todosLosAlojamientos = datosApi.map(function(alojamiento) {
+    return {
+        ...alojamiento,
+        imagen: alojamiento.id === 1
+        ? 'assents/img/cabana-bariloche.jpg'
+        : alojamiento.imagen,
+        precioNoche: alojamiento.precioPorNoche,
+        ubicacion: ciudades[alojamiento.idCiudad] || 'Ubicación pendiente',
+        calificacion: obtenerCalificacionAlojamiento(alojamiento, calificacionesInicio),
+        servicios: alojamiento.servicios || {},
+        periodosNoDisponibles: []
+    };
+});
         datosCargados = true;
         aplicarFiltros();
     } catch (error) {
@@ -423,6 +466,7 @@ formFiltros.addEventListener('submit', function(evento) {
         ubicacion: inputUbicacion.value,
         entrada: inputEntrada.value,
         salida: inputSalida.value,
+        huespedes: inputHuespedes.value,
         precioMin: inputPrecioMin.value,
         precioMax: inputPrecioMax.value,
         wifi: checkWifi.checked,

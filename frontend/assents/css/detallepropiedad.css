@@ -119,6 +119,16 @@ body {
     gap: 8px;
 }
 
+.detalle-calificacion {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 10px 0;
+    color: #997000;
+    font-size: 14px;
+    font-weight: 700;
+}
+
 .contenedor-etiquetas {
     display: flex;
     flex-wrap: wrap;
@@ -144,6 +154,22 @@ body {
     margin-top: 30px;
     border-top: 1px solid #eee;
     padding-top: 30px;
+}
+
+.servicios-propiedad {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+}
+
+.servicios-propiedad h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.servicios-propiedad .contenedor-etiquetas {
+    margin: 16px 0 0;
 }
 
 .columna-reserva {

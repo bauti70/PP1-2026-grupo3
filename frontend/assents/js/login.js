@@ -1,7 +1,7 @@
 //EL LOGIN VALIDA
 const form = document.querySelector('#form-login');
 
-form.addEventListener('submit', function (evento){
+form.addEventListener('submit', async function (evento){
     evento.preventDefault();
     console.log('se envió');
 
@@ -15,7 +15,6 @@ form.addEventListener('submit', function (evento){
     msjEmail.textContent = '';
     msjPassword.textContent = '';
 
-    console.log(email, password);
 
     let hayError = false;
 
@@ -59,15 +58,35 @@ form.addEventListener('submit', function (evento){
         return;
     }
   
-    localStorage.setItem('sesionIniciada', 'true');
+        try {
+        const respuesta = await fetch('http://localhost:8080/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        });
 
-    let paginaDestino = localStorage.getItem('volverA');
+        if (!respuesta.ok) {
+            msjPassword.textContent = 'Correo o contraseña incorrectos.';
+            return;
+        }
 
-    if (paginaDestino !== null) {
-        localStorage.removeItem('volverA'); 
+        localStorage.setItem('sesionIniciada', 'true');
 
-        window.open(paginaDestino, '_self');
-    } else {
-        window.open('index.html', '_self');
+        const paginaDestino = localStorage.getItem('volverA');
+
+        if (paginaDestino !== null) {
+            localStorage.removeItem('volverA');
+            window.open(paginaDestino, '_self');
+        } else {
+            window.open('index.html', '_self');
+        }
+
+    } catch (error) {
+        msjPassword.textContent = 'No se pudo conectar con el servidor.';
     }
 });

@@ -24,11 +24,15 @@
         <main>
             <h1 class="titulo-exterior">DISEÑEMOS TU CUENTA</h1>
 
-            <form class="cuenta-contenedor-columnas" action="procesar.php" method="post" novalidate>
+            <form class="cuenta-contenedor-columnas" novalidate>
                 <div class="cuenta-columna-izquierda">  
                     <label class="cuenta-label" for="nombre">Nombre</label>
                     <input type="text" id="nombre" name="nombre" required>  
                     <p id="error-nombre" style="color:red; font-size:14px; margin-top: 5px; margin-bottom: 15px;"></p>
+
+                    <label class="cuenta-label" for="apellido">Apellido</label>
+                    <input type="text" id="apellido" name="apellido" required>
+                    <p id="error-apellido" style="color:red; font-size:14px; margin-top: 5px; margin-bottom: 15px;"></p>
 
 
                     <label class="cuenta-label" for="correo">Email</label>
