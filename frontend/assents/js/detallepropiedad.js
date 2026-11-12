@@ -19,12 +19,12 @@ function crearDetalle(alojamiento) {
     if (typeof alojamiento.calificacion === 'number' && alojamiento.calificacion >= 0 && alojamiento.calificacion <= 5) {
     let resenas = '';
 
-    if (Number.isInteger(alojamiento.resenas) && alojamiento.resenas >= 0) {
-        resenas = ' (' + pluralizar(alojamiento.resenas, 'reseña', 'reseñas') + ')';
-    }
+        if (Number.isInteger(alojamiento.resenas) && alojamiento.resenas >= 0) {
+            resenas = ' (' + pluralizar(alojamiento.resenas, 'reseña', 'reseñas') + ')';
+        }
 
-    calificacionHtml = `<p class="detalle-calificacion"><i class="fa-solid fa-star" aria-hidden="true"></i> ${alojamiento.calificacion} / 5${resenas}</p>`;
-}
+        calificacionHtml = `<p class="detalle-calificacion"><i class="fa-solid fa-star" aria-hidden="true"></i> ${alojamiento.calificacion} / 5${resenas}</p>`;
+    }
 
     const favorito = esFavorito(alojamiento.id);
 
