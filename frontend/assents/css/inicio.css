@@ -1,4 +1,3 @@
-
 :root {
   --morado: #5e5cee;
   --morado-oscuro: #4a48d4;
@@ -273,4 +272,23 @@ a {
 .mensaje-inicio.error {
     background-color: #fff0f3;
     color: #b00020;
+}
+
+.buscador-inicio .etiqueta-rol{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: 12px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background-color: var(--lila);
+  color: var(--morado);
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.buscaro-inicio .etiqueta-rol[hidden]{
+  display: none;
 }

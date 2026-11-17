@@ -118,3 +118,23 @@ enlaceLogin.addEventListener('click', function() {
 
 
 cargarDatosInicio();
+
+(function mostrarRolUsuario() {
+    const etiqueta = document.querySelector('#etiqueta-rol');
+    const sesionIniciada = localStorage.getItem('sesionIniciada');
+    const rol = localStorage.getItem('rolUsuario');
+
+    if (!etiqueta) {
+        return;
+    }
+
+    if (sesionIniciada === 'true' && rol === 'HUESPED') {
+        etiqueta.textContent = 'Huésped';
+        etiqueta.hidden = false;
+    } else if (sesionIniciada === 'true' && rol === 'ANFITRION') {
+        etiqueta.textContent = 'Anfitrión';
+        etiqueta.hidden = false;
+    } else {
+        etiqueta.hidden = true;
+    }
+})();

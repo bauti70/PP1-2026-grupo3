@@ -194,7 +194,9 @@ try {
             apellido: apellido,
             email: correo.trim(),
             password: clave,
-            telefono: null
+            telefono: null,
+            rol: selector.value.toUpperCase()
+
         })
     });
 

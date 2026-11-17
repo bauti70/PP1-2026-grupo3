@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 64e320e46cb2d19ec5d93784f8fe495903bd5602
 const form = document.querySelector('#form-login');
 
 form.addEventListener('submit', async function (evento){
@@ -78,6 +74,11 @@ form.addEventListener('submit', async function (evento){
             return;
         }
 
+        const datosUsuario = await respuesta.json();
+
+        localStorage.setItem('idUsuario', String(datosUsuario.id));
+        localStorage.setItem('rolUsuario', datosUsuario.rol);
+        
         localStorage.setItem('sesionIniciada', 'true');
 
         const paginaDestino = localStorage.getItem('volverA');
@@ -92,4 +93,5 @@ form.addEventListener('submit', async function (evento){
     } catch (error) {
         msjPassword.textContent = 'No se pudo conectar con el servidor.';
     }
+    
 });

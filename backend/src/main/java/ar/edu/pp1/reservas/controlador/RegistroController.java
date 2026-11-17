@@ -25,7 +25,8 @@ public class RegistroController {
             String apellido,
             String email,
             String password,
-            String telefono
+            String telefono,
+            String rol
     ) {
     }
 
@@ -48,6 +49,18 @@ public class RegistroController {
             telefono = null;
         }
 
+        String rol = datos.rol() == null
+                ? "HUESPED"
+                : datos.rol().trim().toUpperCase(Locale.ROOT);
+
+        if (!rol.equals("HUESPED") && !rol.equals("ANFITRION")) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "El rol debe ser HUESPED o ANFITRION"
+            );
+        }
+
+
         if (nombre.isEmpty() || nombre.length() > 60 ||
                 apellido.isEmpty() || apellido.length() > 60 ||
                 correo.length() > 120 ||
@@ -65,12 +78,13 @@ public class RegistroController {
             jdbcTemplate.update(
                     "INSERT INTO usuario " +
                             "(nombre, apellido, correo, contrasena, telefono, rol, activo) " +
-                            "VALUES (?, ?, ?, ?, ?, 'HUESPED', 1)",
+                            "VALUES (?, ?, ?, ?, ?, ?, 1)",
                     nombre,
                     apellido,
                     correo,
                     ContrasenaUtil.proteger(password),
-                    telefono
+                    telefono,
+                    rol
             );
         } catch (DuplicateKeyException e) {
             throw new ResponseStatusException(

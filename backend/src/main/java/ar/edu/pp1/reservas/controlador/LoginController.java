@@ -24,7 +24,11 @@ public class LoginController {
     public record LoginRequest(String email, String password) {
     }
 
-    private record UsuarioLogin(Long id, String contrasena) {
+    private record UsuarioLogin(
+            Long id,
+            String contrasena,
+            String rol
+    ) {
     }
 
     @PostMapping
@@ -36,6 +40,7 @@ public class LoginController {
                 datos.email().isBlank() ||
                 datos.password() == null ||
                 datos.password().isEmpty()) {
+
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
                     "Correo y contraseña obligatorios"
@@ -45,12 +50,15 @@ public class LoginController {
         String correo = datos.email().trim().toLowerCase(Locale.ROOT);
 
         List<UsuarioLogin> usuarios = jdbcTemplate.query(
-                "SELECT id_usuario, contrasena FROM usuario " +
-                        "WHERE correo = ? AND activo = 1 AND rol = 'HUESPED'",
+                "SELECT id_usuario, contrasena, rol FROM usuario " +
+                        "WHERE correo = ? AND activo = 1",
+
                 (resultado, fila) -> new UsuarioLogin(
                         resultado.getLong("id_usuario"),
-                        resultado.getString("contrasena")
+                        resultado.getString("contrasena"),
+                        resultado.getString("rol")
                 ),
+
                 correo
         );
 
@@ -59,14 +67,22 @@ public class LoginController {
                         datos.password(),
                         usuarios.get(0).contrasena()
                 )) {
+
             throw new ResponseStatusException(
                     HttpStatus.UNAUTHORIZED,
                     "Credenciales incorrectas"
             );
         }
 
-        sesion.setAttribute("idUsuario", usuarios.get(0).id());
+        UsuarioLogin usuario = usuarios.get(0);
 
-        return Map.of("autenticado", true);
+        sesion.setAttribute("idUsuario", usuario.id());
+        sesion.setAttribute("rol", usuario.rol());
+
+        return Map.of(
+                "autenticado", true,
+                "id", usuario.id(),
+                "rol", usuario.rol()
+        );
     }
 }
