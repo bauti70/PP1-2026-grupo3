@@ -292,3 +292,16 @@ a {
 .buscaro-inicio .etiqueta-rol[hidden]{
   display: none;
 }
+
+.buscador-inicio .nombre-usuario{
+  margin-left: auto;
+  margin-right: 12px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.nombre-usuario:not([hidden]) + .etiqueta-rol{
+  margin-left: 0;
+}

@@ -27,7 +27,8 @@ public class LoginController {
     private record UsuarioLogin(
             Long id,
             String contrasena,
-            String rol
+            String rol,
+            String nombre
     ) {
     }
 
@@ -50,13 +51,14 @@ public class LoginController {
         String correo = datos.email().trim().toLowerCase(Locale.ROOT);
 
         List<UsuarioLogin> usuarios = jdbcTemplate.query(
-                "SELECT id_usuario, contrasena, rol FROM usuario " +
+                "SELECT id_usuario, contrasena, rol, CONCAT_WS('', nombre, apellido) AS nombre FROM usuario " +
                         "WHERE correo = ? AND activo = 1",
 
                 (resultado, fila) -> new UsuarioLogin(
                         resultado.getLong("id_usuario"),
                         resultado.getString("contrasena"),
-                        resultado.getString("rol")
+                        resultado.getString("rol"),
+                        resultado.getString("nombre")
                 ),
 
                 correo
@@ -82,7 +84,14 @@ public class LoginController {
         return Map.of(
                 "autenticado", true,
                 "id", usuario.id(),
-                "rol", usuario.rol()
+                "rol", usuario.rol(),
+                "nombre", usuario.nombre()
         );
+    }
+
+    @PostMapping("/cerrar-sesion")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void cerrarSesion(HttpSession sesion){
+        sesion.invalidate();
     }
 }

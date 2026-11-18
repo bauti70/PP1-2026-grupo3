@@ -60,6 +60,7 @@ form.addEventListener('submit', async function (evento){
         try {
         const respuesta = await fetch('http://localhost:8080/api/login', {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -78,6 +79,7 @@ form.addEventListener('submit', async function (evento){
 
         localStorage.setItem('idUsuario', String(datosUsuario.id));
         localStorage.setItem('rolUsuario', datosUsuario.rol);
+        localStorage.setItem('nombreUsuario', datosUsuario.nombre);
         
         localStorage.setItem('sesionIniciada', 'true');
 

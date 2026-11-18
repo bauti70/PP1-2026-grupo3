@@ -1,4 +1,3 @@
-
 .btn-menu {
     background: none;
     border: none;
@@ -82,4 +81,24 @@
 .menu-lateral a.activo {
     background-color: #E8E4F8;
     color: #5e5cee;
+}
+
+.menu-lateral .menu-cerrar-sesion {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px 10px;
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    background: transparent;
+    color: #dc2626;
+    font: inherit;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+}
+
+.menu-lateral .menu-cerrar-sesion:hover{
+    background-color: #fff0f0;
+    border-radius: 8px;
 }

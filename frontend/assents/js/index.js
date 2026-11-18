@@ -138,3 +138,20 @@ cargarDatosInicio();
         etiqueta.hidden = true;
     }
 })();
+
+(function mostrarNombreUsuario() {
+    const etiquetaNombre = document.querySelector('#nombre-usuario');
+    const nombre = localStorage.getItem('nombreUsuario');
+    const sesionIniciada = localStorage.getItem('sesionIniciada');
+
+    if (!etiquetaNombre) {
+        return;
+    }
+
+    if (sesionIniciada === 'true' && nombre && nombre !== 'undefined') {
+        etiquetaNombre.textContent = nombre;
+        etiquetaNombre.hidden = false;
+    } else {
+        etiquetaNombre.hidden = true;
+    }
+})();
