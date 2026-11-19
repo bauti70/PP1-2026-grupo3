@@ -16,6 +16,8 @@ import org.springframework.web.server.ResponseStatusException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class ReservaService {
@@ -171,4 +173,46 @@ public class ReservaService {
 
         return reservaRepository.save(reserva);
     }
+
+    public List<Map<String, Object>> obtenerMisReservas(Long idUsuario) {
+
+        return jdbcTemplate.queryForList("""
+            SELECT
+                r.id_reserva AS id,
+                r.id_alojamiento AS idAlojamiento,
+                a.nombre AS alojamiento,
+                a.descripcion AS descripcion,
+                a.imagen AS imagen,
+                r.fecha_check_in AS fechaCheckIn,
+                r.fecha_check_out AS fechaCheckOut,
+                r.cantidad_huespedes AS cantidadHuespedes,
+                r.importe_total AS importeTotal,
+                r.estado AS estado
+            FROM reserva r
+            JOIN alojamiento a
+                ON r.id_alojamiento = a.id_alojamiento
+            WHERE r.id_usuario = ?
+            ORDER BY r.fecha_check_in DESC
+            """, idUsuario);
+    }
+
+    @Transactional
+    public void cancelarReserva(Long idReserva, Long idUsuario) {
+
+        int filas = jdbcTemplate.update(
+                "UPDATE reserva SET estado = 'CANCELADA' " +
+                        "WHERE id_reserva = ? AND id_usuario = ? " +
+                        "AND estado = 'CONFIRMADA'",
+                idReserva,
+                idUsuario
+        );
+
+        if (filas == 0) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "No se puede cancelar esta reserva"
+            );
+        }
+    }
+
 }

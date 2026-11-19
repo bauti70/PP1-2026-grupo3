@@ -68,6 +68,26 @@ html, body {
     border-radius: 16px;
     padding: 20px;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    border: 2px solid var(--color-estado, #e0e0e0);
+}
+
+#lista-reservas {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.reserva-tarjeta[data-estado="CONFIRMADA"]{
+    --color-estado: #16e34a;
+}
+
+.reserva-tarjeta[data-estado="CANCELADA"]{
+    --color-estado: #dc2626;
+}
+
+.reserva-tarjeta .estado{
+    color: var(--color-estado, #7b86ad);
+    font-weight: 700;
 }
 
 .reserva-propiedad {
@@ -135,7 +155,15 @@ html, body {
     color: white;
 }
 
+.reserva-btn-volver {
+    background-color: #16a34a;
+    border: none;
+    color: white;
+}
 
+.reserva-btn-volver:hover {
+    background-color: #15803d;
+}
 
 .reserva-detalles {
     margin-top: 15px;
@@ -158,3 +186,4 @@ html, body {
 .reserva-nav .nav-derecha {
     margin-left: auto;
 }
+
