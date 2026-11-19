@@ -154,3 +154,7 @@ html, body {
     color: #7b86ad;
     padding: 40px 0;
 }
+
+.reserva-nav .nav-derecha {
+    margin-left: auto;
+}

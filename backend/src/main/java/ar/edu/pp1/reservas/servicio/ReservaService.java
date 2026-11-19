@@ -118,8 +118,7 @@ public class ReservaService {
         );
 
         Integer usuariosValidos = jdbcTemplate.queryForObject(
-                "SELECT COUNT(*) FROM usuario " +
-                        "WHERE id_usuario = ? AND activo = 1 AND rol = 'HUESPED'",
+                "SELECT COUNT(*) FROM usuario " + "WHERE id_usuario = ? AND activo = 1 " + "AND rol IN ('HUESPED', 'ANFITRION')",
                 Integer.class,
                 datos.idUsuario()
         );
@@ -127,7 +126,23 @@ public class ReservaService {
         if (usuariosValidos == null || usuariosValidos == 0) {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
-                    "El usuario no es un huesped activo"
+                    "El usuario no esta activo o no tiene un rol valido"
+            );
+        }
+
+
+        Integer alojamientoPropio = jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM alojamiento " +
+                        "WHERE id_alojamiento = ? AND id_usuario_anfitrion = ?",
+                Integer.class,
+                datos.idAlojamiento(),
+                datos.idUsuario()
+        );
+
+        if (alojamientoPropio != null && alojamientoPropio > 0) {
+            throw new ResponseStatusException(
+                    HttpStatus.FORBIDDEN,
+                    "No puedes reservar tu propio alojamiento"
             );
         }
 

@@ -523,7 +523,46 @@ function renderReservas(lista) {
 
 
 async function guardarReserva(reserva) {
-    reservas.push(reserva);
+  const respuesta = await fetch(
+        `http://${window.location.hostname}:8080/api/reservas`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({
+                idAlojamiento: reserva.alojamientoId,
+                idUsuario: Number(localStorage.getItem('idUsuario')),
+                fechaCheckIn: reserva.fechaEntrada,
+                fechaCheckOut: reserva.fechaSalida,
+                cantidadHuespedes: reserva.huespedes,
+                solicitudEspecial: null
+            })
+        }
+    );
+
+    if (!respuesta.ok) {
+
+        const mensajes = {
+            400: 'Los datos de la reserva no son válidos.',
+            401: 'Debés iniciar sesión.',
+            403: 'No tenés permiso para reservar este alojamiento.',
+            409: 'El alojamiento no está disponible para esas fechas.'
+        };
+
+        throw new Error(
+            mensajes[respuesta.status] || 'No se pudo realizar la reserva.'
+        );
+    }
+
+    const reservaGuardada = await respuesta.json();
+
+    reservas.push({
+        ...reserva,
+        id: reservaGuardada.id,
+        estado: reservaGuardada.estado
+    });
 }
 
 
@@ -597,8 +636,28 @@ formReserva.addEventListener('submit', async function (evento) {
         estado: 'CONFIRMADA'
     };
 
-    await guardarReserva(reserva);
-    renderReservas(reservas);
+        if (botonReservar.disabled) {
+    return;
+}
+
+botonReservar.disabled = true;
+
+    try {
+        await guardarReserva(reserva);
+    } catch (error) {
+        if (typeof toastr !== 'undefined') {
+            toastr.error(error.message);
+        } else {
+            alert(error.message);
+        }
+        return;
+    } finally {
+        botonReservar.disabled = false;
+    }
+
+    if (document.querySelector('#lista-reservas')) {
+        renderReservas(reservas);
+    }
     formReserva.reset();
     actualizarTotal();
 

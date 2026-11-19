@@ -102,3 +102,43 @@
     background-color: #fff0f0;
     border-radius: 8px;
 }
+
+.nav-derecha {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-derecha .nombre-usuario-cabecera {
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.nav-derecha .etiqueta-rol-cabecera {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background-color: #E8E4F8;
+    color: #5e5cee;
+    font-size: 13px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+    .nav-derecha .nombre-usuario-cabecera {
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .nav-derecha .etiqueta-rol-cabecera {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+}

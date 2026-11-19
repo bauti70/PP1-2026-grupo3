@@ -58,7 +58,7 @@ form.addEventListener('submit', async function (evento){
     }
   
         try {
-        const respuesta = await fetch('http://localhost:8080/api/login', {
+        const respuesta = await fetch(`http://${window.location.hostname}:8080/api/login`, {
             method: 'POST',
             credentials: 'include',
             headers: {

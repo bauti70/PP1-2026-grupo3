@@ -112,3 +112,31 @@ if (botonCerrarSesion) {
         }
     });
 }
+
+(function mostrarUsuarioEnBarra() {
+    const barraDerecha = document.querySelector('.nav-derecha');
+
+    if (!barraDerecha) return;
+
+    if (localStorage.getItem('sesionIniciada') !== 'true') return;
+
+    const nombre = localStorage.getItem('nombreUsuario');
+    const rol = localStorage.getItem('rolUsuario');
+    const enlacePerfil = barraDerecha.querySelector('a');
+
+    if (nombre && nombre !== 'undefined') {
+        const textoNombre = document.createElement('span');
+        textoNombre.className = 'nombre-usuario-cabecera';
+        textoNombre.textContent = nombre;
+
+        barraDerecha.insertBefore(textoNombre, enlacePerfil);
+    }
+
+    if (rol === 'HUESPED' || rol === 'ANFITRION') {
+        const textoRol = document.createElement('span');
+        textoRol.className = 'etiqueta-rol-cabecera';
+        textoRol.textContent = rol === 'HUESPED' ? 'Huésped' : 'Anfitrión';
+
+        barraDerecha.insertBefore(textoRol, enlacePerfil);
+    }
+})();
